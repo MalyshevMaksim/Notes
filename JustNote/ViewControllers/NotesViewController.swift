@@ -15,11 +15,11 @@ class NotesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notes"
-        configureTabBar()
+        configureTabBarItem()
         configureCollectionView()
     }
     
-    private func configureTabBar() {
+    private func configureTabBarItem() {
         tabBarItem = UITabBarItem(title: "Notes", image: UIImage(systemName: "pencil.tip.crop.circle"), selectedImage: nil)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -30,6 +30,7 @@ class NotesViewController: UIViewController {
         collectionView.backgroundColor = .none
         collectionView.register(NotesCollectionCell.self, forCellWithReuseIdentifier: NotesCollectionCell.reuseIdentifier)
         
+        setupDataSource()
         view.addSubview(collectionView)
     }
 }
@@ -48,7 +49,7 @@ extension NotesViewController {
     }
     
     private func createGroup() -> NSCollectionLayoutGroup {
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.5))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.45))
         let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [createItem()])
         return groupLayout
     }
@@ -56,6 +57,7 @@ extension NotesViewController {
     private func createItem() -> NSCollectionLayoutItem {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
         let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
+        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
         return itemLayout
     }
 }
@@ -64,7 +66,12 @@ extension NotesViewController {
 
 extension NotesViewController {
     private func createSnapshotForDataSource() -> NSDiffableDataSourceSnapshot<Int, Int> {
-        let snapshot = NSDiffableDataSourceSnapshot<Int, Int>()
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Int>()
+        snapshot.appendSections([0])
+        
+        for item in 0..<2 {
+            snapshot.appendItems([item])
+        }
         return snapshot
     }
     
@@ -72,10 +79,26 @@ extension NotesViewController {
         dataSource = UICollectionViewDiffableDataSource<Int, Int>(collectionView: collectionView) {
             (collectionView, indexPath, Identifer) -> UICollectionViewCell? in
             
-            let notesCell = collectionView.dequeueReusableCell(withReuseIdentifier: NotesCollectionCell.reuseIdentifier, for: indexPath) as! NotesCollectionCell
-            return notesCell
+            switch indexPath.item {
+            case 0:
+                let textNotes = collectionView.dequeueReusableCell(withReuseIdentifier: NotesCollectionCell.reuseIdentifier, for: indexPath) as! NotesCollectionCell
+                textNotes.iconPerCell.image = UIImage(systemName: "pencil")
+                textNotes.iconOverlay.backgroundColor = .systemBlue
+                textNotes.title.text = "Text"
+                textNotes.subtitle.text = "12 notes"
+                return textNotes
+            default:
+                let audioNotes = collectionView.dequeueReusableCell(withReuseIdentifier: NotesCollectionCell.reuseIdentifier, for: indexPath) as! NotesCollectionCell
+                return audioNotes
+            }
         }
         
         dataSource.apply(createSnapshotForDataSource(), animatingDifferences: true)
     }
+}
+
+// MARK: Setup delegate for collectionView
+
+extension NotesViewController: UICollectionViewDelegate {
+    
 }

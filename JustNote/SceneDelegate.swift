@@ -11,7 +11,30 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    private func setupNavigationControllers() -> [UIViewController] {
+        let notesNavigationController = UINavigationController(rootViewController: BorderViewController())
+        notesNavigationController.tabBarItem = UITabBarItem(title: "Notes", image: UIImage(systemName: "pencil.tip.crop.circle"), selectedImage: nil)
+        
+        let tasksNavigationController = UINavigationController(rootViewController: TasksViewController())
+        tasksNavigationController.tabBarItem = UITabBarItem(title: "Tasks", image: UIImage(systemName: "rectangle.stack.fill"), selectedImage: nil)
+        
+        let favoritesNavigationController = UINavigationController(rootViewController: FavoritesViewController())
+        favoritesNavigationController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star.fill"), selectedImage: nil)
+        
+        let settingsNavigationController = UINavigationController(rootViewController: SettingsViewController())
+        settingsNavigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), selectedImage: nil)
+        
+        return [notesNavigationController, tasksNavigationController, favoritesNavigationController, settingsNavigationController]
+    }
+    
+    private func setupTabBar() -> UITabBarController {
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.tintColor = .white
+        tabBarController.tabBar.backgroundColor = #colorLiteral(red: 0.1046186015, green: 0.1221224591, blue: 0.1803921569, alpha: 1)
+        tabBarController.setViewControllers(setupNavigationControllers(), animated: true)
+        return tabBarController
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -19,19 +42,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-
-        let notesNavigationController = UINavigationController(rootViewController: NotesViewController())
-        let tasksNavigationController = UINavigationController(rootViewController: TasksViewController())
-        let settingsNavigationController = UINavigationController(rootViewController: SettingsViewController())
-        
-        let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor = .white
-        tabBarController.tabBar.backgroundColor = #colorLiteral(red: 0.1046186015, green: 0.1221224591, blue: 0.1803921569, alpha: 1)
-        tabBarController.setViewControllers([notesNavigationController, tasksNavigationController, settingsNavigationController], animated: true)
-        
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
-        window?.rootViewController = tabBarController
+        window?.rootViewController = setupTabBar()
         window?.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.137254902, blue: 0.1568627451, alpha: 1)
     }
 

@@ -11,9 +11,20 @@ import UIKit
 class NotesCollectionCell: UICollectionViewCell {
     static var reuseIdentifier = "NotesCollectionCell"
     
-    var cellBackground: UIView = {
+    var borderOfNotesModel: NoteBorder? {
+        didSet {
+            guard let border = borderOfNotesModel else {
+                return
+            }
+            title.text = border.title
+            iconPerCell.image = UIImage(systemName: border.icon)
+            subtitle.text = border.subtitle
+        }
+    }
+    
+    lazy var cellBackground: UIView = {
         let background = UIView()
-        background.backgroundColor = #colorLiteral(red: 0.08817935735, green: 0.09153553098, blue: 0.106112428, alpha: 1)
+        background.backgroundColor = #colorLiteral(red: 0.1150090769, green: 0.1185865179, blue: 0.1396087408, alpha: 1)
         background.layer.cornerRadius = 20
         background.layer.borderWidth = 0.2
         background.layer.borderColor = #colorLiteral(red: 0.1803921569, green: 0.1843137255, blue: 0.2039215686, alpha: 1)
@@ -21,34 +32,32 @@ class NotesCollectionCell: UICollectionViewCell {
         return background
     }()
     
-    var iconOverlay: UIView = {
+    lazy var iconOverlay: UIView = {
         let overlay = UIView()
         overlay.backgroundColor = .systemPink
         overlay.layer.masksToBounds = false
-        overlay.layer.cornerRadius = 22.5
+        overlay.layer.cornerRadius = 13
         overlay.clipsToBounds = true
         overlay.translatesAutoresizingMaskIntoConstraints = false
         return overlay
     }()
     
-    var iconPerCell: UIImageView = {
+    lazy var iconPerCell: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "mic.fill"), highlightedImage: nil)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .white
         return imageView
     }()
     
-    var title: UILabel = {
+    lazy var title: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 22)
-        label.text = "Audio"
+        label.font = .boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    var subtitle: UILabel = {
+    lazy var subtitle: UILabel = {
         let label = UILabel()
-        label.text = "5 notes"
         label.font = UIFont.preferredFont(forTextStyle: .footnote)
         label.textColor = .secondaryLabel
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -93,7 +102,7 @@ class NotesCollectionCell: UICollectionViewCell {
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20),
             title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40),
             subtitle.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            subtitle.topAnchor.constraint(equalTo: title.bottomAnchor)
+            subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 2)
         ])
     }
 }

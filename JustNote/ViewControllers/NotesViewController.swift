@@ -8,37 +8,58 @@
 
 import UIKit
 
-class NotesViewController: UIViewController {
+class BorderViewController: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Int, Int>!
+    private var isGridLayout = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notes"
-        configureTabBarItem()
-        configureCollectionView()
-    }
-    
-    private func configureTabBarItem() {
-        tabBarItem = UITabBarItem(title: "Notes", image: UIImage(systemName: "pencil.tip.crop.circle"), selectedImage: nil)
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        configureCollectionView()
+        configureLeftBarButton()
+        configureRightBarButton()
     }
     
     private func configureCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: setupCompositionalLayout())
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: setupGridLayout())
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .none
         collectionView.register(NotesCollectionCell.self, forCellWithReuseIdentifier: NotesCollectionCell.reuseIdentifier)
+        collectionView.delegate = self
         
         setupDataSource()
         view.addSubview(collectionView)
     }
+    
+    private func configureRightBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+    }
+    
+    private func configureLeftBarButton() {
+        guard var leftBarButton = navigationItem.leftBarButtonItem else {
+            return
+        }
+        leftBarButton = UIBarButtonItem()
+        leftBarButton.target = self
+        leftBarButton.image = UIImage(systemName: "rectangle.grid.1x2")
+        leftBarButton.action = #selector(changeLayout)
+    }
+    
+    @objc private func changeLayout() {
+        let layout = isGridLayout ? setupLineLayout() : setupGridLayout()
+        isGridLayout.toggle()
+        collectionView.setCollectionViewLayout(layout, animated: true)
+        navigationItem.leftBarButtonItem?.image = isGridLayout ? UIImage(systemName: "rectangle.grid.1x2") : UIImage(systemName: "square.grid.2x2")
+    }
 }
 
-// MARK: Setup layout for collectionView
+// MARK: Setup grid layout for collectionView
 
-extension NotesViewController {
-    private func setupCompositionalLayout() -> UICollectionViewCompositionalLayout {
+extension BorderViewController {
+    private func setupGridLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout(section: createSection())
         return layout
     }
@@ -49,7 +70,7 @@ extension NotesViewController {
     }
     
     private func createGroup() -> NSCollectionLayoutGroup {
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.45))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.4))
         let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [createItem()])
         return groupLayout
     }
@@ -57,48 +78,93 @@ extension NotesViewController {
     private func createItem() -> NSCollectionLayoutItem {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
         let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
-        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         return itemLayout
     }
 }
 
-// MARK: Setup dataSoutce for collectionView
+extension BorderViewController {
+    private func setupLineLayout() -> UICollectionViewCompositionalLayout {
+        let layout = UICollectionViewCompositionalLayout(section: createLineSection())
+        return layout
+    }
+    
+    private func createLineSection() -> NSCollectionLayoutSection {
+        let section = NSCollectionLayoutSection(group: createLineGroup())
+        return section
+    }
+    
+    private func createLineGroup() -> NSCollectionLayoutGroup {
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.4))
+        let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [createLineItem()])
+        return groupLayout
+    }
+    
+    private func createLineItem() -> NSCollectionLayoutItem {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
+        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
+        return itemLayout
+    }
+}
 
-extension NotesViewController {
-    private func createSnapshotForDataSource() -> NSDiffableDataSourceSnapshot<Int, Int> {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, Int>()
+// MARK: Setup diffable dataSoutce for collectionView
+
+extension BorderViewController {
+    typealias DataSourceSnapshor = NSDiffableDataSourceSnapshot<Int, Int>
+    typealias DataSource = UICollectionViewDiffableDataSource<Int, Int>
+    
+    private func createSnapshotForDataSource() -> DataSourceSnapshor {
+        var snapshot = DataSourceSnapshor()
         snapshot.appendSections([0])
         
-        for item in 0..<2 {
+        for item in 0..<4 {
             snapshot.appendItems([item])
         }
+        
         return snapshot
     }
     
     private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, Int>(collectionView: collectionView) {
+        dataSource = DataSource(collectionView: collectionView) {
             (collectionView, indexPath, Identifer) -> UICollectionViewCell? in
-            
-            switch indexPath.item {
-            case 0:
-                let textNotes = collectionView.dequeueReusableCell(withReuseIdentifier: NotesCollectionCell.reuseIdentifier, for: indexPath) as! NotesCollectionCell
-                textNotes.iconPerCell.image = UIImage(systemName: "pencil")
-                textNotes.iconOverlay.backgroundColor = .systemBlue
-                textNotes.title.text = "Text"
-                textNotes.subtitle.text = "12 notes"
-                return textNotes
-            default:
-                let audioNotes = collectionView.dequeueReusableCell(withReuseIdentifier: NotesCollectionCell.reuseIdentifier, for: indexPath) as! NotesCollectionCell
-                return audioNotes
-            }
+            return self.setupCellWith(indexPathForCell: indexPath)
         }
         
         dataSource.apply(createSnapshotForDataSource(), animatingDifferences: true)
+    }
+    
+    private func setupCellWith(indexPathForCell: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NotesCollectionCell.reuseIdentifier, for: indexPathForCell) as! NotesCollectionCell
+        cell.borderOfNotesModel = bordersOfNotes[indexPathForCell.item]
+        return cell
     }
 }
 
 // MARK: Setup delegate for collectionView
 
-extension NotesViewController: UICollectionViewDelegate {
+extension BorderViewController: UICollectionViewDelegate {
+    private func makeDetailsViewController() -> UIViewController {
+        return FavoritesViewController()
+    }
     
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: makeDetailsViewController) { (_: [UIMenuElement]) -> UIMenu? in
+            
+            let shareAction = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off, handler: { (UIAction) in
+                print("share")
+            })
+            
+            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (UIAction) in
+                    print("Delete")
+                }
+                
+            let editAction = UIAction(title: "Edit..", image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { (UIAction) in
+                print("Edit")
+            }
+            
+            return UIMenu(title: "", image: nil, identifier: nil, options: .init(), children: [shareAction, editAction, deleteAction])
+        }
+    }
 }

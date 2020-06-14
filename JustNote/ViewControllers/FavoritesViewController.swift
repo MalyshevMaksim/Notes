@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  FavoritesViewControllers.swift
 //  JustNote
 //
 //  Created by Максим on 14.06.2020.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class TasksViewController: UIViewController {
+class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Tasks"
+        title = "Favorites"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 }

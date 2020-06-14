@@ -16,6 +16,8 @@
 		B5893B4B2496605A002F2865 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B4A2496605A002F2865 /* TasksViewController.swift */; };
 		B5893B4D2496621D002F2865 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B4C2496621D002F2865 /* SettingsViewController.swift */; };
 		B5893B5124967249002F2865 /* NotesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B5024967249002F2865 /* NotesCollectionCell.swift */; };
+		B5893B53249686C8002F2865 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B52249686C8002F2865 /* FavoritesViewController.swift */; };
+		B5893B562496B5D3002F2865 /* NoteBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B552496B5D3002F2865 /* NoteBorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		B5893B4A2496605A002F2865 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		B5893B4C2496621D002F2865 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B5893B5024967249002F2865 /* NotesCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionCell.swift; sourceTree = "<group>"; };
+		B5893B52249686C8002F2865 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		B5893B552496B5D3002F2865 /* NoteBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		B5893B3524965BAC002F2865 /* JustNote */ = {
 			isa = PBXGroup;
 			children = (
+				B5893B542496B5B0002F2865 /* Models */,
 				B5893B4F2496722F002F2865 /* Views */,
 				B5893B4E24966E7B002F2865 /* ViewControllers */,
 				B5893B3624965BAC002F2865 /* AppDelegate.swift */,
@@ -79,6 +84,7 @@
 			children = (
 				B5893B3A24965BAC002F2865 /* NotesViewController.swift */,
 				B5893B4A2496605A002F2865 /* TasksViewController.swift */,
+				B5893B52249686C8002F2865 /* FavoritesViewController.swift */,
 				B5893B4C2496621D002F2865 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -90,6 +96,14 @@
 				B5893B5024967249002F2865 /* NotesCollectionCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B5893B542496B5B0002F2865 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B5893B552496B5D3002F2865 /* NoteBorder.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,8 +177,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5893B53249686C8002F2865 /* FavoritesViewController.swift in Sources */,
 				B5893B4D2496621D002F2865 /* SettingsViewController.swift in Sources */,
 				B5893B5124967249002F2865 /* NotesCollectionCell.swift in Sources */,
+				B5893B562496B5D3002F2865 /* NoteBorder.swift in Sources */,
 				B5893B3B24965BAC002F2865 /* NotesViewController.swift in Sources */,
 				B5893B4B2496605A002F2865 /* TasksViewController.swift in Sources */,
 				B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */,

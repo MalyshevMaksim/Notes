@@ -8,9 +8,14 @@
 
 import UIKit
 
+typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<BoardSection, NoteBoard>
+typealias DataSource = UICollectionViewDiffableDataSource<BoardSection, NoteBoard>
+
 class NoteBoardsViewController: UIViewController {
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Int, Int>!
+    var dataSource: DataSource!
+    var sections = [BoardSection(id: 0, title: "", subtitle: "", type: "defaultBoardings", items: bordersOfNotes)]
+    
     private var isGridLayout = true
 
     override func viewDidLoad() {
@@ -27,13 +32,10 @@ class NoteBoardsViewController: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: setupGridLayout())
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .none
-        collectionView.register(BorderCollectionCell.self, forCellWithReuseIdentifier: BorderCollectionCell.reuseIdentifier)
+        collectionView.register(BoardCollectionCell.self, forCellWithReuseIdentifier: BoardCollectionCell.reuseIdentifier)
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        let delegate = NoteBoardsDelegate()
-        collectionView.delegate = delegate
-        
-        collectionView.dataSource = dataSource
-        
+        setupDataSource()
         view.addSubview(collectionView)
     }
     
@@ -116,37 +118,35 @@ extension NoteBoardsViewController {
 }
 
 extension NoteBoardsViewController {
-    
-    private func setupDataSource() {
-        guard let collectionView = collectionView else {
-            return
-        }
-        
+    func setupDataSource() {
         dataSource = DataSource(collectionView: collectionView) {
-            (collectionView, indexPath, Identifer) -> UICollectionViewCell? in
-            return self.setupCellWith(indexPathForCell: indexPath)
+            (collectionView, indexPath, board) -> UICollectionViewCell? in
+            
+            switch self.sections[indexPath.section].type {
+            case "defaultBoardings":
+                return self.makeCell(BoardCollectionCell.self, with: board, for: indexPath)
+            default:
+                return UICollectionViewCell()
+            }
         }
         dataSource!.apply(makeSnapshot(), animatingDifferences: true)
     }
     
-    private func setupCellWith(indexPathForCell: IndexPath) -> UICollectionViewCell {
-        guard let collectionView = collectionView else {
-            return UICollectionViewCell()
+    private func makeCell<T: ConfiguringCell>(_ cellType: T.Type, with noteBoarding: NoteBoard, for indexPath: IndexPath) -> T {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
+            fatalError("Unable to dequeue \(cellType)")
         }
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BorderCollectionCell.reuseIdentifier, for: indexPathForCell) as! BorderCollectionCell
-        cell.borderOfNotesModel = bordersOfNotes[indexPathForCell.item]
+        cell.configure(with: noteBoarding)
         return cell
     }
     
     private func makeSnapshot() -> DataSourceSnapshot {
         var snapshot = DataSourceSnapshot()
-        snapshot.appendSections([0])
+        snapshot.appendSections([sections[0]])
         
-        for item in 0..<bordersOfNotes.count {
-            snapshot.appendItems([item])
+        for item in 0..<sections[0].items.count {
+            snapshot.appendItems([sections[0].items[item]])
         }
         return snapshot
     }
 }
-

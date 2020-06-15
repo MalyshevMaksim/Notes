@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BorderCollectionCell: UICollectionViewCell {
+class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
     static var reuseIdentifier = "NotesCollectionCell"
     
     private var isLocked = false {
@@ -21,18 +21,12 @@ class BorderCollectionCell: UICollectionViewCell {
         lockIcon.alpha = isLocked ? 1.0 : 0.0
     }
     
-    var borderOfNotesModel: NoteBorder? {
-        didSet {
-            guard let border = borderOfNotesModel else {
-                return
-            }
-            
-            title.text = border.title
-            iconPerCell.image = UIImage(systemName: border.icon)
-            subtitle.text = border.subtitle
-            isLocked = border.isLocked
-            iconOverlay.backgroundColor = border.iconColor
-        }
+    func configure(with model: NoteBoard) {
+        title.text = model.title
+        iconPerCell.image = UIImage(systemName: model.icon)
+        subtitle.text = model.subtitle
+        isLocked = model.isLocked
+        iconOverlay.backgroundColor = model.iconColor
     }
     
     lazy var lockIcon: UIImageView = {

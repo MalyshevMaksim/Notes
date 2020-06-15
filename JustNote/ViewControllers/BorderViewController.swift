@@ -27,7 +27,7 @@ class BorderViewController: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: setupGridLayout())
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .none
-        collectionView.register(NotesCollectionCell.self, forCellWithReuseIdentifier: NotesCollectionCell.reuseIdentifier)
+        collectionView.register(BorderCollectionCell.self, forCellWithReuseIdentifier: BorderCollectionCell.reuseIdentifier)
         collectionView.delegate = self
         
         setupDataSource()
@@ -39,13 +39,10 @@ class BorderViewController: UIViewController {
     }
     
     private func configureLeftBarButton() {
-        guard var leftBarButton = navigationItem.leftBarButtonItem else {
-            return
-        }
-        leftBarButton = UIBarButtonItem()
-        leftBarButton.target = self
-        leftBarButton.image = UIImage(systemName: "rectangle.grid.1x2")
-        leftBarButton.action = #selector(changeLayout)
+        navigationItem.leftBarButtonItem = UIBarButtonItem()
+        navigationItem.leftBarButtonItem?.target = self
+        navigationItem.leftBarButtonItem?.image = UIImage(systemName: "rectangle.grid.1x2")
+        navigationItem.leftBarButtonItem?.action = #selector(changeLayout)
     }
     
     @objc private func changeLayout() {
@@ -135,7 +132,7 @@ extension BorderViewController {
     }
     
     private func setupCellWith(indexPathForCell: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NotesCollectionCell.reuseIdentifier, for: indexPathForCell) as! NotesCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BorderCollectionCell.reuseIdentifier, for: indexPathForCell) as! BorderCollectionCell
         cell.borderOfNotesModel = bordersOfNotes[indexPathForCell.item]
         return cell
     }

@@ -8,19 +8,40 @@
 
 import UIKit
 
-class NotesCollectionCell: UICollectionViewCell {
+class BorderCollectionCell: UICollectionViewCell {
     static var reuseIdentifier = "NotesCollectionCell"
+    
+    private var isLocked = false {
+        didSet {
+            lockHandler()
+        }
+    }
+    
+    private func lockHandler() {
+        lockIcon.alpha = isLocked ? 1.0 : 0.0
+    }
     
     var borderOfNotesModel: NoteBorder? {
         didSet {
             guard let border = borderOfNotesModel else {
                 return
             }
+            
             title.text = border.title
             iconPerCell.image = UIImage(systemName: border.icon)
             subtitle.text = border.subtitle
+            isLocked = border.isLocked
+            iconOverlay.backgroundColor = border.iconColor
         }
     }
+    
+    lazy var lockIcon: UIImageView = {
+        let icon = UIImageView(image: UIImage(systemName: "lock.fill"))
+        icon.tintColor = .systemRed
+        icon.alpha = isLocked ? 1.0 : 0.0
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        return icon
+    }()
     
     lazy var cellBackground: UIView = {
         let background = UIView()
@@ -34,7 +55,6 @@ class NotesCollectionCell: UICollectionViewCell {
     
     lazy var iconOverlay: UIView = {
         let overlay = UIView()
-        overlay.backgroundColor = .systemPink
         overlay.layer.masksToBounds = false
         overlay.layer.cornerRadius = 13
         overlay.clipsToBounds = true
@@ -80,6 +100,7 @@ class NotesCollectionCell: UICollectionViewCell {
         contentView.addSubview(iconPerCell)
         contentView.addSubview(title)
         contentView.addSubview(subtitle)
+        contentView.addSubview(lockIcon)
     }
     
     private func setupCellLayout() {
@@ -102,7 +123,10 @@ class NotesCollectionCell: UICollectionViewCell {
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20),
             title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40),
             subtitle.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 2)
+            subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 2),
+            
+            lockIcon.centerYAnchor.constraint(equalTo: subtitle.centerYAnchor),
+            lockIcon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15)
         ])
     }
 }

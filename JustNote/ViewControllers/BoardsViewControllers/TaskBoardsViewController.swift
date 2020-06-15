@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TasksViewController: UIViewController {
+class TaskBoardsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Tasks"

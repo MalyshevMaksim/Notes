@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BorderViewController: UIViewController {
+class NoteBoardsViewController: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Int, Int>!
     private var isGridLayout = true
@@ -55,7 +55,7 @@ class BorderViewController: UIViewController {
 
 // MARK: Setup grid layout for collectionView
 
-extension BorderViewController {
+extension NoteBoardsViewController {
     private func setupGridLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout(section: createSection())
         return layout
@@ -80,7 +80,7 @@ extension BorderViewController {
     }
 }
 
-extension BorderViewController {
+extension NoteBoardsViewController {
     private func setupLineLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout(section: createLineSection())
         return layout
@@ -100,14 +100,14 @@ extension BorderViewController {
     private func createLineItem() -> NSCollectionLayoutItem {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
-        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
+        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6)
         return itemLayout
     }
 }
 
 // MARK: Setup diffable dataSoutce for collectionView
 
-extension BorderViewController {
+extension NoteBoardsViewController {
     typealias DataSourceSnapshor = NSDiffableDataSourceSnapshot<Int, Int>
     typealias DataSource = UICollectionViewDiffableDataSource<Int, Int>
     
@@ -140,7 +140,7 @@ extension BorderViewController {
 
 // MARK: Setup delegate for collectionView
 
-extension BorderViewController: UICollectionViewDelegate {
+extension NoteBoardsViewController: UICollectionViewDelegate {
     private func makeDetailsViewController() -> UIViewController {
         return FavoritesViewController()
     }

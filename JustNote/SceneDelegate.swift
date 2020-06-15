@@ -13,11 +13,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     private func setupNavigationControllers() -> [UIViewController] {
-        let notesNavigationController = UINavigationController(rootViewController: BorderViewController())
-        notesNavigationController.tabBarItem = UITabBarItem(title: "Notes", image: UIImage(systemName: "pencil.tip.crop.circle"), selectedImage: nil)
+        let noteBoardsNavigationController = UINavigationController(rootViewController: NoteBoardsViewController())
+        noteBoardsNavigationController.tabBarItem = UITabBarItem(title: "Notes", image: UIImage(systemName: "pencil.tip.crop.circle"), selectedImage: nil)
         
-        let tasksNavigationController = UINavigationController(rootViewController: TasksViewController())
-        tasksNavigationController.tabBarItem = UITabBarItem(title: "Tasks", image: UIImage(systemName: "rectangle.stack.fill"), selectedImage: nil)
+        let taskBoardsNavigationController = UINavigationController(rootViewController: TaskBoardsViewController())
+        taskBoardsNavigationController.tabBarItem = UITabBarItem(title: "Tasks", image: UIImage(systemName: "rectangle.stack.fill"), selectedImage: nil)
         
         let favoritesNavigationController = UINavigationController(rootViewController: FavoritesViewController())
         favoritesNavigationController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star.fill"), selectedImage: nil)
@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let settingsNavigationController = UINavigationController(rootViewController: SettingsViewController())
         settingsNavigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), selectedImage: nil)
         
-        return [notesNavigationController, tasksNavigationController, favoritesNavigationController, settingsNavigationController]
+        return [noteBoardsNavigationController, taskBoardsNavigationController, favoritesNavigationController, settingsNavigationController]
     }
     
     private func setupTabBar() -> UITabBarController {

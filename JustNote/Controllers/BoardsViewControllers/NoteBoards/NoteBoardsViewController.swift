@@ -28,9 +28,12 @@ class NoteBoardsViewController: UIViewController {
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .none
         collectionView.register(BorderCollectionCell.self, forCellWithReuseIdentifier: BorderCollectionCell.reuseIdentifier)
-        collectionView.delegate = self
         
-        setupDataSource()
+        let delegate = NoteBoardsDelegate()
+        collectionView.delegate = delegate
+        
+        collectionView.dataSource = dataSource
+        
         view.addSubview(collectionView)
     }
     
@@ -39,13 +42,20 @@ class NoteBoardsViewController: UIViewController {
     }
     
     private func configureLeftBarButton() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem()
-        navigationItem.leftBarButtonItem?.target = self
-        navigationItem.leftBarButtonItem?.image = UIImage(systemName: "rectangle.grid.1x2")
-        navigationItem.leftBarButtonItem?.action = #selector(changeLayout)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(changeEditMode))
     }
     
-    @objc private func changeLayout() {
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        guard isEditing != editing else {
+            return
+        }
+        super.setEditing(editing, animated: true)
+        navigationItem.leftBarButtonItem?.style = isEditing ? .done : .plain
+    }
+    
+    @objc private func changeEditMode() {
+        setEditing(!isEditing, animated: true)
+        
         let layout = isGridLayout ? setupLineLayout() : setupGridLayout()
         isGridLayout.toggle()
         collectionView.setCollectionViewLayout(layout, animated: true)
@@ -105,63 +115,38 @@ extension NoteBoardsViewController {
     }
 }
 
-// MARK: Setup diffable dataSoutce for collectionView
-
 extension NoteBoardsViewController {
-    typealias DataSourceSnapshor = NSDiffableDataSourceSnapshot<Int, Int>
-    typealias DataSource = UICollectionViewDiffableDataSource<Int, Int>
-    
-    private func createSnapshotForDataSource() -> DataSourceSnapshor {
-        var snapshot = DataSourceSnapshor()
-        snapshot.appendSections([0])
-        
-        for item in 0..<4 {
-            snapshot.appendItems([item])
-        }
-        
-        return snapshot
-    }
     
     private func setupDataSource() {
+        guard let collectionView = collectionView else {
+            return
+        }
+        
         dataSource = DataSource(collectionView: collectionView) {
             (collectionView, indexPath, Identifer) -> UICollectionViewCell? in
             return self.setupCellWith(indexPathForCell: indexPath)
         }
-        
-        dataSource.apply(createSnapshotForDataSource(), animatingDifferences: true)
+        dataSource!.apply(makeSnapshot(), animatingDifferences: true)
     }
     
     private func setupCellWith(indexPathForCell: IndexPath) -> UICollectionViewCell {
+        guard let collectionView = collectionView else {
+            return UICollectionViewCell()
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BorderCollectionCell.reuseIdentifier, for: indexPathForCell) as! BorderCollectionCell
         cell.borderOfNotesModel = bordersOfNotes[indexPathForCell.item]
         return cell
     }
-}
-
-// MARK: Setup delegate for collectionView
-
-extension NoteBoardsViewController: UICollectionViewDelegate {
-    private func makeDetailsViewController() -> UIViewController {
-        return FavoritesViewController()
-    }
     
-    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    private func makeSnapshot() -> DataSourceSnapshot {
+        var snapshot = DataSourceSnapshot()
+        snapshot.appendSections([0])
         
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: makeDetailsViewController) { (_: [UIMenuElement]) -> UIMenu? in
-            
-            let shareAction = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off, handler: { (UIAction) in
-                print("share")
-            })
-            
-            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (UIAction) in
-                    print("Delete")
-                }
-                
-            let editAction = UIAction(title: "Edit..", image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { (UIAction) in
-                print("Edit")
-            }
-            
-            return UIMenu(title: "", image: nil, identifier: nil, options: .init(), children: [shareAction, editAction, deleteAction])
+        for item in 0..<bordersOfNotes.count {
+            snapshot.appendItems([item])
         }
+        return snapshot
     }
 }
+

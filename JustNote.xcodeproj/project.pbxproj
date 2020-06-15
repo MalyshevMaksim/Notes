@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B53E36792497E69D0008DF71 /* NoteBoardsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E36782497E69D0008DF71 /* NoteBoardsDelegate.swift */; };
+		B53E367B2497E6EF0008DF71 /* NoteBoardsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E367A2497E6EF0008DF71 /* NoteBoardsDataSource.swift */; };
 		B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3624965BAC002F2865 /* AppDelegate.swift */; };
 		B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3824965BAC002F2865 /* SceneDelegate.swift */; };
 		B5893B3B24965BAC002F2865 /* NoteBoardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3A24965BAC002F2865 /* NoteBoardsViewController.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B53E36782497E69D0008DF71 /* NoteBoardsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBoardsDelegate.swift; sourceTree = "<group>"; };
+		B53E367A2497E6EF0008DF71 /* NoteBoardsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBoardsDataSource.swift; sourceTree = "<group>"; };
 		B5893B3324965BAC002F2865 /* JustNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5893B3624965BAC002F2865 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5893B3824965BAC002F2865 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,10 +54,28 @@
 		B53E36762497CC2B0008DF71 /* BoardsViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5893B3A24965BAC002F2865 /* NoteBoardsViewController.swift */,
-				B5893B4A2496605A002F2865 /* TaskBoardsViewController.swift */,
+				B53E36772497E6890008DF71 /* NoteBoards */,
+				B53E367C2497E72A0008DF71 /* TaskBoards */,
 			);
 			path = BoardsViewControllers;
+			sourceTree = "<group>";
+		};
+		B53E36772497E6890008DF71 /* NoteBoards */ = {
+			isa = PBXGroup;
+			children = (
+				B5893B3A24965BAC002F2865 /* NoteBoardsViewController.swift */,
+				B53E36782497E69D0008DF71 /* NoteBoardsDelegate.swift */,
+				B53E367A2497E6EF0008DF71 /* NoteBoardsDataSource.swift */,
+			);
+			path = NoteBoards;
+			sourceTree = "<group>";
+		};
+		B53E367C2497E72A0008DF71 /* TaskBoards */ = {
+			isa = PBXGroup;
+			children = (
+				B5893B4A2496605A002F2865 /* TaskBoardsViewController.swift */,
+			);
+			path = TaskBoards;
 			sourceTree = "<group>";
 		};
 		B5893B2A24965BAC002F2865 = {
@@ -77,7 +99,7 @@
 			children = (
 				B5893B542496B5B0002F2865 /* Models */,
 				B5893B4F2496722F002F2865 /* Views */,
-				B5893B4E24966E7B002F2865 /* ViewControllers */,
+				B5893B4E24966E7B002F2865 /* Controllers */,
 				B5893B3624965BAC002F2865 /* AppDelegate.swift */,
 				B5893B3824965BAC002F2865 /* SceneDelegate.swift */,
 				B5893B3C24965BAC002F2865 /* Main.storyboard */,
@@ -88,14 +110,14 @@
 			path = JustNote;
 			sourceTree = "<group>";
 		};
-		B5893B4E24966E7B002F2865 /* ViewControllers */ = {
+		B5893B4E24966E7B002F2865 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				B53E36762497CC2B0008DF71 /* BoardsViewControllers */,
 				B5893B52249686C8002F2865 /* FavoritesViewController.swift */,
 				B5893B4C2496621D002F2865 /* SettingsViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		B5893B4F2496722F002F2865 /* Views */ = {
@@ -187,6 +209,8 @@
 			files = (
 				B5893B53249686C8002F2865 /* FavoritesViewController.swift in Sources */,
 				B5893B4D2496621D002F2865 /* SettingsViewController.swift in Sources */,
+				B53E36792497E69D0008DF71 /* NoteBoardsDelegate.swift in Sources */,
+				B53E367B2497E6EF0008DF71 /* NoteBoardsDataSource.swift in Sources */,
 				B5893B5124967249002F2865 /* BorderCollectionCell.swift in Sources */,
 				B5893B562496B5D3002F2865 /* NoteBorder.swift in Sources */,
 				B5893B3B24965BAC002F2865 /* NoteBoardsViewController.swift in Sources */,

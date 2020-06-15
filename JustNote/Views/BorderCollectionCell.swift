@@ -13,11 +13,11 @@ class BorderCollectionCell: UICollectionViewCell {
     
     private var isLocked = false {
         didSet {
-            lockHandler()
+            lockedHandler()
         }
     }
     
-    private func lockHandler() {
+    private func lockedHandler() {
         lockIcon.alpha = isLocked ? 1.0 : 0.0
     }
     

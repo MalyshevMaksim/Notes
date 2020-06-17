@@ -8,12 +8,62 @@
 
 import UIKit
 
+
+    private func setupGridLayout() -> UICollectionViewCompositionalLayout {
+        let layout = UICollectionViewCompositionalLayout(section: createSection())
+        return layout
+    }
+    
+    private func createSection() -> NSCollectionLayoutSection {
+        let section = NSCollectionLayoutSection(group: createGroup())
+        return section
+    }
+    
+    private func createGroup() -> NSCollectionLayoutGroup {
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.4))
+        let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [createItem()])
+        return groupLayout
+    }
+    
+    private func createItem() -> NSCollectionLayoutItem {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+        let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
+        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        return itemLayout
+    }
+
+
+/*
+    private func setupLineLayout() -> UICollectionViewCompositionalLayout {
+        let layout = UICollectionViewCompositionalLayout(section: createLineSection())
+        return layout
+    }
+    
+    private func createLineSection() -> NSCollectionLayoutSection {
+        let section = NSCollectionLayoutSection(group: createLineGroup())
+        return section
+    }
+    
+    private func createLineGroup() -> NSCollectionLayoutGroup {
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.4))
+        let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [createLineItem()])
+        return groupLayout
+    }
+    
+    private func createLineItem() -> NSCollectionLayoutItem {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
+        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6)
+        return itemLayout
+    }
+*/
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
     private func setupNavigationControllers() -> [UIViewController] {
-        let noteBoardsNavigationController = UINavigationController(rootViewController: NoteBoardsViewController())
+        let noteBoardsNavigationController = UINavigationController(rootViewController: NoteBoardsViewController(collectionViewLayout: setupGridLayout()))
         noteBoardsNavigationController.tabBarItem = UITabBarItem(title: "Notes", image: UIImage(systemName: "pencil.tip.crop.circle"), selectedImage: nil)
         
         let taskBoardsNavigationController = UINavigationController(rootViewController: TaskBoardsViewController())

@@ -28,7 +28,7 @@ class NoteBoardsViewController: UICollectionViewController {
         collectionView.register(BoardCollectionCell.self, forCellWithReuseIdentifier: BoardCollectionCell.reuseIdentifier)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.dataSource = makeDataSource()
-        collectionView.delegate = self
+        self.collectionView.delegate = self
     }
     
     private func configureRightBarButton() {
@@ -49,7 +49,6 @@ class NoteBoardsViewController: UICollectionViewController {
     
     @objc private func changeEditMode() {
         setEditing(!isEditing, animated: true)
-        
         isGridLayout.toggle()
         navigationItem.leftBarButtonItem?.image = isGridLayout ? UIImage(systemName: "rectangle.grid.1x2") : UIImage(systemName: "square.grid.2x2")
     }

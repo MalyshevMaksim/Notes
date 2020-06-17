@@ -40,7 +40,7 @@ class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
     lazy var cellBackground: UIView = {
         let background = UIView()
         background.backgroundColor = #colorLiteral(red: 0.1150090769, green: 0.1185865179, blue: 0.1396087408, alpha: 1)
-        background.layer.cornerRadius = 20
+        background.layer.cornerRadius = 10
         background.layer.borderWidth = 0.2
         background.layer.borderColor = #colorLiteral(red: 0.1803921569, green: 0.1843137255, blue: 0.2039215686, alpha: 1)
         background.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +50,7 @@ class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
     lazy var iconOverlay: UIView = {
         let overlay = UIView()
         overlay.layer.masksToBounds = false
-        overlay.layer.cornerRadius = 13
+        overlay.layer.cornerRadius = 10
         overlay.clipsToBounds = true
         overlay.translatesAutoresizingMaskIntoConstraints = false
         return overlay
@@ -80,7 +80,7 @@ class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViewsForCell()
+        setupCellViews()
         setupCellLayout()
     }
     
@@ -88,7 +88,7 @@ class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupViewsForCell() {
+    private func setupCellViews() {
         contentView.addSubview(cellBackground)
         contentView.addSubview(iconOverlay)
         contentView.addSubview(iconPerCell)

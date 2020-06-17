@@ -13,5 +13,6 @@ class FavoritesViewController: UIViewController {
         super.viewDidLoad()
         title = "Favorites"
         navigationController?.navigationBar.prefersLargeTitles = true
+        
     }
 }

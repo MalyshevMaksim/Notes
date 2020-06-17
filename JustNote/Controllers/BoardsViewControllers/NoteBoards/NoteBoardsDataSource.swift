@@ -8,10 +8,10 @@
 
 import UIKit
 
-typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<BoardSection, NoteBoard>
-typealias DataSource = UICollectionViewDiffableDataSource<BoardSection, NoteBoard>
-
 extension NoteBoardsViewController {
+    typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<BoardSection, NoteBoard>
+    typealias DataSource = UICollectionViewDiffableDataSource<BoardSection, NoteBoard>
+    
     func makeDataSource() -> DataSource  {
         let dataSource = DataSource(collectionView: collectionView) {
             (collectionView, indexPath, board) -> UICollectionViewCell? in

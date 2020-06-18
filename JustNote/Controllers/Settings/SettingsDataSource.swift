@@ -12,25 +12,39 @@ extension SettingsViewController {
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Int, Int>
     typealias DataSource = UITableViewDiffableDataSource<Int, Int>
     
-    func makeDataSource() -> DataSource {
-        let dataSource = DataSource(tableView: tableView) {
+    func setupDataSource() {
+        dataSource = DataSource(tableView: tableView) {
             (tableView, indexPath, Identifier) -> UITableViewCell? in
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: SettingsViewController.reuseIdentifier, for: indexPath)
-            cell.textLabel?.text = "123"
-            return cell
+            return self.makeCell(with: SettingRow(text: "Appearance", iconName: "folder.fill"), indexPath: indexPath)
         }
-        
         dataSource.apply(makeSnapshot(), animatingDifferences: true)
-        return dataSource
+    }
+    
+    private func makeCell(with settingRow: SettingRow, indexPath: IndexPath) -> SettingCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingCell.reuseIdentifier, for: indexPath) as? SettingCell else {
+            fatalError("Unable to dequeue")
+        }
+        cell.configure(with: settingRow)
+        return cell
     }
     
     private func makeSnapshot() -> DataSourceSnapshot {
         var snapshot = DataSourceSnapshot()
         snapshot.appendSections([0])
+        snapshot.appendSections([1])
+        snapshot.appendSections([2])
         
-        for item in 0..<5 {
-            snapshot.appendItems([item])
+        for item in 0..<3 {
+            snapshot.appendItems([item], toSection: 0)
+        }
+        
+        for item in 3..<8 {
+            snapshot.appendItems([item], toSection: 1)
+        }
+        
+        for item in 8..<10 {
+            snapshot.appendItems([item], toSection: 2)
         }
         return snapshot
     }

@@ -11,6 +11,14 @@ import UIKit
 class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
     static var reuseIdentifier = "NotesCollectionCell"
     
+    func configure(with model: NoteBoard) {
+        title.text = model.title
+        iconPerCell.image = UIImage(systemName: model.icon)
+        subtitle.text = model.subtitle
+        isLocked = model.isLocked
+        iconOverlay.backgroundColor = model.iconColor
+    }
+    
     private var isLocked = false {
         didSet {
             lockedHandler()
@@ -19,14 +27,6 @@ class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
     
     private func lockedHandler() {
         lockIcon.alpha = isLocked ? 1.0 : 0.0
-    }
-    
-    func configure(with model: NoteBoard) {
-        title.text = model.title
-        iconPerCell.image = UIImage(systemName: model.icon)
-        subtitle.text = model.subtitle
-        isLocked = model.isLocked
-        iconOverlay.backgroundColor = model.iconColor
     }
     
     lazy var lockIcon: UIImageView = {

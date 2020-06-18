@@ -10,18 +10,28 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     static var reuseIdentifier = "Cell"
+    var dataSource: UITableViewDiffableDataSource<Int, Int>!
+    
+    override init(style: UITableView.Style) {
+        super.init(style: .grouped)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.137254902, blue: 0.1568627451, alpha: 1)
+        tableView.delegate = self
         configureTableView()
     }
     
     private func configureTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: SettingsViewController.reuseIdentifier)
-        tableView.dataSource = makeDataSource()
+        tableView.register(SettingCell.self, forCellReuseIdentifier: SettingCell.reuseIdentifier)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        setupDataSource()
     }
 }

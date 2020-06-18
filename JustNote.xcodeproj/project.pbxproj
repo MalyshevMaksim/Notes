@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B53B034C249AC7E30050E603 /* SettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B034B249AC7E30050E603 /* SettingsDataSource.swift */; };
 		B53B034E249AC8760050E603 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B034D249AC8760050E603 /* SettingsDelegate.swift */; };
+		B53B0352249AE4020050E603 /* SettingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B0351249AE4020050E603 /* SettingRow.swift */; };
+		B53B0354249AE46D0050E603 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B0353249AE46D0050E603 /* SettingCell.swift */; };
 		B53E36792497E69D0008DF71 /* NoteBoardsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E36782497E69D0008DF71 /* NoteBoardsDelegate.swift */; };
 		B53E367B2497E6EF0008DF71 /* NoteBoardsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E367A2497E6EF0008DF71 /* NoteBoardsDataSource.swift */; };
 		B53E367E249810920008DF71 /* BoardSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E367D249810920008DF71 /* BoardSection.swift */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		B53B034B249AC7E30050E603 /* SettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
 		B53B034D249AC8760050E603 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
+		B53B0351249AE4020050E603 /* SettingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRow.swift; sourceTree = "<group>"; };
+		B53B0353249AE46D0050E603 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		B53E36782497E69D0008DF71 /* NoteBoardsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBoardsDelegate.swift; sourceTree = "<group>"; };
 		B53E367A2497E6EF0008DF71 /* NoteBoardsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBoardsDataSource.swift; sourceTree = "<group>"; };
 		B53E367D249810920008DF71 /* BoardSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSection.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 			children = (
 				B53E367F2498173A0008DF71 /* ConfiguringCell.swift */,
 				B5893B5024967249002F2865 /* BoardCollectionCell.swift */,
+				B53B0353249AE46D0050E603 /* SettingCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				B5893B552496B5D3002F2865 /* NoteBoard.swift */,
+				B53B0351249AE4020050E603 /* SettingRow.swift */,
 				B53E367D249810920008DF71 /* BoardSection.swift */,
 			);
 			path = Models;
@@ -237,7 +243,9 @@
 				B53B034E249AC8760050E603 /* SettingsDelegate.swift in Sources */,
 				B5893B562496B5D3002F2865 /* NoteBoard.swift in Sources */,
 				B53E36802498173A0008DF71 /* ConfiguringCell.swift in Sources */,
+				B53B0354249AE46D0050E603 /* SettingCell.swift in Sources */,
 				B5893B3B24965BAC002F2865 /* NoteBoardsViewController.swift in Sources */,
+				B53B0352249AE4020050E603 /* SettingRow.swift in Sources */,
 				B5893B4B2496605A002F2865 /* TaskBoardsViewController.swift in Sources */,
 				B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */,
 				B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */,

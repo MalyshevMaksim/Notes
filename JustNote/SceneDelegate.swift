@@ -71,7 +71,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let favoritesNavigationController = UINavigationController(rootViewController: FavoritesViewController())
         favoritesNavigationController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star.fill"), selectedImage: nil)
         
-        let settingsNavigationController = UINavigationController(rootViewController: SettingsViewController())
+        let settingsNavigationController = UINavigationController(rootViewController: SettingsViewController(style: .grouped))
         settingsNavigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), selectedImage: nil)
         
         return [noteBoardsNavigationController, taskBoardsNavigationController, favoritesNavigationController, settingsNavigationController]

@@ -23,6 +23,15 @@ extension NoteBoardsViewController {
                 return UICollectionViewCell()
             }
         }
+        
+        dataSource.supplementaryViewProvider = {
+            (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+            
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderGridLayout.reuseIdentifier, for: indexPath) as! HeaderGridLayout
+            header.header.text = "Header for \(indexPath.section + 1) section"
+            return header
+        }
+        
         dataSource.apply(makeSnapshot(), animatingDifferences: true)
         return dataSource
     }

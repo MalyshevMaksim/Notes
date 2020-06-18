@@ -8,56 +8,6 @@
 
 import UIKit
 
-
-    private func setupGridLayout() -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout(section: createSection())
-        return layout
-    }
-    
-    private func createSection() -> NSCollectionLayoutSection {
-        let section = NSCollectionLayoutSection(group: createGroup())
-        return section
-    }
-    
-    private func createGroup() -> NSCollectionLayoutGroup {
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.4))
-        let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [createItem()])
-        return groupLayout
-    }
-    
-    private func createItem() -> NSCollectionLayoutItem {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
-        let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
-        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-        return itemLayout
-    }
-
-
-/*
-    private func setupLineLayout() -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout(section: createLineSection())
-        return layout
-    }
-    
-    private func createLineSection() -> NSCollectionLayoutSection {
-        let section = NSCollectionLayoutSection(group: createLineGroup())
-        return section
-    }
-    
-    private func createLineGroup() -> NSCollectionLayoutGroup {
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.4))
-        let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [createLineItem()])
-        return groupLayout
-    }
-    
-    private func createLineItem() -> NSCollectionLayoutItem {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-        let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
-        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6)
-        return itemLayout
-    }
-*/
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
@@ -68,19 +18,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let taskBoardsNavigationController = UINavigationController(rootViewController: TaskBoardsViewController())
         taskBoardsNavigationController.tabBarItem = UITabBarItem(title: "Tasks", image: UIImage(systemName: "rectangle.stack.fill"), selectedImage: nil)
         
-        let favoritesNavigationController = UINavigationController(rootViewController: FavoritesViewController())
-        favoritesNavigationController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star.fill"), selectedImage: nil)
-        
         let settingsNavigationController = UINavigationController(rootViewController: SettingsViewController(style: .grouped))
         settingsNavigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), selectedImage: nil)
         
-        return [noteBoardsNavigationController, taskBoardsNavigationController, favoritesNavigationController, settingsNavigationController]
+        return [noteBoardsNavigationController, taskBoardsNavigationController, settingsNavigationController]
     }
     
     private func setupTabBar() -> UITabBarController {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.tintColor = .white
-        tabBarController.tabBar.backgroundColor = #colorLiteral(red: 0.1046186015, green: 0.1221224591, blue: 0.1803921569, alpha: 1)
         tabBarController.setViewControllers(setupNavigationControllers(), animated: true)
         return tabBarController
     }
@@ -94,7 +40,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
         window?.rootViewController = setupTabBar()
-        window?.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.137254902, blue: 0.1568627451, alpha: 1)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

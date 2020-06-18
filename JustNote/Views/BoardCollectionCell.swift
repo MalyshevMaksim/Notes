@@ -39,10 +39,8 @@ class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
     
     lazy var cellBackground: UIView = {
         let background = UIView()
-        background.backgroundColor = #colorLiteral(red: 0.1150090769, green: 0.1185865179, blue: 0.1396087408, alpha: 1)
+        background.backgroundColor = .secondarySystemBackground
         background.layer.cornerRadius = 10
-        background.layer.borderWidth = 0.2
-        background.layer.borderColor = #colorLiteral(red: 0.1803921569, green: 0.1843137255, blue: 0.2039215686, alpha: 1)
         background.translatesAutoresizingMaskIntoConstraints = false
         return background
     }()

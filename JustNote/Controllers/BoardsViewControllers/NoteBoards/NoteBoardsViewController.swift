@@ -8,9 +8,12 @@
 
 import UIKit
 
+struct ElementKind {
+    static var HeaderKind = "HeaderKind"
+}
+
 class NoteBoardsViewController: UICollectionViewController {
-    var sections = [BoardSection(id: 0, title: "", subtitle: "", type: "defaultBoardings", items: bordersOfNotes)]
-    private var isGridLayout = true
+    var sections = [BoardSection(id: 0, title: "Default application folders", subtitle: "", type: "defaultBoardings", items: bordersOfNotes)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +28,13 @@ class NoteBoardsViewController: UICollectionViewController {
     private func configureCollectionView() {
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .none
+        
         collectionView.register(BoardCollectionCell.self, forCellWithReuseIdentifier: BoardCollectionCell.reuseIdentifier)
+        collectionView.register(HeaderGridLayout.self, forSupplementaryViewOfKind: ElementKind.HeaderKind, withReuseIdentifier: HeaderGridLayout.reuseIdentifier)
+        
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.dataSource = makeDataSource()
-        self.collectionView.delegate = self
+        collectionView.delegate = self
     }
     
     private func configureRightBarButton() {
@@ -49,7 +55,5 @@ class NoteBoardsViewController: UICollectionViewController {
     
     @objc private func changeEditMode() {
         setEditing(!isEditing, animated: true)
-        isGridLayout.toggle()
-        navigationItem.leftBarButtonItem?.image = isGridLayout ? UIImage(systemName: "rectangle.grid.1x2") : UIImage(systemName: "square.grid.2x2")
     }
 }

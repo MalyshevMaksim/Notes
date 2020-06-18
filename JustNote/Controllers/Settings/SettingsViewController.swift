@@ -24,7 +24,7 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.137254902, blue: 0.1568627451, alpha: 1)
+        tableView.backgroundColor = .systemBackground
         tableView.delegate = self
         configureTableView()
     }

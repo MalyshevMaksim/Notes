@@ -12,8 +12,8 @@ extension NoteBoardsViewController {
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<BoardSection, NoteBoard>
     typealias DataSource = UICollectionViewDiffableDataSource<BoardSection, NoteBoard>
     
-    func makeDataSource() -> DataSource  {
-        let dataSource = DataSource(collectionView: collectionView) {
+    func configureDataSource()  {
+        dataSource = DataSource(collectionView: collectionView) {
             (collectionView, indexPath, board) -> UICollectionViewCell? in
             
             switch self.sections[indexPath.section].type {
@@ -28,12 +28,11 @@ extension NoteBoardsViewController {
             (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderGridLayout.reuseIdentifier, for: indexPath) as! HeaderGridLayout
-            header.header.text = "Header for \(indexPath.section + 1) section"
+            header.configure(with: self.sections[indexPath.section])
             return header
         }
         
         dataSource.apply(makeSnapshot(), animatingDifferences: true)
-        return dataSource
     }
     
     private func makeCell<T: ConfiguringCell>(_ cellType: T.Type, with noteBoarding: NoteBoard, for indexPath: IndexPath) -> T {

@@ -11,6 +11,10 @@ import UIKit
 class HeaderGridLayout: UICollectionReusableView {
     static var reuseIdentifier = "HeaderGridCell"
     
+    func configure(with model: BoardSection) {
+        header.text = model.title
+    }
+    
     lazy var header: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 22)
@@ -31,7 +35,7 @@ class HeaderGridLayout: UICollectionReusableView {
         self.addSubview(header)
         
         NSLayoutConstraint.activate([
-            header.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            header.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             header.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             header.topAnchor.constraint(equalTo: self.topAnchor),
             header.bottomAnchor.constraint(equalTo: self.bottomAnchor)

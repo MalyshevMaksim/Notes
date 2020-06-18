@@ -9,12 +9,15 @@
 import UIKit
 
 struct ElementKind {
-    static var HeaderKind = "HeaderKind"
+    static var headerKind = "HeaderKind"
+    static var footerKind = "FooterKind"
 }
 
-class NoteBoardsViewController: UICollectionViewController {
-    var sections = [BoardSection(id: 0, title: "Default application folders", subtitle: "", type: "defaultBoardings", items: bordersOfNotes)]
-
+class NoteBoardsViewController: UIViewController {
+    var sections = [BoardSection(id: 0, title: "Standart Folders", subtitle: "", type: "defaultBoardings", items: bordersOfNotes)]
+    var collectionView: UICollectionView!
+    var dataSource: UICollectionViewDiffableDataSource<BoardSection, NoteBoard>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notes"
@@ -26,15 +29,17 @@ class NoteBoardsViewController: UICollectionViewController {
     }
     
     private func configureCollectionView() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: setupGridLayout())
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .none
         
         collectionView.register(BoardCollectionCell.self, forCellWithReuseIdentifier: BoardCollectionCell.reuseIdentifier)
-        collectionView.register(HeaderGridLayout.self, forSupplementaryViewOfKind: ElementKind.HeaderKind, withReuseIdentifier: HeaderGridLayout.reuseIdentifier)
-        
+        collectionView.register(HeaderGridLayout.self, forSupplementaryViewOfKind: ElementKind.headerKind, withReuseIdentifier: HeaderGridLayout.reuseIdentifier)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.dataSource = makeDataSource()
         collectionView.delegate = self
+        
+        configureDataSource()
+        view.addSubview(collectionView)
     }
     
     private func configureRightBarButton() {
@@ -54,6 +59,7 @@ class NoteBoardsViewController: UICollectionViewController {
     }
     
     @objc private func changeEditMode() {
-        setEditing(!isEditing, animated: true)
+        collectionView.setCollectionViewLayout(setupTableLayout(), animated: true)
+        //setEditing(!isEditing, animated: true)
     }
 }

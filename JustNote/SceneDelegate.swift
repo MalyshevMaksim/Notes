@@ -11,8 +11,13 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
+    @objc func changeEditMode() {
+        print("123")
+    }
+    
     private func setupNavigationControllers() -> [UIViewController] {
-        let noteBoardsNavigationController = UINavigationController(rootViewController: NoteBoardsViewController(collectionViewLayout: setupGridLayout()))
+        let noteBoardsNavigationController = UINavigationController(rootViewController: NoteBoardsViewController())
+        
         noteBoardsNavigationController.tabBarItem = UITabBarItem(title: "Notes", image: UIImage(systemName: "pencil.tip.crop.circle"), selectedImage: nil)
         
         let taskBoardsNavigationController = UINavigationController(rootViewController: TaskBoardsViewController())

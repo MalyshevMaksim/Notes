@@ -9,31 +9,32 @@
 import UIKit
 
 func setupGridLayout() -> UICollectionViewCompositionalLayout {
-    let layout = UICollectionViewCompositionalLayout(section: createSection())
+    let layout = UICollectionViewCompositionalLayout(section: makeSection())
     return layout
 }
 
-private func createSection() -> NSCollectionLayoutSection {
-    let section = NSCollectionLayoutSection(group: createGroup())
-    section.boundarySupplementaryItems = [setupHeader()]
+private func makeSection() -> NSCollectionLayoutSection {
+    let section = NSCollectionLayoutSection(group: makeGroup())
+    section.boundarySupplementaryItems = [makeHeader()]
     return section
 }
 
-private func createGroup() -> NSCollectionLayoutGroup {
+private func makeGroup() -> NSCollectionLayoutGroup {
     let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.4))
-    let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [createItem()])
+    let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [makeItem()])
+    groupLayout.interItemSpacing = .fixed(10)
     return groupLayout
 }
 
-private func createItem() -> NSCollectionLayoutItem {
-    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+private func makeItem() -> NSCollectionLayoutItem {
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45), heightDimension: .fractionalHeight(1))
     let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
-    itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 10, trailing: 5)
+    itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
     return itemLayout
 }
 
-private func setupHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+private func makeHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44))
-    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: ElementKind.HeaderKind, alignment: .top)
+    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: ElementKind.headerKind, alignment: .top)
     return header
 }

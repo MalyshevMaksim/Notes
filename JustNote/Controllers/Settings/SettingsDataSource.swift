@@ -8,25 +8,13 @@
 
 import UIKit
 
-extension SettingsViewController {
+class SettingsDataSource: UITableViewDiffableDataSource<Int, Int> {
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Int, Int>
     typealias DataSource = UITableViewDiffableDataSource<Int, Int>
     
-    func setupDataSource() {
-        dataSource = DataSource(tableView: tableView) {
-            (tableView, indexPath, Identifier) -> UITableViewCell? in
-            
-            return self.makeCell(with: SettingRow(text: "Appearance", iconName: "folder.fill"), indexPath: indexPath)
-        }
-        dataSource.apply(makeSnapshot(), animatingDifferences: true)
-    }
-    
-    private func makeCell(with settingRow: SettingRow, indexPath: IndexPath) -> SettingCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingCell.reuseIdentifier, for: indexPath) as? SettingCell else {
-            fatalError("Unable to dequeue")
-        }
-        cell.configure(with: settingRow)
-        return cell
+    override init(tableView: UITableView, cellProvider: @escaping UITableViewDiffableDataSource<Int, Int>.CellProvider) {
+        super.init(tableView: tableView, cellProvider: cellProvider)
+        apply(makeSnapshot(), animatingDifferences: true)
     }
     
     private func makeSnapshot() -> DataSourceSnapshot {

@@ -87,13 +87,13 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		B53E36762497CC2B0008DF71 /* BoardsViewControllers */ = {
+		B53E36762497CC2B0008DF71 /* Boards */ = {
 			isa = PBXGroup;
 			children = (
 				B53E36772497E6890008DF71 /* NoteBoards */,
 				B53E367C2497E72A0008DF71 /* TaskBoards */,
 			);
-			path = BoardsViewControllers;
+			path = Boards;
 			sourceTree = "<group>";
 		};
 		B53E36772497E6890008DF71 /* NoteBoards */ = {
@@ -150,7 +150,7 @@
 		B5893B4E24966E7B002F2865 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B53E36762497CC2B0008DF71 /* BoardsViewControllers */,
+				B53E36762497CC2B0008DF71 /* Boards */,
 				B53B034A249AC7940050E603 /* Settings */,
 				B5E658B3249C87B900F4C6C3 /* Notes */,
 			);

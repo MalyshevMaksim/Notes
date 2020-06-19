@@ -8,13 +8,13 @@
 
 import UIKit
 
-class Data: UITableViewDiffableDataSource<Int, Int> {
+class NotesDataSource: UITableViewDiffableDataSource<Int, Int> {
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Int, Int>
     typealias DataSource = UITableViewDiffableDataSource<Int, Int>
     
     override init(tableView: UITableView, cellProvider: @escaping UITableViewDiffableDataSource<Int, Int>.CellProvider) {
         super.init(tableView: tableView, cellProvider: cellProvider)
-        self.apply(makeSnapshot(), animatingDifferences: true)
+        apply(makeSnapshot(), animatingDifferences: true)
     }
     
     func makeSnapshot() -> DataSourceSnapshot {

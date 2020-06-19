@@ -6,4 +6,8 @@
 //  Copyright © 2020 Максим. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class SettingsDelegate: NSObject, UITableViewDelegate {
+    
+}

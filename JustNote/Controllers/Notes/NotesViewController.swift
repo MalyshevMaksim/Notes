@@ -9,7 +9,7 @@
 import UIKit
 
 class NotesViewController: UITableViewController {
-    var dataSource: Data!
+    var dataSource: NotesDataSource!
     var delegate = NotesViewDelegate()
     
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class NotesViewController: UITableViewController {
     }
     
     private func configureDataSource() {
-        dataSource = Data(tableView: tableView, cellProvider: {
+        dataSource = NotesDataSource(tableView: tableView, cellProvider: {
             (UITableView, indexPath, Int) -> UITableViewCell? in
             return self.makeCell(with: Note(title: "How programming on Swift?", text: "Let me explain something about me, I’m IOS Developer about 4 years. When i try to build my first app i use storyboards, xib after that I convert my self into create everything programmatically. I’m not say this is the best way or only way but i prefer to continue like this. When i create something programmatically I feel like free as possible as be. So this is my first Medium story and sorry if I do something wrong.", tag: "123"), indexPath: indexPath)
         })

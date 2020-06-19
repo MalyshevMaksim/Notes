@@ -9,28 +9,35 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
-    var dataSource: UITableViewDiffableDataSource<Int, Int>!
-    
-    override init(style: UITableView.Style) {
-        super.init(style: .grouped)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var dataSource: SettingsDataSource!
+    var delegate = SettingsDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.backgroundColor = .systemBackground
-        tableView.delegate = self
         configureTableView()
+        configureDataSource()
     }
     
     private func configureTableView() {
         tableView.register(SettingCell.self, forCellReuseIdentifier: SettingCell.reuseIdentifier)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        setupDataSource()
+        tableView.delegate = delegate
+    }
+    
+    private func configureDataSource() {
+        dataSource = SettingsDataSource(tableView: tableView) {
+            (tableView, indexPath, Identifier) -> UITableViewCell? in
+            return self.makeCell(with: SettingRow(text: "Appearance", iconName: "folder.fill"), indexPath: indexPath)
+        }
+    }
+    
+    private func makeCell(with settingRow: SettingRow, indexPath: IndexPath) -> SettingCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingCell.reuseIdentifier, for: indexPath) as? SettingCell else {
+            fatalError("Unable to dequeue")
+        }
+        cell.configure(with: settingRow)
+        return cell
     }
 }

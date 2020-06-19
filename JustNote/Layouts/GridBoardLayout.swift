@@ -20,10 +20,10 @@ private func makeSection() -> NSCollectionLayoutSection {
 }
 
 private func makeGroup() -> NSCollectionLayoutGroup {
-    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.4))
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.38))
     let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [makeItem()])
     groupLayout.interItemSpacing = .fixed(10)
-    groupLayout.edgeSpacing = .init(leading: .fixed(10), top: nil, trailing: .fixed(10), bottom: .fixed(10))
+    groupLayout.edgeSpacing = .init(leading: .fixed(10), top: nil, trailing: .fixed(10), bottom: .fixed(15))
     return groupLayout
 }
 

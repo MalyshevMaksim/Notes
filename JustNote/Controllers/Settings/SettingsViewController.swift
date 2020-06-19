@@ -9,7 +9,6 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
-    static var reuseIdentifier = "Cell"
     var dataSource: UITableViewDiffableDataSource<Int, Int>!
     
     override init(style: UITableView.Style) {

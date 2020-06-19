@@ -15,32 +15,15 @@ class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
         title.text = model.title
         iconPerCell.image = UIImage(systemName: model.icon)
         subtitle.text = model.subtitle
-        isLocked = model.isLocked
         iconOverlay.backgroundColor = model.iconColor
     }
-    
-    private var isLocked = false {
-        didSet {
-            lockedHandler()
-        }
-    }
-    
-    private func lockedHandler() {
-        lockIcon.alpha = isLocked ? 1.0 : 0.0
-    }
-    
-    lazy var lockIcon: UIImageView = {
-        let icon = UIImageView(image: UIImage(systemName: "lock.fill"))
-        icon.tintColor = .systemRed
-        icon.alpha = isLocked ? 1.0 : 0.0
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        return icon
-    }()
     
     lazy var cellBackground: UIView = {
         let background = UIView()
         background.backgroundColor = .secondarySystemBackground
         background.layer.cornerRadius = 10
+        background.layer.shadowOpacity = 0.2
+        background.layer.shadowRadius = 10
         background.translatesAutoresizingMaskIntoConstraints = false
         return background
     }()
@@ -92,7 +75,6 @@ class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
         contentView.addSubview(iconPerCell)
         contentView.addSubview(title)
         contentView.addSubview(subtitle)
-        contentView.addSubview(lockIcon)
     }
     
     private func setupCellLayout() {
@@ -116,9 +98,6 @@ class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
             title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40),
             subtitle.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 2),
-            
-            lockIcon.centerYAnchor.constraint(equalTo: subtitle.centerYAnchor),
-            lockIcon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15)
         ])
     }
 }

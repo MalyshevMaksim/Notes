@@ -31,7 +31,6 @@ extension NoteBoardsViewController {
             header.configure(with: self.sections[indexPath.section])
             return header
         }
-        
         dataSource.apply(makeSnapshot(), animatingDifferences: true)
     }
     

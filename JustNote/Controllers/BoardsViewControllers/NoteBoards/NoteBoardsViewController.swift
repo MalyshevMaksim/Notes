@@ -14,7 +14,7 @@ struct ElementKind {
 }
 
 class NoteBoardsViewController: UIViewController {
-    var sections = [BoardSection(id: 0, title: "Standart Folders", subtitle: "", type: "defaultBoardings", items: bordersOfNotes)]
+    var sections = [BoardSection(id: 0, title: "Defaults", subtitle: "", type: "defaultBoardings", items: bordersOfNotes)]
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<BoardSection, NoteBoard>!
     
@@ -26,16 +26,17 @@ class NoteBoardsViewController: UIViewController {
         configureCollectionView()
         configureLeftBarButton()
         configureRightBarButton()
+        configureSearchBar()
     }
     
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: setupGridLayout())
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .none
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         collectionView.register(BoardCollectionCell.self, forCellWithReuseIdentifier: BoardCollectionCell.reuseIdentifier)
         collectionView.register(HeaderGridLayout.self, forSupplementaryViewOfKind: ElementKind.headerKind, withReuseIdentifier: HeaderGridLayout.reuseIdentifier)
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.delegate = self
         
         configureDataSource()
@@ -48,6 +49,10 @@ class NoteBoardsViewController: UIViewController {
     
     private func configureLeftBarButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(changeEditMode))
+    }
+    
+    private func configureSearchBar() {
+        navigationItem.searchController = UISearchController()
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {

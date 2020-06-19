@@ -17,7 +17,7 @@ class HeaderGridLayout: UICollectionReusableView {
     
     lazy var header: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

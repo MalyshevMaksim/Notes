@@ -28,6 +28,10 @@
 		B5E65886249BF1F100F4C6C3 /* GridBoardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E65885249BF1F100F4C6C3 /* GridBoardLayout.swift */; };
 		B5E65888249BF24000F4C6C3 /* HeaderGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E65887249BF24000F4C6C3 /* HeaderGridLayout.swift */; };
 		B5E6588A249BF61900F4C6C3 /* TableBoardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E65889249BF61900F4C6C3 /* TableBoardLayout.swift */; };
+		B5E658B0249C6D5C00F4C6C3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658AF249C6D5C00F4C6C3 /* Note.swift */; };
+		B5E658B2249C875500F4C6C3 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B1249C875500F4C6C3 /* NotesViewController.swift */; };
+		B5E658B5249C87FF00F4C6C3 /* NotesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B4249C87FF00F4C6C3 /* NotesDataSource.swift */; };
+		B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B6249C89D500F4C6C3 /* NoteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +58,10 @@
 		B5E65885249BF1F100F4C6C3 /* GridBoardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBoardLayout.swift; sourceTree = "<group>"; };
 		B5E65887249BF24000F4C6C3 /* HeaderGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderGridLayout.swift; sourceTree = "<group>"; };
 		B5E65889249BF61900F4C6C3 /* TableBoardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBoardLayout.swift; sourceTree = "<group>"; };
+		B5E658AF249C6D5C00F4C6C3 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		B5E658B1249C875500F4C6C3 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		B5E658B4249C87FF00F4C6C3 /* NotesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDataSource.swift; sourceTree = "<group>"; };
+		B5E658B6249C89D500F4C6C3 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +150,7 @@
 			children = (
 				B53E36762497CC2B0008DF71 /* BoardsViewControllers */,
 				B53B034A249AC7940050E603 /* Settings */,
+				B5E658B3249C87B900F4C6C3 /* Notes */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -153,6 +162,7 @@
 				B5893B5024967249002F2865 /* BoardCollectionCell.swift */,
 				B53B0353249AE46D0050E603 /* SettingCell.swift */,
 				B5E65887249BF24000F4C6C3 /* HeaderGridLayout.swift */,
+				B5E658B6249C89D500F4C6C3 /* NoteCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,6 +173,7 @@
 				B5893B552496B5D3002F2865 /* NoteBoard.swift */,
 				B53B0351249AE4020050E603 /* SettingRow.swift */,
 				B53E367D249810920008DF71 /* BoardSection.swift */,
+				B5E658AF249C6D5C00F4C6C3 /* Note.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,6 +185,15 @@
 				B5E65889249BF61900F4C6C3 /* TableBoardLayout.swift */,
 			);
 			path = Layouts;
+			sourceTree = "<group>";
+		};
+		B5E658B3249C87B900F4C6C3 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				B5E658B1249C875500F4C6C3 /* NotesViewController.swift */,
+				B5E658B4249C87FF00F4C6C3 /* NotesDataSource.swift */,
+			);
+			path = Notes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,15 +276,19 @@
 				B5893B5124967249002F2865 /* BoardCollectionCell.swift in Sources */,
 				B53B034E249AC8760050E603 /* SettingsDelegate.swift in Sources */,
 				B5893B562496B5D3002F2865 /* NoteBoard.swift in Sources */,
+				B5E658B0249C6D5C00F4C6C3 /* Note.swift in Sources */,
 				B5E6588A249BF61900F4C6C3 /* TableBoardLayout.swift in Sources */,
 				B53E36802498173A0008DF71 /* ConfiguringCell.swift in Sources */,
 				B53B0354249AE46D0050E603 /* SettingCell.swift in Sources */,
+				B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */,
 				B5893B3B24965BAC002F2865 /* NoteBoardsViewController.swift in Sources */,
 				B53B0352249AE4020050E603 /* SettingRow.swift in Sources */,
 				B5E65886249BF1F100F4C6C3 /* GridBoardLayout.swift in Sources */,
+				B5E658B2249C875500F4C6C3 /* NotesViewController.swift in Sources */,
 				B5893B4B2496605A002F2865 /* TaskBoardsViewController.swift in Sources */,
 				B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */,
 				B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */,
+				B5E658B5249C87FF00F4C6C3 /* NotesDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

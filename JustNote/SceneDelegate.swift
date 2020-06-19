@@ -31,7 +31,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func setupTabBar() -> UITabBarController {
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor = .white
         tabBarController.setViewControllers(setupNavigationControllers(), animated: true)
         return tabBarController
     }
@@ -45,6 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
         window?.rootViewController = setupTabBar()
+        window?.backgroundColor = .systemBackground
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

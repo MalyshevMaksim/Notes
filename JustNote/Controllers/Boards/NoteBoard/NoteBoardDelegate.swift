@@ -8,10 +8,8 @@
 
 import UIKit
 
-extension NoteBoardsViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(NotesViewController(style: .plain), animated: true)
-    }
+class NoteBoardDelegate: NSObject, UICollectionViewDelegate {
+    
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
@@ -33,8 +31,6 @@ extension NoteBoardsViewController: UICollectionViewDelegate {
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
                     
                     }))
-                    
-                    self.present(alert, animated: true, completion: nil)
                 }
                 
             let editAction = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { (UIAction) in

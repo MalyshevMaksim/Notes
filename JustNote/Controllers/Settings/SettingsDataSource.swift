@@ -10,7 +10,6 @@ import UIKit
 
 class SettingsDataSource: UITableViewDiffableDataSource<Int, Int> {
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Int, Int>
-    typealias DataSource = UITableViewDiffableDataSource<Int, Int>
     
     override init(tableView: UITableView, cellProvider: @escaping UITableViewDiffableDataSource<Int, Int>.CellProvider) {
         super.init(tableView: tableView, cellProvider: cellProvider)

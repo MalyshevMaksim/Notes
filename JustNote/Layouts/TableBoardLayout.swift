@@ -9,23 +9,23 @@
 import UIKit
 
 func setupTableLayout() -> UICollectionViewCompositionalLayout {
-    let layout = UICollectionViewCompositionalLayout(section: makeLineSection())
+    let layout = UICollectionViewCompositionalLayout(section: makeSection())
     return layout
 }
 
-private func makeLineSection() -> NSCollectionLayoutSection {
-    let section = NSCollectionLayoutSection(group: makeLineGroup())
+private func makeSection() -> NSCollectionLayoutSection {
+    let section = NSCollectionLayoutSection(group: makeGroup())
     return section
 }
 
-private func makeLineGroup() -> NSCollectionLayoutGroup {
-    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalWidth(0.4))
-    let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [makeLineItem()])
+private func makeGroup() -> NSCollectionLayoutGroup {
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44))
+    let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [makeItem()])
     return groupLayout
 }
 
-private func makeLineItem() -> NSCollectionLayoutItem {
-    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalHeight(1))
+private func makeItem() -> NSCollectionLayoutItem {
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
     let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
     return itemLayout
 }

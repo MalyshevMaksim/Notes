@@ -23,13 +23,13 @@ private func makeGroup() -> NSCollectionLayoutGroup {
     let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.4))
     let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [makeItem()])
     groupLayout.interItemSpacing = .fixed(10)
+    groupLayout.edgeSpacing = .init(leading: .fixed(10), top: nil, trailing: .fixed(10), bottom: .fixed(10))
     return groupLayout
 }
 
 private func makeItem() -> NSCollectionLayoutItem {
-    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45), heightDimension: .fractionalHeight(1))
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.46), heightDimension: .fractionalHeight(1))
     let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
-    itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
     return itemLayout
 }
 

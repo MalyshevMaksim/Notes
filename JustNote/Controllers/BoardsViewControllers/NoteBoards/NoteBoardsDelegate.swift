@@ -9,6 +9,11 @@
 import UIKit
 
 extension NoteBoardsViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(SettingsViewController(style: .insetGrouped), animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_: [UIMenuElement]) -> UIMenu? in
@@ -18,7 +23,19 @@ extension NoteBoardsViewController: UICollectionViewDelegate {
             })
             
             let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (UIAction) in
-                    print("Delete")
+                
+                    let alert = UIAlertController(title: "Warning", message:
+                    "Are you sure you want to delete all notes in this folder? You can restore notes within 7 days after deletion.", preferredStyle: .actionSheet)
+                    
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: "Default action"), style: .destructive, handler: { _ in
+                        
+                    }))
+                
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
+                    
+                    }))
+                    
+                    self.present(alert, animated: true, completion: nil)
                 }
                 
             let editAction = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { (UIAction) in

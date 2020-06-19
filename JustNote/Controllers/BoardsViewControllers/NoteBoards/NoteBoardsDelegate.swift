@@ -10,7 +10,7 @@ import UIKit
 
 extension NoteBoardsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(NotesViewController(style: .insetGrouped), animated: true)
+        navigationController?.pushViewController(NotesViewController(style: .plain), animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {

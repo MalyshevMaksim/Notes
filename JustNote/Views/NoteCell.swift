@@ -58,6 +58,7 @@ class NoteCell: UITableViewCell {
         NSLayoutConstraint.activate([
             titlese.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             titlese.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            titlese.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             texts.topAnchor.constraint(equalTo: titlese.bottomAnchor, constant: 5),
             texts.leadingAnchor.constraint(equalTo: titlese.leadingAnchor),
             texts.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),

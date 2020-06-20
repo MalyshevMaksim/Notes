@@ -14,7 +14,7 @@ class NoteCell: UITableViewCell {
     func configure(with model: Note) {
         texts.text = model.text
         titlese.text = model.title
-        date.text = "24 ноября 2019"
+        date.text = model.date
     }
     
     lazy var texts: UILabel = {
@@ -59,12 +59,14 @@ class NoteCell: UITableViewCell {
             titlese.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             titlese.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             titlese.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            
             texts.topAnchor.constraint(equalTo: titlese.bottomAnchor, constant: 5),
             texts.leadingAnchor.constraint(equalTo: titlese.leadingAnchor),
             texts.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
             date.topAnchor.constraint(equalTo: texts.bottomAnchor, constant: 5),
             date.leadingAnchor.constraint(equalTo: titlese.leadingAnchor),
-            date.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+            date.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
         ])
     }
 }

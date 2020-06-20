@@ -21,7 +21,6 @@
 		B5893B3E24965BAC002F2865 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5893B3C24965BAC002F2865 /* Main.storyboard */; };
 		B5893B4024965BAD002F2865 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5893B3F24965BAD002F2865 /* Assets.xcassets */; };
 		B5893B4324965BAD002F2865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5893B4124965BAD002F2865 /* LaunchScreen.storyboard */; };
-		B5893B4B2496605A002F2865 /* TaskBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B4A2496605A002F2865 /* TaskBoardViewController.swift */; };
 		B5893B4D2496621D002F2865 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B4C2496621D002F2865 /* SettingsViewController.swift */; };
 		B5893B5124967249002F2865 /* BoardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B5024967249002F2865 /* BoardCollectionCell.swift */; };
 		B5893B562496B5D3002F2865 /* NoteBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B552496B5D3002F2865 /* NoteBoard.swift */; };
@@ -52,7 +51,6 @@
 		B5893B3F24965BAD002F2865 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5893B4224965BAD002F2865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5893B4424965BAD002F2865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5893B4A2496605A002F2865 /* TaskBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskBoardViewController.swift; sourceTree = "<group>"; };
 		B5893B4C2496621D002F2865 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B5893B5024967249002F2865 /* BoardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCollectionCell.swift; sourceTree = "<group>"; };
 		B5893B552496B5D3002F2865 /* NoteBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBoard.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				B53E36772497E6890008DF71 /* NoteBoard */,
-				B53E367C2497E72A0008DF71 /* TaskBoard */,
 			);
 			path = Boards;
 			sourceTree = "<group>";
@@ -104,14 +101,6 @@
 				B53E367A2497E6EF0008DF71 /* NoteBoardDataSource.swift */,
 			);
 			path = NoteBoard;
-			sourceTree = "<group>";
-		};
-		B53E367C2497E72A0008DF71 /* TaskBoard */ = {
-			isa = PBXGroup;
-			children = (
-				B5893B4A2496605A002F2865 /* TaskBoardViewController.swift */,
-			);
-			path = TaskBoard;
 			sourceTree = "<group>";
 		};
 		B5893B2A24965BAC002F2865 = {
@@ -289,7 +278,6 @@
 				B53B0352249AE4020050E603 /* SettingRow.swift in Sources */,
 				B5E65886249BF1F100F4C6C3 /* GridBoardLayout.swift in Sources */,
 				B5E658B2249C875500F4C6C3 /* NotesViewController.swift in Sources */,
-				B5893B4B2496605A002F2865 /* TaskBoardViewController.swift in Sources */,
 				B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */,
 				B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */,
 				B5E658B5249C87FF00F4C6C3 /* NotesDataSource.swift in Sources */,

@@ -31,7 +31,7 @@ class NotesViewController: UITableViewController {
     private func configureDataSource() {
         dataSource = NotesDataSource(tableView: tableView, cellProvider: {
             (UITableView, indexPath, Int) -> UITableViewCell? in
-            return self.configureCell(with: Note(title: "How programming on Swift?", text: "Let me explain something about me, I’m IOS Developer about 4 years. When i try to build my first app i use storyboards, xib after that I convert my self into create everything programmatically. I’m not say this is the best way or only way but i prefer to continue like this. When i create something programmatically I feel like free as possible as be. So this is my first Medium story and sorry if I do something wrong.", tag: "123"), indexPath: indexPath)
+            return self.configureCell(with: notes[indexPath.item], indexPath: indexPath)
         })
     }
     
@@ -45,7 +45,12 @@ class NotesViewController: UITableViewController {
     
     private func configureController() {
         navigationItem.searchController = UISearchController()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(setEditMode))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: nil)
+    }
+    
+    @objc func setEditMode() {
+        tableView.setEditing(!tableView.isEditing, animated: true)
     }
 }

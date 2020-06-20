@@ -20,13 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         noteBoardsNavigationController.tabBarItem = UITabBarItem(title: "Notes", image: UIImage(systemName: "pencil.tip.crop.circle"), selectedImage: nil)
         
-        let taskBoardsNavigationController = UINavigationController(rootViewController: TaskBoardViewController())
-        taskBoardsNavigationController.tabBarItem = UITabBarItem(title: "Tasks", image: UIImage(systemName: "rectangle.stack.fill"), selectedImage: nil)
-        
         let settingsNavigationController = UINavigationController(rootViewController: SettingsViewController(style: .grouped))
         settingsNavigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), selectedImage: nil)
         
-        return [noteBoardsNavigationController, taskBoardsNavigationController, settingsNavigationController]
+        return [noteBoardsNavigationController, settingsNavigationController]
     }
     
     private func setupTabBar() -> UITabBarController {

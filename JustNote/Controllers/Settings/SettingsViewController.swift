@@ -29,11 +29,11 @@ class SettingsViewController: UITableViewController {
     private func configureDataSource() {
         dataSource = SettingsDataSource(tableView: tableView) {
             (tableView, indexPath, Identifier) -> UITableViewCell? in
-            return self.makeCell(with: SettingRow(text: "Appearance", iconName: "folder.fill"), indexPath: indexPath)
+            return self.configureCell(with: SettingRow(text: "Appearance", iconName: "folder.fill"), indexPath: indexPath)
         }
     }
     
-    private func makeCell(with settingRow: SettingRow, indexPath: IndexPath) -> SettingCell {
+    private func configureCell(with settingRow: SettingRow, indexPath: IndexPath) -> SettingCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingCell.reuseIdentifier, for: indexPath) as? SettingCell else {
             fatalError("Unable to dequeue")
         }

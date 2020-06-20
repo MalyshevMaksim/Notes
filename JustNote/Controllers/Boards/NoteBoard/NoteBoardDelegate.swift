@@ -10,7 +10,6 @@ import UIKit
 
 class NoteBoardDelegate: NSObject, UICollectionViewDelegate {
     
-    
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_: [UIMenuElement]) -> UIMenu? in

@@ -9,6 +9,11 @@
 import UIKit
 
 class NotesViewDelegate: NSObject, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        return UIContextMenuConfiguration()
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }

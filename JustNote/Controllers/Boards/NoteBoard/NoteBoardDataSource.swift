@@ -11,6 +11,8 @@ import UIKit
 class NoteBoardDataSource: UICollectionViewDiffableDataSource<BoardSection, NoteBoard> {
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<BoardSection, NoteBoard>
     
+    
+    
     override init(collectionView: UICollectionView, cellProvider: @escaping UICollectionViewDiffableDataSource<BoardSection, NoteBoard>.CellProvider) {
         super.init(collectionView: collectionView, cellProvider: cellProvider)
         makeSupplementaryProvider()

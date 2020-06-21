@@ -23,9 +23,14 @@ class NotesDataSource: UITableViewDiffableDataSource<Int, Int> {
     func makeSnapshot() -> DataSourceSnapshot {
         var snapshot = DataSourceSnapshot()
         snapshot.appendSections([0])
+        snapshot.appendSections([1])
         
-        for item in 0..<notes.count {
-            snapshot.appendItems([item])
+        for item in 0..<3 {
+            snapshot.appendItems([item], toSection: 0)
+        }
+        
+        for item in 3..<8 {
+            snapshot.appendItems([item], toSection: 1)
         }
         return snapshot
     }

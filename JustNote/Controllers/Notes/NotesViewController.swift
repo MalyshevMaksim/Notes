@@ -26,6 +26,7 @@ class NotesViewController: UITableViewController {
         tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.reuseIdentifier)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.delegate = delegate
+        tableView.allowsMultipleSelectionDuringEditing = true
     }
     
     private func configureDataSource() {
@@ -50,7 +51,18 @@ class NotesViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: nil)
     }
     
+    private func updateLeftBarButton() {
+       if tableView.isEditing == true {
+           navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setEditMode))
+       }
+       else {
+           navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(setEditMode))
+       }
+    }
+    
     @objc func setEditMode() {
         tableView.setEditing(!tableView.isEditing, animated: true)
+        navigationItem.leftBarButtonItem?.style = tableView.isEditing ? .done : .plain
+        updateLeftBarButton()
     }
 }

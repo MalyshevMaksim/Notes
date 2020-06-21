@@ -32,6 +32,7 @@
 		B5E658B5249C87FF00F4C6C3 /* NotesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B4249C87FF00F4C6C3 /* NotesDataSource.swift */; };
 		B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B6249C89D500F4C6C3 /* NoteCell.swift */; };
 		B5E658B9249CB41400F4C6C3 /* NotesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B8249CB41400F4C6C3 /* NotesDelegate.swift */; };
+		B5E658BB249ED5A700F4C6C3 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658BA249ED5A700F4C6C3 /* TagView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		B5E658B4249C87FF00F4C6C3 /* NotesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDataSource.swift; sourceTree = "<group>"; };
 		B5E658B6249C89D500F4C6C3 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B5E658B8249CB41400F4C6C3 /* NotesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDelegate.swift; sourceTree = "<group>"; };
+		B5E658BA249ED5A700F4C6C3 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				B53B0353249AE46D0050E603 /* SettingCell.swift */,
 				B5E65887249BF24000F4C6C3 /* HeaderGridLayout.swift */,
 				B5E658B6249C89D500F4C6C3 /* NoteCell.swift */,
+				B5E658BA249ED5A700F4C6C3 /* TagView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				B53E367E249810920008DF71 /* BoardSection.swift in Sources */,
 				B5E65888249BF24000F4C6C3 /* HeaderGridLayout.swift in Sources */,
 				B5893B5124967249002F2865 /* BoardCollectionCell.swift in Sources */,
+				B5E658BB249ED5A700F4C6C3 /* TagView.swift in Sources */,
 				B53B034E249AC8760050E603 /* SettingsDelegate.swift in Sources */,
 				B5893B562496B5D3002F2865 /* NoteBoard.swift in Sources */,
 				B5E658B0249C6D5C00F4C6C3 /* Note.swift in Sources */,

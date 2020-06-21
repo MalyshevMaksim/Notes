@@ -26,6 +26,20 @@ class NoteCell: UITableViewCell {
         return label
     }()
     
+    lazy var itemStack: UIStackView = {
+        let tag1 = TagView(type: .favorite, frame: CGRect())
+        tag1.widthAnchor.constraint(equalToConstant: 62).isActive = true
+        
+        let tag2 = TagView(type: .protected, frame: CGRect())
+        tag2.widthAnchor.constraint(equalToConstant: 74).isActive = true
+        
+        let stack = UIStackView(arrangedSubviews: [tag1, tag2])
+        stack.spacing = 6
+        stack.axis = .horizontal
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
     lazy var titlese: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -54,11 +68,16 @@ class NoteCell: UITableViewCell {
         contentView.addSubview(texts)
         contentView.addSubview(titlese)
         contentView.addSubview(date)
+        contentView.addSubview(itemStack)
         
         NSLayoutConstraint.activate([
-            titlese.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            itemStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            itemStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            itemStack.heightAnchor.constraint(equalToConstant: 20),
+            
+            titlese.leadingAnchor.constraint(equalTo: itemStack.leadingAnchor),
             titlese.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titlese.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            titlese.topAnchor.constraint(equalTo: itemStack.bottomAnchor, constant: 10),
             
             texts.topAnchor.constraint(equalTo: titlese.bottomAnchor, constant: 5),
             texts.leadingAnchor.constraint(equalTo: titlese.leadingAnchor),

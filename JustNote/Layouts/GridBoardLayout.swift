@@ -22,13 +22,13 @@ private func makeSection() -> NSCollectionLayoutSection {
 private func makeGroup() -> NSCollectionLayoutGroup {
     let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.38))
     let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [makeItem()])
-    groupLayout.interItemSpacing = .fixed(10)
-    groupLayout.edgeSpacing = .init(leading: .fixed(10), top: nil, trailing: .fixed(10), bottom: .fixed(15))
+    groupLayout.interItemSpacing = .fixed(15)
+    groupLayout.edgeSpacing = .init(leading: .fixed(20), top: nil, trailing: .fixed(20), bottom: .fixed(15))
     return groupLayout
 }
 
 private func makeItem() -> NSCollectionLayoutItem {
-    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.46), heightDimension: .fractionalHeight(1))
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.428), heightDimension: .fractionalHeight(1))
     let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
     return itemLayout
 }

@@ -16,11 +16,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func setupNavigationControllers() -> [UIViewController] {
-        let noteBoardsNavigationController = UINavigationController(rootViewController: NotesViewController(style: .plain))
+        let noteBoardsNavigationController = UINavigationController(rootViewController: NoteBoardViewController(collectionViewLayout: setupGridLayout()))
         
         noteBoardsNavigationController.tabBarItem = UITabBarItem(title: "Notes", image: UIImage(systemName: "pencil.tip.crop.circle"), selectedImage: nil)
         
-        let settingsNavigationController = UINavigationController(rootViewController: SettingsViewController(style: .grouped))
+        let settingsNavigationController = UINavigationController(rootViewController: NoteBoardViewController(collectionViewLayout: setupGridLayout()))
         settingsNavigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), selectedImage: nil)
         
         return [noteBoardsNavigationController, settingsNavigationController]

@@ -15,7 +15,7 @@ struct ElementKind {
 
 class NoteBoardViewController: UICollectionViewController {
     var dataSource: NoteBoardDataSource!
-    var delegate = NoteBoardDelegate()
+    var delegate: NoteBoardDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,7 @@ class NoteBoardViewController: UICollectionViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
         navigationItem.searchController = UISearchController()
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func configureCollectionView() {
@@ -39,6 +40,7 @@ class NoteBoardViewController: UICollectionViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         configureHierarchy()
+        delegate = NoteBoardDelegate(navigationController: navigationController!)
         collectionView.delegate = delegate
     }
     

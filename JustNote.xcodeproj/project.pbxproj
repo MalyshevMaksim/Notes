@@ -33,6 +33,7 @@
 		B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B6249C89D500F4C6C3 /* NoteCell.swift */; };
 		B5E658B9249CB41400F4C6C3 /* NotesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B8249CB41400F4C6C3 /* NotesDelegate.swift */; };
 		B5E658BB249ED5A700F4C6C3 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658BA249ED5A700F4C6C3 /* TagView.swift */; };
+		B5E658BD249F43A300F4C6C3 /* HeaderNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658BC249F43A300F4C6C3 /* HeaderNotes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		B5E658B6249C89D500F4C6C3 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B5E658B8249CB41400F4C6C3 /* NotesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDelegate.swift; sourceTree = "<group>"; };
 		B5E658BA249ED5A700F4C6C3 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		B5E658BC249F43A300F4C6C3 /* HeaderNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderNotes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				B5E65887249BF24000F4C6C3 /* HeaderGridLayout.swift */,
 				B5E658B6249C89D500F4C6C3 /* NoteCell.swift */,
 				B5E658BA249ED5A700F4C6C3 /* TagView.swift */,
+				B5E658BC249F43A300F4C6C3 /* HeaderNotes.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				B5E658B0249C6D5C00F4C6C3 /* Note.swift in Sources */,
 				B5E6588A249BF61900F4C6C3 /* TableBoardLayout.swift in Sources */,
 				B53E36802498173A0008DF71 /* ConfiguringCell.swift in Sources */,
+				B5E658BD249F43A300F4C6C3 /* HeaderNotes.swift in Sources */,
 				B53B0354249AE46D0050E603 /* SettingCell.swift in Sources */,
 				B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */,
 				B5893B3B24965BAC002F2865 /* NoteBoardViewController.swift in Sources */,

@@ -8,71 +8,75 @@
 
 import UIKit
 
-var pinnedHeaderView: UIView = {
-    let view = UIView()
-    return view
-}()
-
 class NotesViewDelegate: NSObject, UITableViewDelegate {
+    var parentViewController: UINavigationController!
+    
+    init(parentViewController: UINavigationController) {
+        super.init()
+        self.parentViewController = parentViewController
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        parentViewController.pushViewController(UIViewController(), animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let pinned = UIContextualAction(style: .destructive, title: "1234567") { (_, _, _) in }
-        pinned.image = UIImage(systemName: "pin.fill")
-        pinned.backgroundColor = .systemBlue
-        pinned.title = "Pin"
-        
         let addToFavorites = UIContextualAction(style: .destructive, title: "1234567") { (_, _, _) in }
         addToFavorites.image = UIImage(systemName: "star.fill")
         addToFavorites.backgroundColor = .systemOrange
         addToFavorites.title = "Favorite"
         
-        return UISwipeActionsConfiguration(actions: [pinned, addToFavorites])
+        let limitAccess = UIContextualAction(style: .destructive, title: "1234567") { (_, _, _) in }
+        limitAccess.image = UIImage(systemName: "lock.fill")
+        limitAccess.backgroundColor = .systemGreen
+        limitAccess.title = "Limit"
+        
+        return UISwipeActionsConfiguration(actions: [addToFavorites, limitAccess])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let remove = UIContextualAction(style: .destructive, title: "1234567") { (_, _, _) in }
+        remove.image = UIImage(systemName: "trash.fill")
+        remove.backgroundColor = .systemRed
+        remove.title = "To trash"
+        
+        let pinned = UIContextualAction(style: .normal, title: "1234567") { (_, _, _) in }
+        pinned.image = UIImage(systemName: "pin.fill")
+        pinned.backgroundColor = .systemBlue
+        pinned.title = "Pin"
+        
+        let more = UIContextualAction(style: .normal, title: "1234567") { (_, _, _) in }
+        more.image = UIImage(systemName: "ellipsis")
+        more.backgroundColor = .systemIndigo
+        more.title = "More"
+        
+        return UISwipeActionsConfiguration(actions: [remove, pinned, more])
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        if section == 0 {
-            let view = UIView()
-            view.backgroundColor = .none
-            return view
+        switch section {
+        case 0:
+            return HeaderNotes(title: "Pinned", icon: "pin.fill", frame: CGRect())
+        default:
+            return HeaderNotes(title: "Swift", icon: "desktopcomputer", frame: CGRect())
         }
-        return nil
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == 0 {
             let view = UIView()
-            view.backgroundColor = .none
+            //view.backgroundColor = .secondarySystemBackground
             return view
         }
         return nil
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 50
-        }
         return 0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 50
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let limitAccess = UIContextualAction(style: .destructive, title: "1234567") { (_, _, _) in }
-        limitAccess.image = UIImage(systemName: "lock.fill")
-        limitAccess.backgroundColor = .systemGreen
-        limitAccess.title = "Limit"
-        
-        let remove = UIContextualAction(style: .destructive, title: "1234567") { (_, _, _) in }
-        remove.image = UIImage(systemName: "trash.fill")
-        remove.backgroundColor = .systemRed
-        remove.title = "To trash"
-        
-        return UISwipeActionsConfiguration(actions: [remove, limitAccess])
+        return 40
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
@@ -109,6 +113,6 @@ class NotesViewDelegate: NSObject, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 143
     }
 }

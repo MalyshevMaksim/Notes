@@ -10,7 +10,7 @@ import UIKit
 
 class NotesViewController: UITableViewController {
     var dataSource: NotesDataSource!
-    var delegate = NotesViewDelegate()
+    var delegate: NotesViewDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,7 @@ class NotesViewController: UITableViewController {
     private func configureTableView() {
         tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.reuseIdentifier)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        delegate = NotesViewDelegate(parentViewController: navigationController!)
         tableView.delegate = delegate
         tableView.allowsMultipleSelectionDuringEditing = true
     }
@@ -47,16 +48,17 @@ class NotesViewController: UITableViewController {
     private func configureController() {
         navigationItem.searchController = UISearchController()
         navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(setEditMode))
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(setEditMode))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: nil)
     }
     
     private func updateLeftBarButton() {
        if tableView.isEditing == true {
-           navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setEditMode))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(setEditMode))
        }
        else {
-           navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(setEditMode))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(setEditMode))
+            tabBarController?.tabBar.isHidden = false
        }
     }
     

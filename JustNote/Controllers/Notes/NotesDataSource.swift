@@ -14,7 +14,7 @@ class NotesDataSource: UITableViewDiffableDataSource<Int, Int> {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
     override init(tableView: UITableView, cellProvider: @escaping UITableViewDiffableDataSource<Int, Int>.CellProvider) {
         super.init(tableView: tableView, cellProvider: cellProvider)
         apply(makeSnapshot(), animatingDifferences: true)
@@ -29,7 +29,7 @@ class NotesDataSource: UITableViewDiffableDataSource<Int, Int> {
             snapshot.appendItems([item], toSection: 0)
         }
         
-        for item in 3..<8 {
+        for item in 4..<7 {
             snapshot.appendItems([item], toSection: 1)
         }
         return snapshot

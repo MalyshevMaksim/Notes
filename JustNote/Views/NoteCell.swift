@@ -15,6 +15,11 @@ class NoteCell: UITableViewCell {
         texts.text = model.text
         titlese.text = model.title
         date.text = model.date
+        
+        for item in 0..<model.tags.count {
+            let tag = TagView(type: model.tags[item], frame: CGRect())
+            itemStack.addArrangedSubview(tag)
+        }
     }
     
     lazy var texts: UILabel = {
@@ -28,12 +33,8 @@ class NoteCell: UITableViewCell {
     
     lazy var itemStack: UIStackView = {
         let tag1 = TagView(type: .favorite, frame: CGRect())
-        tag1.widthAnchor.constraint(equalToConstant: 62).isActive = true
         
-        let tag2 = TagView(type: .protected, frame: CGRect())
-        tag2.widthAnchor.constraint(equalToConstant: 74).isActive = true
-        
-        let stack = UIStackView(arrangedSubviews: [tag1, tag2])
+        let stack = UIStackView(arrangedSubviews: [])
         stack.spacing = 6
         stack.axis = .horizontal
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +65,10 @@ class NoteCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func getCellHeight() -> CGFloat {
+        return itemStack.bounds.height
+    }
+    
     private func setupCell() {
         contentView.addSubview(texts)
         contentView.addSubview(titlese)
@@ -79,7 +84,7 @@ class NoteCell: UITableViewCell {
             titlese.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             titlese.topAnchor.constraint(equalTo: itemStack.bottomAnchor, constant: 10),
             
-            texts.topAnchor.constraint(equalTo: titlese.bottomAnchor, constant: 5),
+            texts.topAnchor.constraint(equalTo: titlese.bottomAnchor, constant: 8),
             texts.leadingAnchor.constraint(equalTo: titlese.leadingAnchor),
             texts.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             

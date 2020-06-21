@@ -9,8 +9,15 @@
 import UIKit
 
 class NoteBoardDelegate: NSObject, UICollectionViewDelegate {
+    var parentNavigationController: UINavigationController!
+    
+    init(navigationController: UINavigationController) {
+        super.init()
+        self.parentNavigationController = navigationController
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        parentNavigationController.pushViewController(NotesViewController(style: .plain), animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {

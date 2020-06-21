@@ -23,7 +23,7 @@ class BoardCollectionCell: UICollectionViewCell, ConfiguringCell {
         background.backgroundColor = .secondarySystemBackground
         background.layer.cornerRadius = 10
         background.layer.shadowOpacity = 0.2
-        background.layer.shadowRadius = 10
+        background.layer.shadowRadius = 8
         background.translatesAutoresizingMaskIntoConstraints = false
         return background
     }()

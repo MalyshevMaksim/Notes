@@ -23,8 +23,8 @@ class SettingsDataSource: UITableViewDiffableDataSource<Int, Int> {
         snapshot.appendSections([2])
         snapshot.appendSections([3])
         
-        for item in 0..<2 {
-            snapshot.appendItems([item], toSection: 1)
+        for item in 0..<3 {
+            snapshot.appendItems([item], toSection: 0)
         }
         
         for item in 2..<5 {

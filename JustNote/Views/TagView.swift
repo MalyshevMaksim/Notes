@@ -8,11 +8,11 @@
 
 import UIKit
 
+enum type {
+    case protected, favorite
+}
+
 class TagView: UIView {
-    enum type {
-        case protected, favorite
-    }
-    
     var tagType: type!
     
     lazy var text: UILabel = {
@@ -26,16 +26,17 @@ class TagView: UIView {
 
     init(type: type, frame: CGRect) {
         super.init(frame: frame)
-        
         tagType = type
         
         if tagType == .favorite {
             backgroundColor = .systemOrange
             text.text = "Favorite"
+            self.widthAnchor.constraint(equalToConstant: 62).isActive = true
         }
         else {
             backgroundColor = .systemGreen
             text.text = "Protected"
+            self.widthAnchor.constraint(equalToConstant: 74).isActive = true
         }
         
         layer.cornerRadius = 3
@@ -51,7 +52,9 @@ class TagView: UIView {
         
         NSLayoutConstraint.activate([
             text.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            text.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             text.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            text.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
 }

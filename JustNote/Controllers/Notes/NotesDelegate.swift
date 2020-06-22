@@ -15,7 +15,7 @@ class NotesViewDelegate: NSObject, UITableViewDelegate {
         super.init()
         self.parentViewController = parentViewController
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         parentViewController.pushViewController(UIViewController(), animated: true)
     }
@@ -62,19 +62,6 @@ class NotesViewDelegate: NSObject, UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if section == 0 {
-            let view = UIView()
-            //view.backgroundColor = .secondarySystemBackground
-            return view
-        }
-        return nil
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
@@ -110,9 +97,5 @@ class NotesViewDelegate: NSObject, UITableViewDelegate {
             
             return UIMenu(title: "", image: nil, identifier: nil, options: .init(), children: [pinnedAction, favoriteAction, lockAction, deleteAction])
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 143
     }
 }

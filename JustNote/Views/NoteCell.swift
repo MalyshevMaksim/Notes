@@ -76,21 +76,23 @@ class NoteCell: UITableViewCell {
         contentView.addSubview(itemStack)
         
         NSLayoutConstraint.activate([
+            itemStack.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: contentView.layoutMarginsGuide.topAnchor, multiplier: 0.5),
             itemStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            itemStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             itemStack.heightAnchor.constraint(equalToConstant: 20),
             
-            titlese.leadingAnchor.constraint(equalTo: itemStack.leadingAnchor),
+            titlese.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: itemStack.lastBaselineAnchor, multiplier: 1),
+            titlese.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             titlese.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titlese.topAnchor.constraint(equalTo: itemStack.bottomAnchor, constant: 10),
             
-            texts.topAnchor.constraint(equalTo: titlese.bottomAnchor, constant: 8),
+            texts.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: titlese.lastBaselineAnchor, multiplier: 1.2),
             texts.leadingAnchor.constraint(equalTo: titlese.leadingAnchor),
             texts.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            date.topAnchor.constraint(equalTo: texts.bottomAnchor, constant: 5),
+            date.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: texts.lastBaselineAnchor, multiplier: 1.1),
             date.leadingAnchor.constraint(equalTo: titlese.leadingAnchor),
             date.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            contentView.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: date.lastBaselineAnchor, multiplier: 0.5)
         ])
     }
 }

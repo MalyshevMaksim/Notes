@@ -56,16 +56,16 @@ class NoteBoardViewController: UICollectionViewController {
             
             switch sections[indexPath.section].type {
             case "defaultBoardings":
-                return self.configureCell(BoardCollectionCell.self, with: board, for: indexPath)
+                return self.configureCell(with: board, for: indexPath)
             default:
                 return UICollectionViewCell()
             }
         }
     }
     
-    private func configureCell<T: ConfiguringCell>(_ cellType: T.Type, with noteBoarding: NoteBoard, for indexPath: IndexPath) -> T {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
-            fatalError("Unable to dequeue \(cellType)")
+    private func configureCell(with noteBoarding: NoteBoard, for indexPath: IndexPath) -> BoardCollectionCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BoardCollectionCell.reuseIdentifier, for: indexPath) as? BoardCollectionCell else {
+            fatalError("Unable to dequeue")
         }
         cell.configure(with: noteBoarding)
         return cell

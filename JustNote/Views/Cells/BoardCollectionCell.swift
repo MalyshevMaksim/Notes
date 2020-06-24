@@ -12,6 +12,7 @@ class BoardCollectionCell: UICollectionViewCell {
     static var reuseIdentifier = "NotesCollectionCell"
     
     let background = UIView()
+    let textOverlay = UIView()
     let title = UILabel()
     let subtitle = UILabel()
     let overlay = UIView()
@@ -19,6 +20,7 @@ class BoardCollectionCell: UICollectionViewCell {
     
     func configure(with model: NoteBoard) {
         configureBackground()
+        configureTextOverlay()
         configureTitle()
         configureSubtitle()
         configureOverlay()
@@ -28,18 +30,26 @@ class BoardCollectionCell: UICollectionViewCell {
         subtitle.text = model.subtitle
         overlay.backgroundColor = model.iconColor
         iconCell.image = UIImage(systemName: model.icon)
+        textOverlay.backgroundColor = model.iconColor
     }
     
     private func configureBackground() {
-        background.backgroundColor = .secondarySystemBackground
-        background.layer.cornerRadius = 10
-        background.layer.shadowOpacity = 0.2
+        background.backgroundColor = .tertiarySystemBackground
+        background.layer.cornerRadius = 15
+        background.layer.shadowOpacity = 0.1
         background.layer.shadowRadius = 8
+        background.alpha = 0.65
         background.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    private func configureTextOverlay() {
+        textOverlay.alpha = 0.05
+        textOverlay.layer.cornerRadius = 10
+        textOverlay.translatesAutoresizingMaskIntoConstraints = false
+    }
+
     private func configureTitle() {
-        title.font = .boldSystemFont(ofSize: 20)
+        title.font = .boldSystemFont(ofSize: 16)
         title.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -63,7 +73,7 @@ class BoardCollectionCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupCellLayout()
+        setupCell()
     }
     
     required init?(coder: NSCoder) {
@@ -72,13 +82,14 @@ class BoardCollectionCell: UICollectionViewCell {
     
     private func setupCellViews() {
         contentView.addSubview(background)
+        contentView.addSubview(textOverlay)
         contentView.addSubview(title)
         contentView.addSubview(subtitle)
         contentView.addSubview(overlay)
         contentView.addSubview(iconCell)
     }
     
-    private func setupCellLayout() {
+    private func setupCell() {
         setupCellViews()
         
         NSLayoutConstraint.activate([
@@ -92,13 +103,18 @@ class BoardCollectionCell: UICollectionViewCell {
             subtitle.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 2),
             
-            overlay.heightAnchor.constraint(equalToConstant: 42),
-            overlay.widthAnchor.constraint(equalToConstant: 42),
-            overlay.leadingAnchor.constraint(equalTo: background.leadingAnchor,constant: 20),
-            overlay.topAnchor.constraint(equalTo: background.topAnchor,constant: 20),
+            textOverlay.heightAnchor.constraint(equalToConstant: 62),
+            textOverlay.leadingAnchor.constraint(equalTo: background.leadingAnchor,constant: 10),
+            textOverlay.trailingAnchor.constraint(equalTo: background.trailingAnchor,constant: -10),
+            textOverlay.bottomAnchor.constraint(equalTo: background.bottomAnchor,constant: -10),
             
-            iconCell.heightAnchor.constraint(equalToConstant: 22),
-            iconCell.widthAnchor.constraint(equalToConstant: 22),
+            overlay.heightAnchor.constraint(equalToConstant: 38),
+            overlay.widthAnchor.constraint(equalToConstant: 38),
+            overlay.leadingAnchor.constraint(equalTo: background.leadingAnchor,constant: 20),
+            overlay.topAnchor.constraint(equalTo: background.topAnchor,constant: 18),
+            
+            iconCell.heightAnchor.constraint(equalToConstant: 21),
+            iconCell.widthAnchor.constraint(equalToConstant: 21),
             iconCell.centerXAnchor.constraint(equalTo: overlay.centerXAnchor),
             iconCell.centerYAnchor.constraint(equalTo: overlay.centerYAnchor)
         ])

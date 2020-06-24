@@ -9,6 +9,7 @@
 import UIKit
 
 class HeaderNotes: UIView {
+    
     lazy var text: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)

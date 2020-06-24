@@ -11,10 +11,6 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
-    @objc func changeEditMode() {
-        print("123")
-    }
-    
     private func setupNavigationControllers() -> [UIViewController] {
         let noteBoardsNavigationController = UINavigationController(rootViewController: NoteBoardViewController(collectionViewLayout: setupGridLayout()))
         
@@ -41,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
         window?.rootViewController = setupTabBar()
-        window?.backgroundColor = .systemBackground
+        window?.backgroundColor = .secondarySystemBackground
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

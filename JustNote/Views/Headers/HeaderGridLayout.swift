@@ -35,7 +35,7 @@ class HeaderGridLayout: UICollectionReusableView {
         self.addSubview(header)
         
         NSLayoutConstraint.activate([
-            header.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 21),
+            header.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
             header.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             header.topAnchor.constraint(equalTo: self.topAnchor),
             header.bottomAnchor.constraint(equalTo: self.bottomAnchor)

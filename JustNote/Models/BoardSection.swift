@@ -8,7 +8,7 @@
 
 import Foundation
 
-var sections = [BoardSection(id: 0, title: "Defaults", subtitle: "", type: "defaultBoardings", items: bordersOfNotes)]
+var sections = [BoardSection(id: 0, title: "Folders", subtitle: "", type: "defaultBoardings", items: bordersOfNotes)]
 
 struct BoardSection: Hashable  {
     var hashValue: Int {

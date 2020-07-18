@@ -12,7 +12,7 @@ class HeaderGridLayout: UICollectionReusableView {
     static var reuseIdentifier = "HeaderGridCell"
     
     func configure() {
-        header.text = "model.title"
+        header.text = "Boards"
     }
     
     lazy var header: UILabel = {

@@ -20,6 +20,8 @@
 		B5893B4324965BAD002F2865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5893B4124965BAD002F2865 /* LaunchScreen.storyboard */; };
 		B5893B4D2496621D002F2865 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B4C2496621D002F2865 /* SettingsViewController.swift */; };
 		B5893B5124967249002F2865 /* BoardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B5024967249002F2865 /* BoardCollectionCell.swift */; };
+		B5B70A4824C357BD005512AF /* SampleDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B70A4724C357BD005512AF /* SampleDataLoader.swift */; };
+		B5B70A4A24C357E5005512AF /* LoadingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B70A4924C357E5005512AF /* LoadingStrategy.swift */; };
 		B5C6874724ABEF7D00E2ED83 /* TagStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6874624ABEF7D00E2ED83 /* TagStackView.swift */; };
 		B5D3341524C2059F00E1AB30 /* Note.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5D3341324C2059F00E1AB30 /* Note.xcdatamodeld */; };
 		B5D3342024C208AD00E1AB30 /* Board+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3341E24C208AD00E1AB30 /* Board+CoreDataClass.swift */; };
@@ -28,7 +30,6 @@
 		B5E65886249BF1F100F4C6C3 /* GridBoardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E65885249BF1F100F4C6C3 /* GridBoardLayout.swift */; };
 		B5E65888249BF24000F4C6C3 /* HeaderGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E65887249BF24000F4C6C3 /* HeaderGridLayout.swift */; };
 		B5E6588A249BF61900F4C6C3 /* TableBoardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E65889249BF61900F4C6C3 /* TableBoardLayout.swift */; };
-		B5E658B0249C6D5C00F4C6C3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658AF249C6D5C00F4C6C3 /* Note.swift */; };
 		B5E658B2249C875500F4C6C3 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B1249C875500F4C6C3 /* NotesViewController.swift */; };
 		B5E658B5249C87FF00F4C6C3 /* NotesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B4249C87FF00F4C6C3 /* NotesDataSource.swift */; };
 		B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B6249C89D500F4C6C3 /* NoteCell.swift */; };
@@ -53,6 +54,8 @@
 		B5893B4424965BAD002F2865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5893B4C2496621D002F2865 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B5893B5024967249002F2865 /* BoardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCollectionCell.swift; sourceTree = "<group>"; };
+		B5B70A4724C357BD005512AF /* SampleDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDataLoader.swift; sourceTree = "<group>"; };
+		B5B70A4924C357E5005512AF /* LoadingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStrategy.swift; sourceTree = "<group>"; };
 		B5C6874624ABEF7D00E2ED83 /* TagStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStackView.swift; sourceTree = "<group>"; };
 		B5D3341424C2059F00E1AB30 /* Note.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Note.xcdatamodel; sourceTree = "<group>"; };
 		B5D3341E24C208AD00E1AB30 /* Board+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -61,7 +64,6 @@
 		B5E65885249BF1F100F4C6C3 /* GridBoardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBoardLayout.swift; sourceTree = "<group>"; };
 		B5E65887249BF24000F4C6C3 /* HeaderGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderGridLayout.swift; sourceTree = "<group>"; };
 		B5E65889249BF61900F4C6C3 /* TableBoardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBoardLayout.swift; sourceTree = "<group>"; };
-		B5E658AF249C6D5C00F4C6C3 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		B5E658B1249C875500F4C6C3 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		B5E658B4249C87FF00F4C6C3 /* NotesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDataSource.swift; sourceTree = "<group>"; };
 		B5E658B6249C89D500F4C6C3 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
@@ -133,6 +135,8 @@
 				B5893B4F2496722F002F2865 /* Views */,
 				B5893B4E24966E7B002F2865 /* Controllers */,
 				B5893B3624965BAC002F2865 /* AppDelegate.swift */,
+				B5B70A4724C357BD005512AF /* SampleDataLoader.swift */,
+				B5B70A4924C357E5005512AF /* LoadingStrategy.swift */,
 				B5D3341324C2059F00E1AB30 /* Note.xcdatamodeld */,
 				B5893B3824965BAC002F2865 /* SceneDelegate.swift */,
 				B5893B3C24965BAC002F2865 /* Main.storyboard */,
@@ -170,7 +174,6 @@
 				B5D3341E24C208AD00E1AB30 /* Board+CoreDataClass.swift */,
 				B5D3341F24C208AD00E1AB30 /* Board+CoreDataProperties.swift */,
 				B53B0351249AE4020050E603 /* SettingRow.swift */,
-				B5E658AF249C6D5C00F4C6C3 /* Note.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -293,11 +296,11 @@
 				B5893B5124967249002F2865 /* BoardCollectionCell.swift in Sources */,
 				B5E658BB249ED5A700F4C6C3 /* TagView.swift in Sources */,
 				B53B034E249AC8760050E603 /* SettingsDelegate.swift in Sources */,
-				B5E658B0249C6D5C00F4C6C3 /* Note.swift in Sources */,
 				B5D3342024C208AD00E1AB30 /* Board+CoreDataClass.swift in Sources */,
 				B5E6588A249BF61900F4C6C3 /* TableBoardLayout.swift in Sources */,
 				B5E658BD249F43A300F4C6C3 /* HeaderNotes.swift in Sources */,
 				B53B0354249AE46D0050E603 /* SettingCell.swift in Sources */,
+				B5B70A4A24C357E5005512AF /* LoadingStrategy.swift in Sources */,
 				B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */,
 				B5D3342124C208AD00E1AB30 /* Board+CoreDataProperties.swift in Sources */,
 				B5D3341524C2059F00E1AB30 /* Note.xcdatamodeld in Sources */,
@@ -306,6 +309,7 @@
 				B5C6874724ABEF7D00E2ED83 /* TagStackView.swift in Sources */,
 				B5E65886249BF1F100F4C6C3 /* GridBoardLayout.swift in Sources */,
 				B5E658B2249C875500F4C6C3 /* NotesViewController.swift in Sources */,
+				B5B70A4824C357BD005512AF /* SampleDataLoader.swift in Sources */,
 				B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */,
 				B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */,
 				B5E658B5249C87FF00F4C6C3 /* NotesDataSource.swift in Sources */,

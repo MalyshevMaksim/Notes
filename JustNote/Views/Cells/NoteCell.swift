@@ -21,10 +21,10 @@ class NoteCell: UITableViewCell {
         configureNoteBody()
         configureLastModifedDate()
         
-        noteBody.text = model.text
+        //noteBody.text = model.text
         noteTitle.text = model.title
-        lastModifedDate.text = model.date
-        tagStack = model.tagStack
+        //lastModifedDate.text = model.date
+        //tagStack = model.tagStack
     }
     
     private func configureNoteTitle() {

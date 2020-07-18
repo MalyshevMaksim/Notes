@@ -42,9 +42,16 @@ class NoteBoardViewController: UICollectionViewController {
         title = "Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        loadSampleBoard()
+        loadSampleData(loader: SampleDataLoader(strategy: LoaderSampleBoard(context: managedContext)))
         configureController()
         configureCollectionView()
+    }
+    
+    private func loadSampleData(loader: SampleDataLoader) {
+        // If the application is launched for the first time
+        if loader.notApplicationLaunched() {
+            loader.loadData(path: "SampleFolders", type: "plist")
+        }
     }
     
     private func configureController() {
@@ -69,35 +76,17 @@ class NoteBoardViewController: UICollectionViewController {
         collectionView.register(HeaderGridLayout.self, forSupplementaryViewOfKind: ElementKind.headerKind, withReuseIdentifier: HeaderGridLayout.reuseIdentifier)
         collectionView.collectionViewLayout = setupGridLayout()
     }
-    
-    private func loadSampleBoard() {
-        guard let filePath = Bundle.main.path(forResource: "SampleFolders", ofType: "plist"),
-              let boards = NSArray(contentsOfFile: filePath) else {
-            fatalError("")
-        }
-        
-        if !UserDefaults.standard.bool(forKey: "isFirstStart") {
-            for board in boards {
-                let resultingDictionary = board as? [String : Any]
-                configureBoard(resultingDictionary!)
-            }
-            try! managedContext.save()
-            UserDefaults.standard.set(true, forKey: "isFirstStart")
-        }
-    }
-    
-    private func configureBoard(_ boardDictionary: [String : Any]) {
-        let board = Board(context: managedContext)
-        board.title = boardDictionary["title"] as? String
-        board.numberOfNotes = boardDictionary["numberOfNotes"] as! Int16
-        board.iconName = boardDictionary["iconName"] as? String
-        board.tintColor = UIColor.color(dict: boardDictionary["tintColor"] as! [String : Any])!
-    }
 }
 
 extension NoteBoardViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fetchResultController.sections![section].numberOfObjects
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderGridLayout.reuseIdentifier, for: indexPath) as! HeaderGridLayout
+        header.configure()
+        return header
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -107,16 +96,5 @@ extension NoteBoardViewController {
         }
         cell.configure(with: fetchResultController.object(at: indexPath))
         return cell
-    }
-}
-
-private extension UIColor {
-    static func color(dict: [String : Any]) -> UIColor? {
-        guard let red = dict["red"] as? NSNumber,
-              let green = dict["green"] as? NSNumber,
-              let blue = dict["blue"] as? NSNumber else {
-            return nil
-        }
-        return UIColor(red: CGFloat(truncating: red) / 255.0, green: CGFloat(truncating: green) / 255.0, blue: CGFloat(truncating: blue) / 255.0, alpha: 1)
     }
 }

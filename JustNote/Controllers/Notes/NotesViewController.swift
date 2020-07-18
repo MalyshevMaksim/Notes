@@ -18,7 +18,6 @@ class NotesViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         configureTableView()
-        configureDataSource()
         configureController()
     }
     
@@ -28,13 +27,6 @@ class NotesViewController: UITableViewController {
         delegate = NotesViewDelegate(parentViewController: navigationController!)
         tableView.delegate = delegate
         tableView.allowsMultipleSelectionDuringEditing = true
-    }
-    
-    private func configureDataSource() {
-        dataSource = NotesDataSource(tableView: tableView, cellProvider: {
-            (UITableView, indexPath, Int) -> UITableViewCell? in
-            return self.configureCell(with: notes[indexPath.item], indexPath: indexPath)
-        })
     }
     
     private func configureCell(with note: Note, indexPath: IndexPath) -> NoteCell {

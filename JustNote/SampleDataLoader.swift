@@ -17,19 +17,19 @@ class SampleDataLoader {
         loadingStrategy = strategy
     }
     
-    func notApplicationLaunched() -> Bool {
+    func isApplicationLaunched() -> Bool {
         if !UserDefaults.standard.bool(forKey: "isApplicationLaunched") {
             UserDefaults.standard.set(true, forKey: "isApplicationLaunched")
-            return true
+            return false
         }
-        return false
+        return true
     }
     
     func loadData(path: String, type: String) {
-        guard let dataFilePath = Bundle.main.path(forResource: path, ofType: type),
-              let data = NSArray(contentsOfFile: dataFilePath) else {
+        guard let filePath = Bundle.main.path(forResource: path, ofType: type),
+              let loadedData = NSArray(contentsOfFile: filePath) else {
             fatalError("Failed to load data")
         }
-        return loadingStrategy.load(data: data)
+        return loadingStrategy.load(data: loadedData)
     }
 }

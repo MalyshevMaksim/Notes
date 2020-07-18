@@ -28,14 +28,17 @@ class NoteBoardViewController: UICollectionViewController {
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
-        
+        performFetch(controller)
+        return controller
+    }()
+    
+    private func performFetch(_ controller: NSFetchedResultsController<Board>) {
         do {
             try controller.performFetch()
         } catch {
             fatalError("###\(#function): Failed to performFetch: \(error)")
         }
-        return controller
-    }()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +52,7 @@ class NoteBoardViewController: UICollectionViewController {
     
     private func loadSampleData(loader: SampleDataLoader) {
         // If the application is launched for the first time
-        if loader.notApplicationLaunched() {
+        if !loader.isApplicationLaunched() {
             loader.loadData(path: "SampleFolders", type: "plist")
         }
     }

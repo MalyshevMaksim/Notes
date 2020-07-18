@@ -43,7 +43,10 @@ class LoadingSampleNote: SampleLoadingStrategy {
     }
     
     func load(data: NSArray) {
-        
+        for note in data {
+            
+        }
+        try! managedContext.save()
     }
 }
 

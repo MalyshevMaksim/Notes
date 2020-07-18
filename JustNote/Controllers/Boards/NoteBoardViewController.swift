@@ -42,7 +42,7 @@ class NoteBoardViewController: UICollectionViewController {
         title = "Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        loadSampleData(loader: SampleDataLoader(strategy: LoaderSampleBoard(context: managedContext)))
+        loadSampleData(loader: SampleDataLoader(strategy: LoadingSampleBoard(context: managedContext)))
         configureController()
         configureCollectionView()
     }
@@ -90,7 +90,6 @@ extension NoteBoardViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BoardCollectionCell.reuseIdentifier, for: indexPath) as? BoardCollectionCell else {
             fatalError("Unable to dequeue")
         }

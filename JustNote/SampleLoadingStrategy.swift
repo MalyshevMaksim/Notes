@@ -10,12 +10,12 @@ import Foundation
 import CoreData
 import UIKit
 
-protocol LoadingStrategy {
+protocol SampleLoadingStrategy {
     var managedContext: NSManagedObjectContext! { get }
     func load(data: NSArray)
 }
 
-class LoaderSampleBoard: LoadingStrategy {
+class LoadingSampleBoard: SampleLoadingStrategy {
     var managedContext: NSManagedObjectContext!
     
     init(context: NSManagedObjectContext) {
@@ -35,7 +35,7 @@ class LoaderSampleBoard: LoadingStrategy {
     }
 }
 
-class LoaderSampleNote: LoadingStrategy {
+class LoadingSampleNote: SampleLoadingStrategy {
     var managedContext: NSManagedObjectContext!
     
     init(context: NSManagedObjectContext) {

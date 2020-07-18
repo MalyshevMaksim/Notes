@@ -11,13 +11,12 @@ import UIKit
 class NoteCell: UITableViewCell {
     static var reuseIdentifier = "NoteCell"
     
-    let tagStack = UIStackView()
+    var tagStack = UIStackView()
     let noteTitle = UILabel()
     let noteBody = UILabel()
     let lastModifedDate = UILabel()
     
     func configure(with model: Note) {
-        configureTagStack()
         configureNoteTitle()
         configureNoteBody()
         configureLastModifedDate()
@@ -25,18 +24,7 @@ class NoteCell: UITableViewCell {
         noteBody.text = model.text
         noteTitle.text = model.title
         lastModifedDate.text = model.date
-        
-        tagStack.removeAllArrangedSubviews()
-        for item in 0..<model.tags.count {
-            let tag = TagView(type: model.tags[item], frame: CGRect())
-            tagStack.addArrangedSubview(tag)
-        }
-    }
-    
-    private func configureTagStack() {
-        tagStack.spacing = 6
-        tagStack.axis = .horizontal
-        tagStack.translatesAutoresizingMaskIntoConstraints = false
+        tagStack = model.tagStack
     }
     
     private func configureNoteTitle() {
@@ -80,7 +68,7 @@ class NoteCell: UITableViewCell {
         NSLayoutConstraint.activate([
             tagStack.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: contentView.layoutMarginsGuide.topAnchor, multiplier: 0.5),
             tagStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalInset),
-            tagStack.heightAnchor.constraint(equalToConstant: horizontalInset),
+            tagStack.heightAnchor.constraint(equalToConstant: 20),
             
             noteTitle.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: tagStack.lastBaselineAnchor, multiplier: 1),
             noteTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalInset),

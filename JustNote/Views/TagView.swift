@@ -8,41 +8,29 @@
 
 import UIKit
 
-enum type {
-    case protected, favorite
+enum TagType: String {
+    case favorite = "Favorite"
+    case protected = "Protected"
 }
 
 class TagView: UIView {
-    var tagType: type!
+    var tagType: TagType!
     
-    lazy var text: UILabel = {
+    var text: UILabel = {
         let label = UILabel()
-        label.text = "Favorite"
-        label.textColor = .white
+        label.text = "123"
         label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    init(type: type, frame: CGRect) {
+    
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        tagType = type
-        
-        if tagType == .favorite {
-            backgroundColor = .systemOrange
-            text.text = "Favorite"
-            self.widthAnchor.constraint(equalToConstant: 62).isActive = true
-        }
-        else {
-            backgroundColor = .systemGreen
-            text.text = "Protected"
-            self.widthAnchor.constraint(equalToConstant: 74).isActive = true
-        }
-        
-        layer.cornerRadius = 3
+        backgroundColor = .orange
         setupCell()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -52,9 +40,11 @@ class TagView: UIView {
         
         NSLayoutConstraint.activate([
             text.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
-            text.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            text.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -5),
             text.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            text.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            text.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.layoutMarginsGuide.trailingAnchor.constraint(equalTo: text.trailingAnchor),
+            self.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 }

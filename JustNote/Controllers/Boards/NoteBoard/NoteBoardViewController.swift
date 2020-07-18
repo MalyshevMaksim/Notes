@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 struct ElementKind {
     static var headerKind = "HeaderKind"
@@ -14,17 +15,36 @@ struct ElementKind {
 }
 
 class NoteBoardViewController: UICollectionViewController {
-    var dataSource: NoteBoardDataSource!
     var delegate: NoteBoardDelegate!
+    
+    private lazy var managedContext: NSManagedObjectContext = {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        return appDelegate!.managedContext
+    }()
+    
+    private lazy var fetchResultController: NSFetchedResultsController<Board> = {
+        let fetchRequest: NSFetchRequest<Board> = Board.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(Board.numberOfNotes), ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try controller.performFetch()
+        } catch {
+            fatalError("###\(#function): Failed to performFetch: \(error)")
+        }
+        return controller
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        loadSampleBoard()
         configureController()
         configureCollectionView()
-        configureDataSource()
     }
     
     private func configureController() {
@@ -50,24 +70,53 @@ class NoteBoardViewController: UICollectionViewController {
         collectionView.collectionViewLayout = setupGridLayout()
     }
     
-    func configureDataSource()  {
-        dataSource = NoteBoardDataSource(collectionView: collectionView) {
-            (collectionView, indexPath, board) -> UICollectionViewCell? in
-            
-            switch sections[indexPath.section].type {
-            case "defaultBoardings":
-                return self.configureCell(with: board, for: indexPath)
-            default:
-                return UICollectionViewCell()
+    private func loadSampleBoard() {
+        guard let filePath = Bundle.main.path(forResource: "SampleFolders", ofType: "plist"),
+              let boards = NSArray(contentsOfFile: filePath) else {
+            fatalError("")
+        }
+        
+        if !UserDefaults.standard.bool(forKey: "isFirstStart") {
+            for board in boards {
+                let resultingDictionary = board as? [String : Any]
+                configureBoard(resultingDictionary!)
             }
+            try! managedContext.save()
+            UserDefaults.standard.set(true, forKey: "isFirstStart")
         }
     }
     
-    private func configureCell(with noteBoarding: NoteBoard, for indexPath: IndexPath) -> BoardCollectionCell {
+    private func configureBoard(_ boardDictionary: [String : Any]) {
+        let board = Board(context: managedContext)
+        board.title = boardDictionary["title"] as? String
+        board.numberOfNotes = boardDictionary["numberOfNotes"] as! Int16
+        board.iconName = boardDictionary["iconName"] as? String
+        board.tintColor = UIColor.color(dict: boardDictionary["tintColor"] as! [String : Any])!
+    }
+}
+
+extension NoteBoardViewController {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return fetchResultController.sections![section].numberOfObjects
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BoardCollectionCell.reuseIdentifier, for: indexPath) as? BoardCollectionCell else {
             fatalError("Unable to dequeue")
         }
-        cell.configure(with: noteBoarding)
+        cell.configure(with: fetchResultController.object(at: indexPath))
         return cell
+    }
+}
+
+private extension UIColor {
+    static func color(dict: [String : Any]) -> UIColor? {
+        guard let red = dict["red"] as? NSNumber,
+              let green = dict["green"] as? NSNumber,
+              let blue = dict["blue"] as? NSNumber else {
+            return nil
+        }
+        return UIColor(red: CGFloat(truncating: red) / 255.0, green: CGFloat(truncating: green) / 255.0, blue: CGFloat(truncating: blue) / 255.0, alpha: 1)
     }
 }

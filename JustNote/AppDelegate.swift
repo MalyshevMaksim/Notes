@@ -7,9 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    lazy var persistenContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Note")
+        container.loadPersistentStores { description, error in
+            if let error = error {
+                fatalError("###\(#function): Failed to load persistent stores:\(error)")
+            }
+        }
+        return container
+    }()
+    
+    lazy var managedContext: NSManagedObjectContext = {
+        return persistenContainer.viewContext
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

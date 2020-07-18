@@ -18,7 +18,7 @@ class BoardCollectionCell: UICollectionViewCell {
     let overlay = UIView()
     let iconCell = UIImageView()
     
-    func configure(with model: NoteBoard) {
+    func configure(with model: Board) {
         configureBackground()
         configureTextOverlay()
         configureTitle()
@@ -27,10 +27,10 @@ class BoardCollectionCell: UICollectionViewCell {
         configureIconCell()
         
         title.text = model.title
-        subtitle.text = model.subtitle
-        overlay.backgroundColor = model.iconColor
-        iconCell.image = UIImage(systemName: model.icon)
-        textOverlay.backgroundColor = model.iconColor
+        subtitle.text = "\(model.numberOfNotes) notes"
+        overlay.backgroundColor = model.tintColor
+        iconCell.image = UIImage(systemName: model.iconName!)
+        textOverlay.backgroundColor = model.tintColor
     }
     
     private func configureBackground() {

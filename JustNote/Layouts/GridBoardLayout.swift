@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 func setupGridLayout() -> UICollectionViewCompositionalLayout {
     let layout = UICollectionViewCompositionalLayout(section: makeSection())
     return layout

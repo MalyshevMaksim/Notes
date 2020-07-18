@@ -11,8 +11,8 @@ import UIKit
 class HeaderGridLayout: UICollectionReusableView {
     static var reuseIdentifier = "HeaderGridCell"
     
-    func configure(with model: BoardSection) {
-        header.text = model.title
+    func configure() {
+        header.text = "model.title"
     }
     
     lazy var header: UILabel = {

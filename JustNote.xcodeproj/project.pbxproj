@@ -12,6 +12,7 @@
 		B5022EA224C4962B008A9B8D /* Board+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5022E9E24C4962B008A9B8D /* Board+CoreDataClass.swift */; };
 		B5022EA324C4962B008A9B8D /* Board+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5022E9F24C4962B008A9B8D /* Board+CoreDataProperties.swift */; };
 		B5022EA524C4A8C4008A9B8D /* SampleNotes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5022EA424C4A8C4008A9B8D /* SampleNotes.plist */; };
+		B5022EA824C4B937008A9B8D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5022EA724C4B937008A9B8D /* UIColor.swift */; };
 		B53B034C249AC7E30050E603 /* SettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B034B249AC7E30050E603 /* SettingsDataSource.swift */; };
 		B53B034E249AC8760050E603 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B034D249AC8760050E603 /* SettingsDelegate.swift */; };
 		B53B0352249AE4020050E603 /* SettingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B0351249AE4020050E603 /* SettingRow.swift */; };
@@ -47,6 +48,7 @@
 		B5022E9E24C4962B008A9B8D /* Board+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B5022E9F24C4962B008A9B8D /* Board+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B5022EA424C4A8C4008A9B8D /* SampleNotes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SampleNotes.plist; sourceTree = "<group>"; };
+		B5022EA724C4B937008A9B8D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		B53B034B249AC7E30050E603 /* SettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
 		B53B034D249AC8760050E603 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
 		B53B0351249AE4020050E603 /* SettingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRow.swift; sourceTree = "<group>"; };
@@ -89,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B5022EA624C4B91F008A9B8D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B5022EA724C4B937008A9B8D /* UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B53B034A249AC7940050E603 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +138,7 @@
 		B5893B3524965BAC002F2865 /* JustNote */ = {
 			isa = PBXGroup;
 			children = (
+				B5022EA624C4B91F008A9B8D /* Extensions */,
 				B5E65884249BF1C600F4C6C3 /* Layouts */,
 				B5893B542496B5B0002F2865 /* Models */,
 				B5893B4F2496722F002F2865 /* Views */,
@@ -291,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5022EA224C4962B008A9B8D /* Board+CoreDataClass.swift in Sources */,
+				B5022EA824C4B937008A9B8D /* UIColor.swift in Sources */,
 				B5893B4D2496621D002F2865 /* SettingsViewController.swift in Sources */,
 				B53B034C249AC7E30050E603 /* SettingsDataSource.swift in Sources */,
 				B53E36792497E69D0008DF71 /* NoteBoardDelegate.swift in Sources */,

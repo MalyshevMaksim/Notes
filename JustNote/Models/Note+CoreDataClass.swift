@@ -1,5 +1,5 @@
 //
-//  Board+CoreDataClass.swift
+//  Note+CoreDataClass.swift
 //  JustNote
 //
 //  Created by Малышев Максим Алексеевич on 19.07.2020.
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(Board)
-public class Board: NSManagedObject {
+@objc(Note)
+public class Note: NSManagedObject {
 
 }

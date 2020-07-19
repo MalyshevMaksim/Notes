@@ -11,12 +11,12 @@ import CoreData
 import UIKit
 
 protocol SampleLoadingStrategy {
-    var coreDataStack: CoreDataStack! { get }
     func load(data: NSArray)
 }
 
 extension SampleLoadingStrategy {
-    func isApplicationLaunched() -> Bool {
+    // Sample data loading should be done only at the first launch of the application
+    func isFirstApplicationLaunch() -> Bool {
         if !UserDefaults.standard.bool(forKey: "isApplicationLaunched") {
             UserDefaults.standard.set(true, forKey: "isApplicationLaunched")
             return false
@@ -26,14 +26,14 @@ extension SampleLoadingStrategy {
 }
 
 class LoadingSampleBoard: SampleLoadingStrategy {
-    var coreDataStack: CoreDataStack!
+    var coreDataStack: CoreDataStack?
     
     init(stack: CoreDataStack) {
         coreDataStack = stack
     }
     
     func load(data: NSArray) {
-        guard isApplicationLaunched() == false else {
+        guard let coreDataStack = coreDataStack, isFirstApplicationLaunch() == false else {
             return
         }
         
@@ -50,14 +50,14 @@ class LoadingSampleBoard: SampleLoadingStrategy {
 }
 
 class LoadingSampleNote: SampleLoadingStrategy {
-    var coreDataStack: CoreDataStack!
+    var coreDataStack: CoreDataStack?
     
     init(stack: CoreDataStack) {
         coreDataStack = stack
     }
     
     func load(data: NSArray) {
-        guard isApplicationLaunched() == false else {
+        guard let coreDataStack = coreDataStack, isFirstApplicationLaunch() == false else {
             return
         }
         
@@ -65,6 +65,18 @@ class LoadingSampleNote: SampleLoadingStrategy {
             
         }
         coreDataStack.saveContext()
+    }
+}
+
+class LoadingSampleSettings: SampleLoadingStrategy {
+    func load(data: NSArray) {
+        guard isFirstApplicationLaunch() == false else {
+            return
+        }
+        
+        for row in data {
+            
+        }
     }
 }
 

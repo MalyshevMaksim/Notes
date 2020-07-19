@@ -11,42 +11,60 @@ import CoreData
 import UIKit
 
 protocol SampleLoadingStrategy {
-    var managedContext: NSManagedObjectContext! { get }
+    var coreDataStack: CoreDataStack! { get }
     func load(data: NSArray)
 }
 
+extension SampleLoadingStrategy {
+    func isApplicationLaunched() -> Bool {
+        if !UserDefaults.standard.bool(forKey: "isApplicationLaunched") {
+            UserDefaults.standard.set(true, forKey: "isApplicationLaunched")
+            return false
+        }
+        return true
+    }
+}
+
 class LoadingSampleBoard: SampleLoadingStrategy {
-    var managedContext: NSManagedObjectContext!
+    var coreDataStack: CoreDataStack!
     
-    init(context: NSManagedObjectContext) {
-        managedContext = context
+    init(stack: CoreDataStack) {
+        coreDataStack = stack
     }
     
     func load(data: NSArray) {
+        guard isApplicationLaunched() == false else {
+            return
+        }
+        
         for board in data {
             let boardDictionary = board as! [String : Any]
-            let board = Board(context: managedContext)
+            let board = Board(context: coreDataStack.managedContext)
             board.title = boardDictionary["title"] as? String
             board.numberOfNotes = boardDictionary["numberOfNotes"] as! Int16
             board.iconName = boardDictionary["iconName"] as? String
             board.tintColor = UIColor.color(dict: boardDictionary["tintColor"] as! [String : Any])!
         }
-        try! managedContext.save()
+        coreDataStack.saveContext()
     }
 }
 
 class LoadingSampleNote: SampleLoadingStrategy {
-    var managedContext: NSManagedObjectContext!
+    var coreDataStack: CoreDataStack!
     
-    init(context: NSManagedObjectContext) {
-        managedContext = context
+    init(stack: CoreDataStack) {
+        coreDataStack = stack
     }
     
     func load(data: NSArray) {
+        guard isApplicationLaunched() == false else {
+            return
+        }
+        
         for note in data {
             
         }
-        try! managedContext.save()
+        coreDataStack.saveContext()
     }
 }
 

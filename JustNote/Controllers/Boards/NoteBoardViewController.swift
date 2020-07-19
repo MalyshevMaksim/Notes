@@ -16,18 +16,14 @@ struct ElementKind {
 
 class NoteBoardViewController: UICollectionViewController {
     var delegate: NoteBoardDelegate!
-    
-    private lazy var managedContext: NSManagedObjectContext = {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        return appDelegate!.managedContext
-    }()
+    var coreDataStack = CoreDataStack(modelName: "Note")
     
     private lazy var fetchResultController: NSFetchedResultsController<Board> = {
         let fetchRequest: NSFetchRequest<Board> = Board.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: #keyPath(Board.numberOfNotes), ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedContext, sectionNameKeyPath: nil, cacheName: nil)
         performFetch(controller)
         return controller
     }()
@@ -45,16 +41,11 @@ class NoteBoardViewController: UICollectionViewController {
         title = "Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        loadSampleData(loader: SampleDataLoader(strategy: LoadingSampleBoard(context: managedContext)))
+        let loader = SampleDataLoader(strategy: LoadingSampleBoard(stack: coreDataStack))
+        loader.loadData(path: "SampleFolders", type: "plist")
+        
         configureController()
         configureCollectionView()
-    }
-    
-    private func loadSampleData(loader: SampleDataLoader) {
-        // If the application is launched for the first time
-        if !loader.isApplicationLaunched() {
-            loader.loadData(path: "SampleFolders", type: "plist")
-        }
     }
     
     private func configureController() {

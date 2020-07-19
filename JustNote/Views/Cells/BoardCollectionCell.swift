@@ -43,7 +43,7 @@ class BoardCollectionCell: UICollectionViewCell {
     }
     
     private func configureTextOverlay() {
-        textOverlay.alpha = 0.05
+        textOverlay.alpha = 0.03
         textOverlay.layer.cornerRadius = 10
         textOverlay.translatesAutoresizingMaskIntoConstraints = false
     }

@@ -21,10 +21,12 @@ class NoteCell: UITableViewCell {
         configureNoteBody()
         configureLastModifedDate()
         
-        //noteBody.text = model.text
+        noteBody.text = model.body
         noteTitle.text = model.title
-        //lastModifedDate.text = model.date
+        lastModifedDate.text = "\(model.date!)"
         //tagStack = model.tagStack
+        backgroundColor = .secondarySystemBackground
+        
     }
     
     private func configureNoteTitle() {

@@ -16,9 +16,9 @@ protocol SampleLoadingStrategy {
 
 extension SampleLoadingStrategy {
     // Sample data loading should be done only at the first launch of the application
-    func isFirstApplicationLaunch() -> Bool {
-        if !UserDefaults.standard.bool(forKey: "isApplicationLaunched") {
-            UserDefaults.standard.set(true, forKey: "isApplicationLaunched")
+    func isFirstApplicationLaunch(key: String) -> Bool {
+        if !UserDefaults.standard.bool(forKey: key) {
+            UserDefaults.standard.set(true, forKey: key)
             return false
         }
         return true
@@ -33,7 +33,7 @@ class LoadingSampleBoard: SampleLoadingStrategy {
     }
     
     func load(data: NSArray) {
-        guard let coreDataStack = coreDataStack, isFirstApplicationLaunch() == false else {
+        guard let coreDataStack = coreDataStack, isFirstApplicationLaunch(key: "Boards") == false else {
             return
         }
         
@@ -57,26 +57,18 @@ class LoadingSampleNote: SampleLoadingStrategy {
     }
     
     func load(data: NSArray) {
-        guard let coreDataStack = coreDataStack, isFirstApplicationLaunch() == false else {
+        guard let coreDataStack = coreDataStack, isFirstApplicationLaunch(key: "Notes") == false else {
             return
         }
         
         for note in data {
-            
+            let noteDictionary = note as! [String : Any]
+            let note = Note(context: coreDataStack.managedContext)
+            note.title = noteDictionary["title"] as? String
+            note.body = noteDictionary["body"] as? String
+            note.date = noteDictionary["date"] as? Date
         }
         coreDataStack.saveContext()
-    }
-}
-
-class LoadingSampleSettings: SampleLoadingStrategy {
-    func load(data: NSArray) {
-        guard isFirstApplicationLaunch() == false else {
-            return
-        }
-        
-        for row in data {
-            
-        }
     }
 }
 

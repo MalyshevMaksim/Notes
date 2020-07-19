@@ -16,7 +16,13 @@ struct ElementKind {
 
 class NoteBoardViewController: UICollectionViewController {
     var delegate: NoteBoardDelegate!
-    var coreDataStack = CoreDataStack(modelName: "Note")
+    
+    lazy var coreDataStack: CoreDataStack = {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Failed to get data stack")
+        }
+        return appDelegate.codeDataStack
+    }()
     
     private lazy var fetchResultController: NSFetchedResultsController<Board> = {
         let fetchRequest: NSFetchRequest<Board> = Board.fetchRequest()
@@ -57,7 +63,7 @@ class NoteBoardViewController: UICollectionViewController {
     
     private func configureCollectionView() {
         collectionView.alwaysBounceVertical = true
-        collectionView.backgroundColor = .none
+        collectionView.backgroundColor = .secondarySystemBackground
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         configureHierarchy()

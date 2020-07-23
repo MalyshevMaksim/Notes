@@ -21,9 +21,15 @@ class NoteCell: UITableViewCell {
         configureNoteBody()
         configureLastModifedDate()
         
+        let dataFormatter: DateFormatter = {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d, h:mm a"
+            return dateFormatter
+        }()
+        
         noteBody.text = model.body
         noteTitle.text = model.title
-        lastModifedDate.text = "\(model.date!)"
+        lastModifedDate.text = dataFormatter.string(from: model.date!)
         //tagStack = model.tagStack
         backgroundColor = .secondarySystemBackground
         

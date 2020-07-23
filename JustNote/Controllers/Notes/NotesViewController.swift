@@ -16,7 +16,7 @@ class NotesViewController: UITableViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Failed to get data stack")
         }
-        return appDelegate.codeDataStack
+        return appDelegate.coreDataStack
     }()
     
     private lazy var fetchResultController: NSFetchedResultsController<Note> = {

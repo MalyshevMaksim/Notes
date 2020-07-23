@@ -10,8 +10,7 @@ import Foundation
 import CoreData
 
 class SampleDataLoader {
-    private var loadingStrategy: SampleLoadingStrategy!
-    private var managedContext: NSManagedObjectContext?
+    private var loadingStrategy: SampleLoadingStrategy
     
     init(strategy: SampleLoadingStrategy) {
         loadingStrategy = strategy

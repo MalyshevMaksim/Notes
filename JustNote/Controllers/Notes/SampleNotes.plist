@@ -10,5 +10,21 @@
 		<key>title</key>
 		<string>Welcome to Application!</string>
 	</dict>
+	<dict>
+		<key>date</key>
+		<date>2020-07-19T16:24:26Z</date>
+		<key>body</key>
+		<string>This is a demo note. Change the default text for this note and save your changes. Just try it, it&apos;s very easy!</string>
+		<key>title</key>
+		<string>Welcome to Application!</string>
+	</dict>
+	<dict>
+		<key>date</key>
+		<date>2020-07-19T16:24:26Z</date>
+		<key>body</key>
+		<string>This is a demo note. Change the default text for this note and save your changes. Just try it, it&apos;s very easy!</string>
+		<key>title</key>
+		<string>Welcome to Application!</string>
+	</dict>
 </array>
 </plist>

@@ -11,21 +11,7 @@ import UIKit
 class BoardCollectionCell: UICollectionViewCell {
     static var reuseIdentifier = "NotesCollectionCell"
     
-    let background = UIView()
-    let textOverlay = UIView()
-    let title = UILabel()
-    let subtitle = UILabel()
-    let overlay = UIView()
-    let iconCell = UIImageView()
-    
     func configure(with model: Board) {
-        configureBackground()
-        configureTextOverlay()
-        configureTitle()
-        configureSubtitle()
-        configureOverlay()
-        configureIconCell()
-        
         title.text = model.title
         subtitle.text = "\(model.numberOfNotes) notes"
         overlay.backgroundColor = model.tintColor
@@ -33,43 +19,55 @@ class BoardCollectionCell: UICollectionViewCell {
         textOverlay.backgroundColor = model.tintColor
     }
     
-    private func configureBackground() {
+    private lazy var background: UIView = {
+        let background = UIView()
         background.backgroundColor = .tertiarySystemBackground
         background.layer.cornerRadius = 15
         background.layer.shadowOpacity = 0.1
         background.layer.shadowRadius = 8
         background.alpha = 0.65
         background.translatesAutoresizingMaskIntoConstraints = false
-    }
+        return background
+    }()
     
-    private func configureTextOverlay() {
+    private lazy var textOverlay: UIView = {
+        let textOverlay = UIView()
         textOverlay.alpha = 0.03
         textOverlay.layer.cornerRadius = 10
         textOverlay.translatesAutoresizingMaskIntoConstraints = false
-    }
+        return textOverlay
+    }()
 
-    private func configureTitle() {
+    private lazy var title: UILabel = {
+        let title = UILabel()
         title.font = .boldSystemFont(ofSize: 16)
         title.translatesAutoresizingMaskIntoConstraints = false
-    }
+        return title
+    }()
     
-    private func configureSubtitle() {
+    private lazy var subtitle: UILabel = {
+        let subtitle = UILabel()
         subtitle.font = UIFont.preferredFont(forTextStyle: .footnote)
         subtitle.textColor = .secondaryLabel
         subtitle.translatesAutoresizingMaskIntoConstraints = false
-    }
+        return subtitle
+    }()
     
-    private func configureOverlay() {
+    private lazy var overlay: UIView = {
+        let overlay = UIView()
         overlay.layer.masksToBounds = false
         overlay.layer.cornerRadius = 10
         overlay.clipsToBounds = true
         overlay.translatesAutoresizingMaskIntoConstraints = false
-    }
+        return overlay
+    }()
     
-    private func configureIconCell() {
+    private lazy var iconCell: UIImageView = {
+        let iconCell = UIImageView()
         iconCell.translatesAutoresizingMaskIntoConstraints = false
         iconCell.tintColor = .white
-    }
+        return iconCell
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

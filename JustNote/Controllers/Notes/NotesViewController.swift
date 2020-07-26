@@ -52,10 +52,10 @@ class NotesViewController: UITableViewController {
     private func configureTableView() {
         tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.reuseIdentifier)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        delegate = NotesViewDelegate(parentViewController: navigationController!)
-        tableView.delegate = delegate
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.backgroundColor = .secondarySystemBackground
+        delegate = NotesViewDelegate(parentViewController: navigationController!)
+        tableView.delegate = delegate
     }
     
     private func configureController() {

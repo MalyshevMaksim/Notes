@@ -10,48 +10,45 @@ import UIKit
 
 class NoteCell: UITableViewCell {
     static var reuseIdentifier = "NoteCell"
-    
     var tagStack = UIStackView()
-    let noteTitle = UILabel()
-    let noteBody = UILabel()
-    let lastModifedDate = UILabel()
     
     func configure(with model: Note) {
-        configureNoteTitle()
-        configureNoteBody()
-        configureLastModifedDate()
-        
-        let dataFormatter: DateFormatter = {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMM d, h:mm a"
-            return dateFormatter
-        }()
-        
-        noteBody.text = model.body
-        noteTitle.text = model.title
-        lastModifedDate.text = dataFormatter.string(from: model.date!)
+        title.text = model.title
+        body.text = model.body
+        lastModifiedDate.text = dateFormatter.string(from: model.date!)
         //tagStack = model.tagStack
         backgroundColor = .secondarySystemBackground
-        
     }
     
-    private func configureNoteTitle() {
+    private lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, h:mm a"
+        return dateFormatter
+    }()
+    
+    private lazy var title: UILabel = {
+        let noteTitle = UILabel()
         noteTitle.font = UIFont.boldSystemFont(ofSize: 20)
         noteTitle.translatesAutoresizingMaskIntoConstraints = false
-    }
+        return noteTitle
+    }()
     
-    private func configureNoteBody() {
+    private lazy var body: UILabel = {
+        let noteBody = UILabel()
         noteBody.font = UIFont.preferredFont(forTextStyle: .callout)
         noteBody.translatesAutoresizingMaskIntoConstraints = false
         noteBody.lineBreakMode = .byTruncatingTail
         noteBody.numberOfLines = 2
-    }
+        return noteBody
+    }()
     
-    private func configureLastModifedDate() {
-        lastModifedDate.font = UIFont.preferredFont(forTextStyle: .footnote)
-        lastModifedDate.textColor = .secondaryLabel
-        lastModifedDate.translatesAutoresizingMaskIntoConstraints = false
-    }
+    private lazy var lastModifiedDate: UILabel = {
+        let date = UILabel()
+        date.font = UIFont.preferredFont(forTextStyle: .footnote)
+        date.textColor = .secondaryLabel
+        date.translatesAutoresizingMaskIntoConstraints = false
+        return date
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -64,9 +61,9 @@ class NoteCell: UITableViewCell {
     
     private func setupCellViews() {
         contentView.addSubview(tagStack)
-        contentView.addSubview(noteTitle)
-        contentView.addSubview(noteBody)
-        contentView.addSubview(lastModifedDate)
+        contentView.addSubview(title)
+        contentView.addSubview(body)
+        contentView.addSubview(lastModifiedDate)
     }
     
     private func setupCell() {
@@ -78,32 +75,19 @@ class NoteCell: UITableViewCell {
             tagStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalInset),
             tagStack.heightAnchor.constraint(equalToConstant: 20),
             
-            noteTitle.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: tagStack.lastBaselineAnchor, multiplier: 1),
-            noteTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalInset),
-            noteTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            title.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: tagStack.lastBaselineAnchor, multiplier: 1),
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalInset),
+            title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            noteBody.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: noteTitle.lastBaselineAnchor, multiplier: 1.2),
-            noteBody.leadingAnchor.constraint(equalTo: noteTitle.leadingAnchor),
-            noteBody.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalInset),
+            body.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: title.lastBaselineAnchor, multiplier: 1.2),
+            body.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+            body.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalInset),
             
-            lastModifedDate.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: noteBody.lastBaselineAnchor, multiplier: 1.1),
-            lastModifedDate.leadingAnchor.constraint(equalTo: noteTitle.leadingAnchor),
-            lastModifedDate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalInset),
+            lastModifiedDate.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: body.lastBaselineAnchor, multiplier: 1.1),
+            lastModifiedDate.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+            lastModifiedDate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalInset),
             
-            contentView.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: lastModifedDate.lastBaselineAnchor, multiplier: 0.5)
+            contentView.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: lastModifiedDate.lastBaselineAnchor, multiplier: 0.5)
         ])
-    }
-}
-
-extension UIStackView {
-    func removeAllArrangedSubviews() {
-        arrangedSubviews.forEach { view in
-            removeView(view: view)
-        }
-    }
-    
-    private func removeView(view: UIView) {
-        removeArrangedSubview(view)
-        view.removeFromSuperview()
     }
 }

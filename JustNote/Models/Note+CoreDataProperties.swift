@@ -21,5 +21,4 @@ extension Note {
     @NSManaged public var date: Date?
     @NSManaged public var title: String?
     @NSManaged public var tags: NSObject?
-
 }

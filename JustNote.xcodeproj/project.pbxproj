@@ -7,13 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B5022EA024C4962B008A9B8D /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5022E9C24C4962B008A9B8D /* Note+CoreDataClass.swift */; };
-		B5022EA124C4962B008A9B8D /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5022E9D24C4962B008A9B8D /* Note+CoreDataProperties.swift */; };
-		B5022EA224C4962B008A9B8D /* Board+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5022E9E24C4962B008A9B8D /* Board+CoreDataClass.swift */; };
-		B5022EA324C4962B008A9B8D /* Board+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5022E9F24C4962B008A9B8D /* Board+CoreDataProperties.swift */; };
 		B5022EA524C4A8C4008A9B8D /* SampleNotes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5022EA424C4A8C4008A9B8D /* SampleNotes.plist */; };
 		B5022EA824C4B937008A9B8D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5022EA724C4B937008A9B8D /* UIColor.swift */; };
-		B53B0352249AE4020050E603 /* SettingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B0351249AE4020050E603 /* SettingRow.swift */; };
 		B53E36792497E69D0008DF71 /* NoteBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E36782497E69D0008DF71 /* NoteBoardDelegate.swift */; };
 		B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3624965BAC002F2865 /* AppDelegate.swift */; };
 		B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3824965BAC002F2865 /* SceneDelegate.swift */; };
@@ -25,7 +20,12 @@
 		B5B70A4824C357BD005512AF /* SampleDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B70A4724C357BD005512AF /* SampleDataLoader.swift */; };
 		B5B70A4A24C357E5005512AF /* SampleLoadingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B70A4924C357E5005512AF /* SampleLoadingStrategy.swift */; };
 		B5B70A4C24C3CF1E005512AF /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B70A4B24C3CF1E005512AF /* CoreDataStack.swift */; };
-		B5C6874724ABEF7D00E2ED83 /* TagStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6874624ABEF7D00E2ED83 /* TagStackView.swift */; };
+		B5C18BC424CE1C55008551C1 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C18BBE24CE1C54008551C1 /* Note+CoreDataProperties.swift */; };
+		B5C18BC524CE1C55008551C1 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C18BBF24CE1C54008551C1 /* Tag+CoreDataProperties.swift */; };
+		B5C18BC624CE1C55008551C1 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C18BC024CE1C54008551C1 /* Tag+CoreDataClass.swift */; };
+		B5C18BC724CE1C55008551C1 /* Board+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C18BC124CE1C54008551C1 /* Board+CoreDataClass.swift */; };
+		B5C18BC824CE1C55008551C1 /* Board+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C18BC224CE1C55008551C1 /* Board+CoreDataProperties.swift */; };
+		B5C18BC924CE1C55008551C1 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C18BC324CE1C55008551C1 /* Note+CoreDataClass.swift */; };
 		B5D3341524C2059F00E1AB30 /* Note.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5D3341324C2059F00E1AB30 /* Note.xcdatamodeld */; };
 		B5D3342324C20A4200E1AB30 /* SampleBoards.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5D3342224C20A4200E1AB30 /* SampleBoards.plist */; };
 		B5E65886249BF1F100F4C6C3 /* GridBoardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E65885249BF1F100F4C6C3 /* GridBoardLayout.swift */; };
@@ -43,13 +43,8 @@
 		0442A30BE583F31C3733049C /* Pods-JustNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustNote.release.xcconfig"; path = "Target Support Files/Pods-JustNote/Pods-JustNote.release.xcconfig"; sourceTree = "<group>"; };
 		0D27CA523F25CBA6481DCA73 /* Pods-JustNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustNote.debug.xcconfig"; path = "Target Support Files/Pods-JustNote/Pods-JustNote.debug.xcconfig"; sourceTree = "<group>"; };
 		8EC96E3FAFE73ED42400FB22 /* Pods_JustNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5022E9C24C4962B008A9B8D /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B5022E9D24C4962B008A9B8D /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B5022E9E24C4962B008A9B8D /* Board+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B5022E9F24C4962B008A9B8D /* Board+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B5022EA424C4A8C4008A9B8D /* SampleNotes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SampleNotes.plist; sourceTree = "<group>"; };
 		B5022EA724C4B937008A9B8D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		B53B0351249AE4020050E603 /* SettingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRow.swift; sourceTree = "<group>"; };
 		B53E36782497E69D0008DF71 /* NoteBoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBoardDelegate.swift; sourceTree = "<group>"; };
 		B5893B3324965BAC002F2865 /* JustNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5893B3624965BAC002F2865 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +58,12 @@
 		B5B70A4724C357BD005512AF /* SampleDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDataLoader.swift; sourceTree = "<group>"; };
 		B5B70A4924C357E5005512AF /* SampleLoadingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLoadingStrategy.swift; sourceTree = "<group>"; };
 		B5B70A4B24C3CF1E005512AF /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		B5C6874624ABEF7D00E2ED83 /* TagStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStackView.swift; sourceTree = "<group>"; };
+		B5C18BBE24CE1C54008551C1 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B5C18BBF24CE1C54008551C1 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B5C18BC024CE1C54008551C1 /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B5C18BC124CE1C54008551C1 /* Board+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B5C18BC224CE1C55008551C1 /* Board+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B5C18BC324CE1C55008551C1 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B5D3341424C2059F00E1AB30 /* Note.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Note.xcdatamodel; sourceTree = "<group>"; };
 		B5D3342224C20A4200E1AB30 /* SampleBoards.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SampleBoards.plist; sourceTree = "<group>"; };
 		B5E65885249BF1F100F4C6C3 /* GridBoardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBoardLayout.swift; sourceTree = "<group>"; };
@@ -142,8 +142,6 @@
 				B5893B4F2496722F002F2865 /* Views */,
 				B5893B4E24966E7B002F2865 /* Controllers */,
 				B5893B3624965BAC002F2865 /* AppDelegate.swift */,
-				B5B70A4724C357BD005512AF /* SampleDataLoader.swift */,
-				B5B70A4924C357E5005512AF /* SampleLoadingStrategy.swift */,
 				B5B70A4B24C3CF1E005512AF /* CoreDataStack.swift */,
 				B5D3341324C2059F00E1AB30 /* Note.xcdatamodeld */,
 				B5893B3824965BAC002F2865 /* SceneDelegate.swift */,
@@ -158,6 +156,8 @@
 		B5893B4E24966E7B002F2865 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5B70A4724C357BD005512AF /* SampleDataLoader.swift */,
+				B5B70A4924C357E5005512AF /* SampleLoadingStrategy.swift */,
 				B53E36762497CC2B0008DF71 /* Boards */,
 				B5E658B3249C87B900F4C6C3 /* Notes */,
 			);
@@ -170,7 +170,6 @@
 				B5E995BB24A3D4F2003C6211 /* Headers */,
 				B5E995BA24A3CD63003C6211 /* Cells */,
 				B5E658BA249ED5A700F4C6C3 /* TagView.swift */,
-				B5C6874624ABEF7D00E2ED83 /* TagStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,11 +177,12 @@
 		B5893B542496B5B0002F2865 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B5022E9C24C4962B008A9B8D /* Note+CoreDataClass.swift */,
-				B5022E9D24C4962B008A9B8D /* Note+CoreDataProperties.swift */,
-				B5022E9E24C4962B008A9B8D /* Board+CoreDataClass.swift */,
-				B5022E9F24C4962B008A9B8D /* Board+CoreDataProperties.swift */,
-				B53B0351249AE4020050E603 /* SettingRow.swift */,
+				B5C18BC024CE1C54008551C1 /* Tag+CoreDataClass.swift */,
+				B5C18BBF24CE1C54008551C1 /* Tag+CoreDataProperties.swift */,
+				B5C18BC124CE1C54008551C1 /* Board+CoreDataClass.swift */,
+				B5C18BC224CE1C55008551C1 /* Board+CoreDataProperties.swift */,
+				B5C18BC324CE1C55008551C1 /* Note+CoreDataClass.swift */,
+				B5C18BBE24CE1C54008551C1 /* Note+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -349,28 +349,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5022EA224C4962B008A9B8D /* Board+CoreDataClass.swift in Sources */,
 				B5022EA824C4B937008A9B8D /* UIColor.swift in Sources */,
 				B53E36792497E69D0008DF71 /* NoteBoardDelegate.swift in Sources */,
-				B5022EA124C4962B008A9B8D /* Note+CoreDataProperties.swift in Sources */,
 				B5E658B9249CB41400F4C6C3 /* NotesDelegate.swift in Sources */,
 				B5E65888249BF24000F4C6C3 /* HeaderGridLayout.swift in Sources */,
 				B5893B5124967249002F2865 /* BoardCollectionCell.swift in Sources */,
 				B5E658BB249ED5A700F4C6C3 /* TagView.swift in Sources */,
-				B5022EA024C4962B008A9B8D /* Note+CoreDataClass.swift in Sources */,
+				B5C18BC524CE1C55008551C1 /* Tag+CoreDataProperties.swift in Sources */,
 				B5E6588A249BF61900F4C6C3 /* TableBoardLayout.swift in Sources */,
-				B5022EA324C4962B008A9B8D /* Board+CoreDataProperties.swift in Sources */,
 				B5E658BD249F43A300F4C6C3 /* HeaderNotes.swift in Sources */,
+				B5C18BC824CE1C55008551C1 /* Board+CoreDataProperties.swift in Sources */,
 				B5B70A4A24C357E5005512AF /* SampleLoadingStrategy.swift in Sources */,
 				B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */,
 				B5D3341524C2059F00E1AB30 /* Note.xcdatamodeld in Sources */,
 				B5893B3B24965BAC002F2865 /* NoteBoardViewController.swift in Sources */,
-				B53B0352249AE4020050E603 /* SettingRow.swift in Sources */,
-				B5C6874724ABEF7D00E2ED83 /* TagStackView.swift in Sources */,
+				B5C18BC624CE1C55008551C1 /* Tag+CoreDataClass.swift in Sources */,
+				B5C18BC724CE1C55008551C1 /* Board+CoreDataClass.swift in Sources */,
+				B5C18BC424CE1C55008551C1 /* Note+CoreDataProperties.swift in Sources */,
 				B5B70A4C24C3CF1E005512AF /* CoreDataStack.swift in Sources */,
 				B5E65886249BF1F100F4C6C3 /* GridBoardLayout.swift in Sources */,
 				B5E658B2249C875500F4C6C3 /* NotesViewController.swift in Sources */,
 				B5B70A4824C357BD005512AF /* SampleDataLoader.swift in Sources */,
+				B5C18BC924CE1C55008551C1 /* Note+CoreDataClass.swift in Sources */,
 				B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */,
 				B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */,
 			);

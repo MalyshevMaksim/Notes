@@ -16,7 +16,7 @@ protocol SampleLoadingStrategy {
 
 extension SampleLoadingStrategy {
     // Sample data loading should be done only at the first launch of the application
-    func isFirstApplicationLaunch(key: String) -> Bool {
+    func isFirstAppear(forKey key: String) -> Bool {
         if !UserDefaults.standard.bool(forKey: key) {
             UserDefaults.standard.set(true, forKey: key)
             return false
@@ -33,7 +33,7 @@ class LoadingSampleBoard: SampleLoadingStrategy {
     }
     
     func load(data: NSArray) {
-        guard let coreDataStack = coreDataStack, isFirstApplicationLaunch(key: "Boards") == false else {
+        guard let coreDataStack = coreDataStack, isFirstAppear(forKey: "Boards") == false else {
             return
         }
         
@@ -57,7 +57,7 @@ class LoadingSampleNote: SampleLoadingStrategy {
     }
     
     func load(data: NSArray) {
-        guard let coreDataStack = coreDataStack, isFirstApplicationLaunch(key: "Notes") == false else {
+        guard let coreDataStack = coreDataStack, isFirstAppear(forKey: "Notes") == false else {
             return
         }
         
@@ -67,6 +67,18 @@ class LoadingSampleNote: SampleLoadingStrategy {
             note.title = noteDictionary["title"] as? String
             note.body = noteDictionary["body"] as? String
             note.date = noteDictionary["date"] as? Date
+            
+            
+            let favoriteTag = Tag(context: coreDataStack.managedContext)
+            favoriteTag.color = .systemOrange
+            favoriteTag.text = "Favorite"
+            
+            let pinnedTag = Tag(context: coreDataStack.managedContext)
+            pinnedTag.color = .systemBlue
+            pinnedTag.text = "Pinned"
+            
+            note.addToTags(pinnedTag)
+            note.addToTags(favoriteTag)
         }
         coreDataStack.saveContext()
     }

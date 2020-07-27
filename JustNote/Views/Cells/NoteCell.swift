@@ -10,20 +10,37 @@ import UIKit
 
 class NoteCell: UITableViewCell {
     static var reuseIdentifier = "NoteCell"
-    var tagStack = UIStackView()
     
     func configure(with model: Note) {
+        configureTagStack(with: model)
         title.text = model.title
         body.text = model.body
         lastModifiedDate.text = dateFormatter.string(from: model.date!)
-        //tagStack = model.tagStack
         backgroundColor = .secondarySystemBackground
     }
     
-    private lazy var dateFormatter: DateFormatter = {
+    private func configureTagStack(with model: Note) {
+        if let tags = model.tags?.allObjects {
+            for tag in tags {
+                let tagView = TagView()
+                tagView.configure(with: tag as! Tag)
+                tagStack.addArrangedSubview(tagView)
+            }
+        }
+    }
+    
+    private var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d, h:mm a"
         return dateFormatter
+    }
+    
+    private lazy var tagStack: UIStackView = {
+        let tags = UIStackView()
+        tags.spacing = 6
+        tags.axis = .horizontal
+        tags.translatesAutoresizingMaskIntoConstraints = false
+        return tags
     }()
     
     private lazy var title: UILabel = {

@@ -8,17 +8,15 @@
 
 import UIKit
 
-enum TagType: String {
-    case favorite = "Favorite"
-    case protected = "Protected"
-}
-
 class TagView: UIView {
-    var tagType: TagType!
+    func configure(with model: Tag) {
+        text.text = model.text
+        backgroundColor = model.color
+        self.layer.cornerRadius = 3
+    }
     
     var text: UILabel = {
         let label = UILabel()
-        label.text = "123"
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -27,7 +25,6 @@ class TagView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .orange
         setupCell()
     }
 

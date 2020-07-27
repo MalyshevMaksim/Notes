@@ -1,9 +1,8 @@
 //
 //  Board+CoreDataProperties.swift
-//  JustNote
+//  
 //
-//  Created by Малышев Максим Алексеевич on 19.07.2020.
-//  Copyright © 2020 Максим. All rights reserved.
+//  Created by Малышев Максим Алексеевич on 7/26/20.
 //
 //
 
@@ -22,5 +21,23 @@ extension Board {
     @NSManaged public var numberOfNotes: Int16
     @NSManaged public var tintColor: UIColor?
     @NSManaged public var title: String?
+    @NSManaged public var notes: NSSet?
+
+}
+
+// MARK: Generated accessors for notes
+extension Board {
+
+    @objc(addNotesObject:)
+    @NSManaged public func addToNotes(_ value: Note)
+
+    @objc(removeNotesObject:)
+    @NSManaged public func removeFromNotes(_ value: Note)
+
+    @objc(addNotes:)
+    @NSManaged public func addToNotes(_ values: NSSet)
+
+    @objc(removeNotes:)
+    @NSManaged public func removeFromNotes(_ values: NSSet)
 
 }

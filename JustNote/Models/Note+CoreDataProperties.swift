@@ -1,9 +1,8 @@
 //
 //  Note+CoreDataProperties.swift
-//  JustNote
+//  
 //
-//  Created by Малышев Максим Алексеевич on 19.07.2020.
-//  Copyright © 2020 Максим. All rights reserved.
+//  Created by Малышев Максим Алексеевич on 7/26/20.
 //
 //
 
@@ -20,5 +19,27 @@ extension Note {
     @NSManaged public var body: String?
     @NSManaged public var date: Date?
     @NSManaged public var title: String?
-    @NSManaged public var tags: NSObject?
+    @NSManaged public var isLocked: Bool
+    @NSManaged public var isFavorite: Bool
+    @NSManaged public var isPinned: Bool
+    @NSManaged public var tags: NSSet?
+    @NSManaged public var board: Board?
+
+}
+
+// MARK: Generated accessors for tags
+extension Note {
+
+    @objc(addTagsObject:)
+    @NSManaged public func addToTags(_ value: Tag)
+
+    @objc(removeTagsObject:)
+    @NSManaged public func removeFromTags(_ value: Tag)
+
+    @objc(addTags:)
+    @NSManaged public func addToTags(_ values: NSSet)
+
+    @objc(removeTags:)
+    @NSManaged public func removeFromTags(_ values: NSSet)
+
 }

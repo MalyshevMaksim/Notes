@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17162" systemVersion="20A4300b" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="20A5323l" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Board" representedClassName="Board" syncable="YES">
         <attribute name="iconName" optional="YES" attributeType="String"/>
         <attribute name="isLocked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="numberOfNotes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="tintColor" optional="YES" attributeType="Transformable"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="board" inverseEntity="Note"/>
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="tags" optional="YES" attributeType="Transformable"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isLocked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isPinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Board" inverseName="notes" inverseEntity="Board"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="notes" inverseEntity="Tag"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="Transformable"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="notes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="tags" inverseEntity="Note"/>
     </entity>
     <elements>
-        <element name="Board" positionX="-63" positionY="-18" width="128" height="104"/>
-        <element name="Note" positionX="-63" positionY="18" width="128" height="89"/>
+        <element name="Board" positionX="-319.1326293945312" positionY="-208.5044860839844" width="128" height="133"/>
+        <element name="Note" positionX="-608.3275146484375" positionY="-146.1609497070312" width="128" height="163"/>
+        <element name="Tag" positionX="-320.991943359375" positionY="-62.02865600585938" width="128" height="88"/>
     </elements>
 </model>

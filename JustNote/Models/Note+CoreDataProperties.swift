@@ -24,7 +24,6 @@ extension Note {
     @NSManaged public var isPinned: Bool
     @NSManaged public var tags: NSSet?
     @NSManaged public var board: Board?
-
 }
 
 // MARK: Generated accessors for tags

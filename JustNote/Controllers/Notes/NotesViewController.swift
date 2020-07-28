@@ -42,8 +42,8 @@ class NotesViewController: UITableViewController {
         title = "Typed"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        let loader = SampleDataLoader(strategy: LoadingSampleNote(stack: coreDataStack))
-        loader.loadData(path: "SampleNotes", type: "plist")
+        let loader = SampleDataLoader(path: "SampleNotes", type: "plist")
+        loader.load(with: SampleNoteLoader(), to: coreDataStack)
         
         configureTableView()
         configureController()

@@ -10,17 +10,21 @@ import Foundation
 import CoreData
 
 class SampleDataLoader {
-    private var loadingStrategy: SampleLoadingStrategy
+    private var loader: SampleLoadingStrategy!
+    private var path: String
+    private var type: String
     
-    init(strategy: SampleLoadingStrategy) {
-        loadingStrategy = strategy
+    init(path: String, type: String) {
+        self.path = path
+        self.type = type
     }
     
-    func loadData(path: String, type: String) {
+    func load(with loader: SampleLoadingStrategy, to dataStack: CoreDataStack) {
         guard let filePath = Bundle.main.path(forResource: path, ofType: type),
               let loadedData = NSArray(contentsOfFile: filePath) else {
-            fatalError("Failed to load data")
+            fatalError("Failed to load data: file not found!")
         }
-        loadingStrategy.load(data: loadedData)
+        self.loader = loader
+        self.loader.load(data: loadedData, to: dataStack)
     }
 }

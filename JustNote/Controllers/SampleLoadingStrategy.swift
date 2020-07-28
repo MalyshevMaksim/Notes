@@ -11,11 +11,11 @@ import CoreData
 import UIKit
 
 protocol SampleLoadingStrategy {
-    func load(data: NSArray)
+    func load(data: NSArray, to dataStack: CoreDataStack)
 }
 
 extension SampleLoadingStrategy {
-    // Sample data loading should be done only at the first launch of the application
+    // Sample data should only be loaded at the first show
     func isFirstAppear(forKey key: String) -> Bool {
         if !UserDefaults.standard.bool(forKey: key) {
             UserDefaults.standard.set(true, forKey: key)
@@ -25,61 +25,57 @@ extension SampleLoadingStrategy {
     }
 }
 
-class LoadingSampleBoard: SampleLoadingStrategy {
-    var coreDataStack: CoreDataStack?
-    
-    init(stack: CoreDataStack) {
-        coreDataStack = stack
-    }
-    
-    func load(data: NSArray) {
-        guard let coreDataStack = coreDataStack, isFirstAppear(forKey: "Boards") == false else {
+class SampleBoardLoader: SampleLoadingStrategy {
+    func load(data: NSArray, to dataStack: CoreDataStack) {
+        guard isFirstAppear(forKey: "Boards") == false else {
             return
         }
         
         for board in data {
             let boardDictionary = board as! [String : Any]
-            let board = Board(context: coreDataStack.managedContext)
+            let board = Board(context: dataStack.managedContext)
             board.title = boardDictionary["title"] as? String
             board.numberOfNotes = boardDictionary["numberOfNotes"] as! Int16
             board.iconName = boardDictionary["iconName"] as? String
             board.tintColor = UIColor.color(dict: boardDictionary["tintColor"] as! [String : Any])!
         }
-        coreDataStack.saveContext()
+        dataStack.saveContext()
     }
 }
 
-class LoadingSampleNote: SampleLoadingStrategy {
-    var coreDataStack: CoreDataStack?
-    
-    init(stack: CoreDataStack) {
-        coreDataStack = stack
-    }
-    
-    func load(data: NSArray) {
-        guard let coreDataStack = coreDataStack, isFirstAppear(forKey: "Notes") == false else {
+class SampleNoteLoader: SampleLoadingStrategy {
+    func load(data: NSArray, to dataStack: CoreDataStack) {
+        guard isFirstAppear(forKey: "Notes") == false else {
             return
         }
         
         for note in data {
             let noteDictionary = note as! [String : Any]
-            let note = Note(context: coreDataStack.managedContext)
+            let note = Note(context: dataStack.managedContext)
             note.title = noteDictionary["title"] as? String
             note.body = noteDictionary["body"] as? String
             note.date = noteDictionary["date"] as? Date
+            note.isLocked = noteDictionary["isLocked"] as! Bool
+            note.isPinned = noteDictionary["isPinned"] as! Bool
+            note.isFavorite = noteDictionary["isFavorite"] as! Bool
             
-            
-            let favoriteTag = Tag(context: coreDataStack.managedContext)
-            favoriteTag.color = .systemOrange
-            favoriteTag.text = "Favorite"
-            
-            let pinnedTag = Tag(context: coreDataStack.managedContext)
-            pinnedTag.color = .systemBlue
-            pinnedTag.text = "Pinned"
-            
-            note.addToTags(pinnedTag)
-            note.addToTags(favoriteTag)
+            if note.isLocked == true {
+                note.addToTags(makeTag(color: .systemGreen, text: "Protected", dataStack: dataStack))
+            }
+            if note.isPinned == true {
+                note.addToTags(makeTag(color: .systemBlue, text: "Pinned", dataStack: dataStack))
+            }
+            if note.isFavorite == true {
+                note.addToTags(makeTag(color: .systemOrange, text: "Favorite", dataStack: dataStack))
+            }
         }
-        coreDataStack.saveContext()
+        dataStack.saveContext()
+    }
+    
+    private func makeTag(color: UIColor, text: String, dataStack: CoreDataStack) -> Tag {
+        let tag = Tag(context: dataStack.managedContext)
+        tag.color = color
+        tag.text = text
+        return tag
     }
 }

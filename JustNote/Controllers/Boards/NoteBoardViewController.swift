@@ -47,8 +47,8 @@ class NoteBoardViewController: UICollectionViewController {
         title = "Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        let loader = SampleDataLoader(strategy: LoadingSampleBoard(stack: coreDataStack))
-        loader.loadData(path: "SampleBoards", type: "plist")
+        let loader = SampleDataLoader(path: "SampleBoards", type: "plist")
+        loader.load(with: SampleBoardLoader(), to: coreDataStack)
         
         configureController()
         configureCollectionView()

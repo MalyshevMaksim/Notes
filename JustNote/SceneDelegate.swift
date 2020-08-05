@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         noteBoardsNavigationController.tabBarItem = UITabBarItem(title: "Notes", image: UIImage(systemName: "pencil.tip.crop.circle"), selectedImage: nil)
         
         let settingsNavigationController = UINavigationController(rootViewController: NoteBoardViewController(collectionViewLayout: setupGridLayout()))
-        settingsNavigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), selectedImage: nil)
+        settingsNavigationController.tabBarItem = UITabBarItem(title: "deleted", image: UIImage(systemName: "trash"), selectedImage: nil)
         
         return [noteBoardsNavigationController, settingsNavigationController]
     }

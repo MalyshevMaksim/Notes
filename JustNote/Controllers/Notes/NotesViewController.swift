@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 
 class NotesViewController: UITableViewController {
-    var delegate: NotesViewDelegate!
+    var delegate: NotesViewDelegate?
+    var key: String?
     
     lazy var coreDataStack: CoreDataStack = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -23,9 +24,11 @@ class NotesViewController: UITableViewController {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: #keyPath(Note.date), ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(Note.board.title), key!])
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedContext, sectionNameKeyPath: nil, cacheName: nil)
         performFetch(controller)
+        controller.delegate = self
         return controller
     }()
     
@@ -33,7 +36,7 @@ class NotesViewController: UITableViewController {
         do {
             try controller.performFetch()
         } catch {
-            fatalError("###\(#function): Failed to performFetch: \(error)")
+            fatalError("Failed to performFetch: \(error)")
         }
     }
     
@@ -54,8 +57,7 @@ class NotesViewController: UITableViewController {
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.backgroundColor = .secondarySystemBackground
-        delegate = NotesViewDelegate(parentViewController: navigationController!)
-        tableView.delegate = delegate
+        tableView.delegate = self
     }
     
     private func configureController() {
@@ -92,9 +94,84 @@ extension NotesViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.reuseIdentifier, for: indexPath) as? NoteCell else {
-            fatalError("Unable to dequeue")
+            fatalError("Error: Unable to dequeue")
         }
         cell.configure(with: fetchResultController.object(at: indexPath))
         return cell
+    }
+}
+
+extension NotesViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        default:
+            print("")
+        }
+    }
+}
+
+extension NotesViewController {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            return HeaderNotes(title: "Pinned", icon: "pin.fill", frame: CGRect())
+        default:
+            return HeaderNotes(title: "Swift", icon: "desktopcomputer", frame: CGRect())
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_: [UIMenuElement]) -> UIMenu? in
+                   
+                   let lockAction = UIAction(title: "Limit access", image: UIImage(systemName: "lock.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off, handler: { (UIAction) in
+                       print("locked")
+                   })
+                   
+                   let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (UIAction) in
+                       
+                           let alert = UIAlertController(title: "Warning", message: "Are you sure you want to delete the note?", preferredStyle: .actionSheet)
+                           
+                           alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: "Default action"), style: .destructive, handler: { _ in
+                   
+                               let note = self.fetchResultController.object(at: indexPath)
+                               self.coreDataStack.managedContext.delete(note)
+                               self.coreDataStack.saveContext()
+                           }))
+                       
+                           alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
+                           
+                           }))
+                    self.present(alert, animated: true, completion: nil)
+                       }
+                       
+                   let favoriteAction = UIAction(title: "Add to favorites", image: UIImage(systemName: "star.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { (UIAction) in
+                       print("Edit")
+                   }
+                   
+                   let pinnedAction = UIAction(title: "Pin", image: UIImage(systemName: "pin.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { (UIAction) in
+                       print("Edit")
+                   }
+                   
+                   return UIMenu(title: "", image: nil, identifier: nil, options: .init(), children: [pinnedAction, favoriteAction, lockAction, deleteAction])
+               }
     }
 }

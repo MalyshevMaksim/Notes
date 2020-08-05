@@ -25,7 +25,7 @@ class HeaderNotes: UIView {
     
     init(title: String, icon: String, frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .secondarySystemBackground
+        backgroundColor = .systemBackground
         text.text = title
         imageView.image = UIImage(systemName: icon)
         setupCell()

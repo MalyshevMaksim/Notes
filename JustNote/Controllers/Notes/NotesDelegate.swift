@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
 class NotesViewDelegate: NSObject, UITableViewDelegate {
     var parentViewController: UINavigationController!
+    var fetchResultController: NSFetchedResultsController<Note>!
+    var coreDataStack: CoreDataStack!
     
-    init(parentViewController: UINavigationController) {
+    init(navigationController: UINavigationController, fetchResultController: NSFetchedResultsController<Note>!, data: CoreDataStack) {
         super.init()
-        self.parentViewController = parentViewController
+        self.parentViewController = navigationController
+        self.fetchResultController = fetchResultController
+        self.coreDataStack = data
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -51,51 +56,5 @@ class NotesViewDelegate: NSObject, UITableViewDelegate {
         more.title = "More"
         
         return UISwipeActionsConfiguration(actions: [remove, pinned, more])
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 0:
-            return HeaderNotes(title: "Pinned", icon: "pin.fill", frame: CGRect())
-        default:
-            return HeaderNotes(title: "Swift", icon: "desktopcomputer", frame: CGRect())
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
-    
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_: [UIMenuElement]) -> UIMenu? in
-            
-            let lockAction = UIAction(title: "Limit access", image: UIImage(systemName: "lock.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off, handler: { (UIAction) in
-                print("locked")
-            })
-            
-            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (UIAction) in
-                
-                    let alert = UIAlertController(title: "Warning", message:
-                    "Are you sure you want to delete all notes in this folder? You can restore notes within 7 days after deletion.", preferredStyle: .actionSheet)
-                    
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: "Default action"), style: .destructive, handler: { _ in
-                        
-                    }))
-                
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { _ in
-                    
-                    }))
-                }
-                
-            let favoriteAction = UIAction(title: "Add to favorites", image: UIImage(systemName: "star.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { (UIAction) in
-                print("Edit")
-            }
-            
-            let pinnedAction = UIAction(title: "Pin", image: UIImage(systemName: "pin.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { (UIAction) in
-                print("Edit")
-            }
-            
-            return UIMenu(title: "", image: nil, identifier: nil, options: .init(), children: [pinnedAction, favoriteAction, lockAction, deleteAction])
-        }
     }
 }

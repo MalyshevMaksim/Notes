@@ -35,7 +35,6 @@ class SampleBoardLoader: SampleLoadingStrategy {
             let boardDictionary = board as! [String : Any]
             let board = Board(context: dataStack.managedContext)
             board.title = boardDictionary["title"] as? String
-            board.numberOfNotes = boardDictionary["numberOfNotes"] as! Int16
             board.iconName = boardDictionary["iconName"] as? String
             board.tintColor = UIColor.color(dict: boardDictionary["tintColor"] as! [String : Any])!
         }
@@ -48,6 +47,10 @@ class SampleNoteLoader: SampleLoadingStrategy {
         guard isFirstAppear(forKey: "Notes") == false else {
             return
         }
+        
+        let request: NSFetchRequest<Board> = Board.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(Board.title), "Typed"])
+        let result = try! dataStack.managedContext.fetch(request)
         
         for note in data {
             let noteDictionary = note as! [String : Any]
@@ -68,6 +71,7 @@ class SampleNoteLoader: SampleLoadingStrategy {
             if note.isFavorite == true {
                 note.addToTags(makeTag(color: .systemOrange, text: "Favorite", dataStack: dataStack))
             }
+            result.first?.addToNotes(note)
         }
         dataStack.saveContext()
     }

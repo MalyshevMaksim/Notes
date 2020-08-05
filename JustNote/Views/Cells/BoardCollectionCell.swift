@@ -13,7 +13,7 @@ class BoardCollectionCell: UICollectionViewCell {
     
     func configure(with model: Board) {
         title.text = model.title
-        subtitle.text = "\(model.numberOfNotes) notes"
+        subtitle.text = "\(model.notes?.count ?? 0) notes"
         overlay.backgroundColor = model.tintColor
         iconCell.image = UIImage(systemName: model.iconName!)
         textOverlay.backgroundColor = model.tintColor

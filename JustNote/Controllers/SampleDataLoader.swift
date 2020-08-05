@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 class SampleDataLoader {
-    private var loader: SampleLoadingStrategy!
     private var path: String
     private var type: String
     
@@ -24,7 +23,6 @@ class SampleDataLoader {
               let loadedData = NSArray(contentsOfFile: filePath) else {
             fatalError("Failed to load data: file not found!")
         }
-        self.loader = loader
-        self.loader.load(data: loadedData, to: dataStack)
+        loader.load(data: loadedData, to: dataStack)
     }
 }

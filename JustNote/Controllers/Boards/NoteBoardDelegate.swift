@@ -7,20 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
 class NoteBoardDelegate: NSObject, UICollectionViewDelegate {
     var parentNavigationController: UINavigationController!
+    var fetchResultController: NSFetchedResultsController<Board>!
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, fetchResultController: NSFetchedResultsController<Board>!) {
         super.init()
         self.parentNavigationController = navigationController
+        self.fetchResultController = fetchResultController
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        parentNavigationController.pushViewController(NotesViewController(style: .plain), animated: true)
+        let board = fetchResultController.object(at: indexPath)
+        let noteViewController = NotesViewController(style: .plain)
+        noteViewController.key = board.title
+        parentNavigationController.pushViewController(noteViewController, animated: true)
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         

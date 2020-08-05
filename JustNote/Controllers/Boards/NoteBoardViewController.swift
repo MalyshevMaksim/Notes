@@ -26,7 +26,7 @@ class NoteBoardViewController: UICollectionViewController {
     
     private lazy var fetchResultController: NSFetchedResultsController<Board> = {
         let fetchRequest: NSFetchRequest<Board> = Board.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: #keyPath(Board.numberOfNotes), ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(Board.tintColor), ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -67,7 +67,7 @@ class NoteBoardViewController: UICollectionViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         configureHierarchy()
-        delegate = NoteBoardDelegate(navigationController: navigationController!)
+        delegate = NoteBoardDelegate(navigationController: navigationController!, fetchResultController: fetchResultController)
         collectionView.delegate = delegate
     }
     

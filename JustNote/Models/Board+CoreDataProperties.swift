@@ -18,7 +18,6 @@ extension Board {
 
     @NSManaged public var iconName: String?
     @NSManaged public var isLocked: Bool
-    @NSManaged public var numberOfNotes: Int16
     @NSManaged public var tintColor: UIColor?
     @NSManaged public var title: String?
     @NSManaged public var notes: NSSet?

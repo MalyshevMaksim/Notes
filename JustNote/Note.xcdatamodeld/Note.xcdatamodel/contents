@@ -13,6 +13,7 @@
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isLocked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isPinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="section" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Board" inverseName="notes" inverseEntity="Board"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="notes" inverseEntity="Tag"/>
@@ -24,7 +25,7 @@
     </entity>
     <elements>
         <element name="Board" positionX="-319.1326293945312" positionY="-208.5044860839844" width="128" height="118"/>
-        <element name="Note" positionX="-608.3275146484375" positionY="-146.1609497070312" width="128" height="163"/>
+        <element name="Note" positionX="-608.3275146484375" positionY="-146.1609497070312" width="128" height="164"/>
         <element name="Tag" positionX="-320.991943359375" positionY="-62.02865600585938" width="128" height="88"/>
     </elements>
 </model>

@@ -15,11 +15,13 @@ class NoteCell: UITableViewCell {
         configureTagStack(with: model)
         title.text = model.title
         body.text = model.body
-        lastModifiedDate.text = dateFormatter.string(from: model.date!)
-        backgroundColor = .secondarySystemBackground
+        lastModifiedDate.text = "last changed: \(dateFormatter.string(from: model.date!))"
+        backgroundColor = .systemBackground
     }
     
     private func configureTagStack(with model: Note) {
+        tagStack.removeAllArrangedSubviews()
+        
         if let tags = model.tags?.allObjects {
             for tag in tags {
                 let tagView = TagView()

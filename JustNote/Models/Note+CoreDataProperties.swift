@@ -2,7 +2,7 @@
 //  Note+CoreDataProperties.swift
 //  
 //
-//  Created by Малышев Максим Алексеевич on 7/26/20.
+//  Created by Малышев Максим Алексеевич on 8/5/20.
 //
 //
 
@@ -18,12 +18,14 @@ extension Note {
 
     @NSManaged public var body: String?
     @NSManaged public var date: Date?
-    @NSManaged public var title: String?
-    @NSManaged public var isLocked: Bool
     @NSManaged public var isFavorite: Bool
+    @NSManaged public var isLocked: Bool
     @NSManaged public var isPinned: Bool
-    @NSManaged public var tags: NSSet?
+    @NSManaged public var title: String?
+    @NSManaged public var section: String?
     @NSManaged public var board: Board?
+    @NSManaged public var tags: NSSet?
+
 }
 
 // MARK: Generated accessors for tags

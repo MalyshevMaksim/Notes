@@ -61,12 +61,14 @@ class SampleNoteLoader: SampleLoadingStrategy {
             note.isLocked = noteDictionary["isLocked"] as! Bool
             note.isPinned = noteDictionary["isPinned"] as! Bool
             note.isFavorite = noteDictionary["isFavorite"] as! Bool
+            note.section = "Others"
             
             if note.isLocked == true {
                 note.addToTags(makeTag(color: .systemGreen, text: "Protected", dataStack: dataStack))
             }
             if note.isPinned == true {
                 note.addToTags(makeTag(color: .systemBlue, text: "Pinned", dataStack: dataStack))
+                note.section = "Pinned"
             }
             if note.isFavorite == true {
                 note.addToTags(makeTag(color: .systemOrange, text: "Favorite", dataStack: dataStack))

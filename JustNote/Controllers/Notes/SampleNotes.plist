@@ -22,13 +22,27 @@
 		<key>isFavorite</key>
 		<true/>
 		<key>isLocked</key>
+		<false/>
+		<key>date</key>
+		<date>2020-07-19T16:24:26Z</date>
+		<key>body</key>
+		<string>This is a demo note. Change the default text for this note and save your changes. Just try it, it&apos;s very easy!</string>
+		<key>title</key>
+		<string>Note with images</string>
+	</dict>
+	<dict>
+		<key>isPinned</key>
+		<false/>
+		<key>isFavorite</key>
+		<false/>
+		<key>isLocked</key>
 		<true/>
 		<key>date</key>
 		<date>2020-07-20T14:14:46Z</date>
 		<key>body</key>
 		<string>This is a demo note. Change the default text for this note and save your changes. Just try it, it&apos;s very easy!</string>
 		<key>title</key>
-		<string>Add images to your notes</string>
+		<string>Note with limit access</string>
 	</dict>
 </array>
 </plist>

@@ -31,7 +31,6 @@
 		B5E6588A249BF61900F4C6C3 /* TableBoardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E65889249BF61900F4C6C3 /* TableBoardLayout.swift */; };
 		B5E658B2249C875500F4C6C3 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B1249C875500F4C6C3 /* NotesViewController.swift */; };
 		B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B6249C89D500F4C6C3 /* NoteCell.swift */; };
-		B5E658B9249CB41400F4C6C3 /* NotesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B8249CB41400F4C6C3 /* NotesDelegate.swift */; };
 		B5E658BB249ED5A700F4C6C3 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658BA249ED5A700F4C6C3 /* TagView.swift */; };
 		B5E658BD249F43A300F4C6C3 /* HeaderNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658BC249F43A300F4C6C3 /* HeaderNotes.swift */; };
 		B5F5E69D24DAF57100735567 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5E69C24DAF57100735567 /* UIStackView.swift */; };
@@ -70,7 +69,6 @@
 		B5E65889249BF61900F4C6C3 /* TableBoardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableBoardLayout.swift; sourceTree = "<group>"; };
 		B5E658B1249C875500F4C6C3 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		B5E658B6249C89D500F4C6C3 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
-		B5E658B8249CB41400F4C6C3 /* NotesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDelegate.swift; sourceTree = "<group>"; };
 		B5E658BA249ED5A700F4C6C3 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		B5E658BC249F43A300F4C6C3 /* HeaderNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderNotes.swift; sourceTree = "<group>"; };
 		B5F5E69C24DAF57100735567 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			children = (
 				B5022EA424C4A8C4008A9B8D /* SampleNotes.plist */,
 				B5E658B1249C875500F4C6C3 /* NotesViewController.swift */,
-				B5E658B8249CB41400F4C6C3 /* NotesDelegate.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -354,7 +351,6 @@
 			files = (
 				B5022EA824C4B937008A9B8D /* UIColor.swift in Sources */,
 				B53E36792497E69D0008DF71 /* NoteBoardDelegate.swift in Sources */,
-				B5E658B9249CB41400F4C6C3 /* NotesDelegate.swift in Sources */,
 				B5E65888249BF24000F4C6C3 /* HeaderGridLayout.swift in Sources */,
 				B5F5E6B524DB0C7F00735567 /* Note+CoreDataProperties.swift in Sources */,
 				B5893B5124967249002F2865 /* BoardCollectionCell.swift in Sources */,

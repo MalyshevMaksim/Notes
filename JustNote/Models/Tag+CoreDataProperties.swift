@@ -19,5 +19,4 @@ extension Tag {
     @NSManaged public var color: UIColor?
     @NSManaged public var text: String?
     @NSManaged public var notes: Note?
-
 }

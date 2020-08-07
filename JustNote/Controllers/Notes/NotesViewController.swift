@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import Dispatch
 
 class NotesViewController: UITableViewController {
     var key: String?
@@ -115,10 +114,10 @@ extension NotesViewController: NSFetchedResultsControllerDelegate {
             tableView.insertSections(section, with: .automatic)
         case .delete:
             tableView.deleteSections(section, with: .automatic)
+        case .move:
+            print("MOVE")
         case .update:
             print("UPDATE")
-        default:
-            break
         }
     }
     
@@ -126,7 +125,6 @@ extension NotesViewController: NSFetchedResultsControllerDelegate {
         
         switch type {
         case .insert:
-            
             tableView.insertRows(at: [newIndexPath!], with: .automatic)
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .automatic)
@@ -167,14 +165,17 @@ extension NotesViewController {
             let actionTitle = note.isPinned ? "Unpin" : "pin"
             
             return UIAction(title: actionTitle, image: actionImage, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
-                
+            
                 if note.isPinned {
+                    note.removeTag(for: "Pinned")
                     note.section = "Others"
                 }
                 else {
+                    note.addTag(color: .systemBlue, text: "Pinned", to: self.coreDataStack)
                     note.section = "Pinned"
                 }
                 note.isPinned.toggle()
+                self.coreDataStack.saveContext()
             }
         }
         
@@ -185,14 +186,13 @@ extension NotesViewController {
             return UIAction(title: actionTitle, image: actionImage, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
                 
                 if note.isFavorite {
-                    
+                    note.removeTag(for: "Favorite")
                 }
                 else {
-                    let tag = Tag(context: self.coreDataStack.managedContext)
-                    tag.text = "Favorite"
-                    tag.color = .systemOrange
-                    note.addToTags(tag)
+                    note.addTag(color: .systemOrange, text: "Favorite", to: self.coreDataStack)
                 }
+                note.isFavorite.toggle()
+                self.coreDataStack.saveContext()
             }
         }
         
@@ -202,13 +202,10 @@ extension NotesViewController {
             
             return UIAction(title: contextTitle, image: contextImage, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
                 if note.isLocked {
-    
+                    note.removeTag(for: "Protected")
                 }
                 else {
-                    let tag = Tag(context: self.coreDataStack.managedContext)
-                    tag.text = "Protected"
-                    tag.color = .systemGreen
-                    note.addToTags(tag)
+                    note.addTag(color: .systemGreen, text: "Protected", to: self.coreDataStack)
                 }
                 note.isLocked.toggle()
                 self.coreDataStack.saveContext()
@@ -227,7 +224,6 @@ extension NotesViewController {
                  self.present(alert, animated: true, completion: nil)
              }
         }
-        
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_: [UIMenuElement]) -> UIMenu? in
             return UIMenu(title: "", image: nil, identifier: nil, options: .init(), children: [pinnedAction, favoriteAction, lockAction, deleteAction])
         }

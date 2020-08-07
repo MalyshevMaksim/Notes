@@ -64,24 +64,19 @@ class SampleNoteLoader: SampleLoadingStrategy {
             note.section = "Others"
             
             if note.isLocked == true {
-                note.addToTags(makeTag(color: .systemGreen, text: "Protected", dataStack: dataStack))
+                note.addTag(color: .systemGreen, text: "Protected", to: dataStack)
             }
             if note.isPinned == true {
-                note.addToTags(makeTag(color: .systemBlue, text: "Pinned", dataStack: dataStack))
+                note.addTag(color: .systemBlue, text: "Pinned", to: dataStack)
                 note.section = "Pinned"
             }
             if note.isFavorite == true {
-                note.addToTags(makeTag(color: .systemOrange, text: "Favorite", dataStack: dataStack))
+                note.addTag(color: .systemOrange, text: "Favorite", to: dataStack)
             }
             result.first?.addToNotes(note)
         }
         dataStack.saveContext()
     }
-    
-    private func makeTag(color: UIColor, text: String, dataStack: CoreDataStack) -> Tag {
-        let tag = Tag(context: dataStack.managedContext)
-        tag.color = color
-        tag.text = text
-        return tag
-    }
 }
+
+

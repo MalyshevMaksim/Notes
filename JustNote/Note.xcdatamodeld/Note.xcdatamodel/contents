@@ -3,6 +3,7 @@
     <entity name="Board" representedClassName="Board" syncable="YES">
         <attribute name="iconName" optional="YES" attributeType="String"/>
         <attribute name="isLocked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="section" optional="YES" attributeType="String"/>
         <attribute name="tintColor" optional="YES" attributeType="Transformable"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="board" inverseEntity="Note"/>
@@ -24,7 +25,7 @@
         <relationship name="notes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="tags" inverseEntity="Note"/>
     </entity>
     <elements>
-        <element name="Board" positionX="-319.1326293945312" positionY="-208.5044860839844" width="128" height="118"/>
+        <element name="Board" positionX="-319.1326293945312" positionY="-208.5044860839844" width="128" height="119"/>
         <element name="Note" positionX="-608.3275146484375" positionY="-146.1609497070312" width="128" height="164"/>
         <element name="Tag" positionX="-320.991943359375" positionY="-62.02865600585938" width="128" height="88"/>
     </elements>

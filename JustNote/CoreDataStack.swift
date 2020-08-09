@@ -20,7 +20,7 @@ class CoreDataStack {
         let container = NSPersistentContainer(name: modelName!)
         container.loadPersistentStores { description, error in
             if let error = error {
-                fatalError("###\(#function): Failed to load persistent stores:\(error)")
+                fatalError("Failed to load persistent stores:\(error)")
             }
         }
         return container

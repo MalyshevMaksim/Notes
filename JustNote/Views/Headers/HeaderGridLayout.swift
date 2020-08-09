@@ -11,8 +11,13 @@ import UIKit
 class HeaderGridLayout: UICollectionReusableView {
     static var reuseIdentifier = "HeaderGridCell"
     
-    func configure() {
-        header.text = "Boards"
+    func configure(section: Int) {
+        switch section {
+        case 0:
+            header.text = "Favorites"
+        default:
+            header.text = "Boards"
+        }
     }
     
     lazy var header: UILabel = {

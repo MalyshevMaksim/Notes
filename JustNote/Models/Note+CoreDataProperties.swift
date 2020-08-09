@@ -25,16 +25,19 @@ extension Note {
     @NSManaged public var board: Board?
     @NSManaged public var tags: NSSet?
     
-    func addTag(color: UIColor, text: String, to dataStack: CoreDataStack) {
-        let tag = Tag(context: dataStack.managedContext)
+    func attachTag(color: UIColor, text: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Failed to get data stack")
+        }
+        let tag = Tag(context: appDelegate.coreDataStack.managedContext)
         tag.color = color
         tag.text = text
         addToTags(tag)
     }
     
-    func removeTag(for key: String) {
+    func detachTag(for key: String) {
         guard let tags = tags else {
-            fatalError("Error")
+            return
         }
         for tag in tags {
             let currentTag = tag as! Tag

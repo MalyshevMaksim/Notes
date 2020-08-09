@@ -2,13 +2,14 @@
 //  Board+CoreDataProperties.swift
 //  
 //
-//  Created by Малышев Максим Алексеевич on 7/26/20.
+//  Created by Малышев Максим Алексеевич on 8/8/20.
 //
 //
 
 import Foundation
-import CoreData
 import UIKit
+import CoreData
+
 
 extension Board {
 
@@ -20,6 +21,7 @@ extension Board {
     @NSManaged public var isLocked: Bool
     @NSManaged public var tintColor: UIColor?
     @NSManaged public var title: String?
+    @NSManaged public var section: String?
     @NSManaged public var notes: NSSet?
 
 }

@@ -15,43 +15,22 @@ struct ElementKind {
 }
 
 class NoteBoardViewController: UICollectionViewController {
-    var delegate: NoteBoardDelegate!
-    
-    lazy var coreDataStack: CoreDataStack = {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Failed to get data stack")
-        }
-        return appDelegate.coreDataStack
-    }()
-    
-    private lazy var fetchResultController: NSFetchedResultsController<Board> = {
-        let fetchRequest: NSFetchRequest<Board> = Board.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: #keyPath(Board.tintColor), ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedContext, sectionNameKeyPath: nil, cacheName: nil)
-        performFetch(controller)
-        return controller
-    }()
-    
-    private func performFetch(_ controller: NSFetchedResultsController<Board>) {
-        do {
-            try controller.performFetch()
-        } catch {
-            fatalError("###\(#function): Failed to performFetch: \(error)")
-        }
-    }
+    var delegate: BoardDelegate!
+    var dataSource: BoardDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        let loader = SampleDataLoader(path: "SampleBoards", type: "plist")
-        loader.load(with: SampleBoardLoader(), to: coreDataStack)
-        
         configureController()
         configureCollectionView()
+        
+        let loader = SampleDataLoader(path: "SampleBoards", type: "plist")
+        loader.load(with: SampleBoardLoader(), to: dataSource.coreDataStack)
+        
+        let loaderm = SampleDataLoader(path: "SampleNotes", type: "plist")
+        loaderm.load(with: SampleNoteLoader(), to: dataSource.coreDataStack)
     }
     
     private func configureController() {
@@ -67,33 +46,17 @@ class NoteBoardViewController: UICollectionViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         configureHierarchy()
-        delegate = NoteBoardDelegate(navigationController: navigationController!, fetchResultController: fetchResultController)
+        dataSource = BoardDataSource()
+        delegate = BoardDelegate(navigationController: self.navigationController!, fetchResultController: dataSource.fetchResultController)
+        
+        collectionView.dataSource = dataSource
         collectionView.delegate = delegate
     }
     
     private func configureHierarchy() {
         collectionView.register(BoardCollectionCell.self, forCellWithReuseIdentifier: BoardCollectionCell.reuseIdentifier)
         collectionView.register(HeaderGridLayout.self, forSupplementaryViewOfKind: ElementKind.headerKind, withReuseIdentifier: HeaderGridLayout.reuseIdentifier)
+        collectionView.register(BoardFavoriteCell.self, forCellWithReuseIdentifier: BoardFavoriteCell.reuseIdentifier)
         collectionView.collectionViewLayout = setupGridLayout()
-    }
-}
-
-extension NoteBoardViewController {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fetchResultController.sections![section].numberOfObjects
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderGridLayout.reuseIdentifier, for: indexPath) as! HeaderGridLayout
-        header.configure()
-        return header
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BoardCollectionCell.reuseIdentifier, for: indexPath) as? BoardCollectionCell else {
-            fatalError("Unable to dequeue")
-        }
-        cell.configure(with: fetchResultController.object(at: indexPath))
-        return cell
     }
 }

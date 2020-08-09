@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NoteBoardDelegate: NSObject, UICollectionViewDelegate {
+class BoardDelegate: NSObject, UICollectionViewDelegate {
     var parentNavigationController: UINavigationController!
     var fetchResultController: NSFetchedResultsController<Board>!
     
@@ -20,9 +20,11 @@ class NoteBoardDelegate: NSObject, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var indexPath = indexPath
+        indexPath.section = indexPath.section - 1
         let board = fetchResultController.object(at: indexPath)
-        let noteViewController = NotesViewController(style: .plain)
-        noteViewController.key = board.title
+        let noteViewController = NoteViewController()
+        noteViewController.title = board.title
         parentNavigationController.pushViewController(noteViewController, animated: true)
     }
     

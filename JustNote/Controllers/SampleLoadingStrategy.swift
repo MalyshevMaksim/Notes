@@ -30,13 +30,13 @@ class SampleBoardLoader: SampleLoadingStrategy {
         guard isFirstAppear(forKey: "Boards") == false else {
             return
         }
-        
         for board in data {
             let boardDictionary = board as! [String : Any]
             let board = Board(context: dataStack.managedContext)
             board.title = boardDictionary["title"] as? String
             board.iconName = boardDictionary["iconName"] as? String
             board.tintColor = UIColor.color(dict: boardDictionary["tintColor"] as! [String : Any])!
+            board.section = boardDictionary["section"] as? String
         }
         dataStack.saveContext()
     }
@@ -64,19 +64,17 @@ class SampleNoteLoader: SampleLoadingStrategy {
             note.section = "Others"
             
             if note.isLocked == true {
-                note.addTag(color: .systemGreen, text: "Protected", to: dataStack)
+                note.attachTag(color: .systemGreen, text: "Protected")
             }
             if note.isPinned == true {
-                note.addTag(color: .systemBlue, text: "Pinned", to: dataStack)
+                note.attachTag(color: .systemBlue, text: "Pinned")
                 note.section = "Pinned"
             }
             if note.isFavorite == true {
-                note.addTag(color: .systemOrange, text: "Favorite", to: dataStack)
+                note.attachTag(color: .systemOrange, text: "Favorite")
             }
             result.first?.addToNotes(note)
         }
         dataStack.saveContext()
     }
 }
-
-

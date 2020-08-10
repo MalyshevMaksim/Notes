@@ -9,24 +9,31 @@
 import Foundation
 import UIKit
 import CoreData
+import LocalAuthentication
+import Dispatch
 
 class NoteDelegate: NSObject, UITableViewDelegate {
-   var fetchedResult = FetchedResultsController()
+    var fetchedResult = FetchedResultsController()
+    
+    private func biometricAuthentication(completed: @escaping (_ success: Bool) -> ()) {
+        let contxt = LAContext()
+        if contxt.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+            contxt.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Please authenticate to proceed.") { success, error in
+                completed(success)
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let note = fetchedResult.fetchResultController.object(at: indexPath)
         
         if note.isLocked {
-            let action =  UIAlertController(title: "Access limited", message: "Enter password to gain access", preferredStyle: .alert)
-            action.addTextField { textField in
-                textField.placeholder = "Password"
-                textField.isSecureTextEntry = true
+            biometricAuthentication { success in
+                if success {
+                    
+                }
             }
-            action.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            action.addAction(UIAlertAction(title: "Confirm", style: .default, handler: nil))
-        }
-        else {
         }
     }
     
@@ -48,12 +55,11 @@ class NoteDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let note = fetchedResult.fetchResultController.object(at: indexPath)
         
-        var pinnedAction: UIAction {
-            let actionImage = UIImage(systemName: note.isPinned ? "pin.slash.fill" : "pin.fill")
-            let actionTitle = note.isPinned ? "Unpin" : "pin"
+        var pinningAction: UIAction {
+            let title = note.isPinned ? "Unpin" : "pin"
+            let icon = UIImage(systemName: note.isPinned ? "pin.slash.fill" : "pin.fill")
             
-            return UIAction(title: actionTitle, image: actionImage, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
-            
+            return UIAction(title: title, image: icon, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
                 if note.isPinned {
                     note.detachTag(for: "Pinned")
                     note.section = "Others"
@@ -67,12 +73,11 @@ class NoteDelegate: NSObject, UITableViewDelegate {
             }
         }
         
-        var favoriteAction: UIAction {
-            let actionImage = UIImage(systemName: note.isFavorite ? "star.slash.fill" : "star.fill")
-            let actionTitle = note.isFavorite ? "Remove from favorites" : "Add to favoritve"
+        var addToFavoriteAction: UIAction {
+            let title = note.isFavorite ? "Remove from favorites" : "Add to favoritve"
+            let icon = UIImage(systemName: note.isFavorite ? "star.slash.fill" : "star.fill")
             
-            return UIAction(title: actionTitle, image: actionImage, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
-                
+            return UIAction(title: title, image: icon, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
                 if note.isFavorite {
                     note.detachTag(for: "Favorite")
                 }
@@ -84,63 +89,44 @@ class NoteDelegate: NSObject, UITableViewDelegate {
             }
         }
         
-        var lockAction: UIAction {
-            let contextImage = UIImage(systemName: note.isLocked ? "lock.slash.fill" : "lock.fill")
-            let contextTitle = note.isLocked ? "Remove limit access" : "Limit access"
-            
-            return UIAction(title: contextTitle, image: contextImage, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
-                if note.isLocked {
-                    let action = UIAlertController(title: "Remove access restriction", message: "Enter password", preferredStyle: .alert)
-                    action.addTextField { textFeield in
-                        textFeield.placeholder = "Password"
-                    }
-                    
-                    action.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                    action.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { actions in
-                        note.detachTag(for: "Protected")
-                    }))
+        var deleteAction: UIAction {
+            return UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .destructive,    state: .off) { action in
+                let alert = UIAlertController(title: "Warning", message: "Are you sure you want to delete the note?", preferredStyle: .actionSheet)
+                
+                let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                    self.fetchedResult.coreDataStack.managedContext.delete(note)
+                    self.fetchedResult.coreDataStack.saveContext()
                 }
-                else {
-                    let action = UIAlertController(title: "Access limitation", message: "Set a password for access", preferredStyle: .alert)
-                    action.addTextField { textFeield in
-                        textFeield.placeholder = "Create a password"
-                    }
-                    action.addTextField { textField in
-                        textField.placeholder = "Confirm password"
-                    }
-                    
-                    action.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                    action.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { actions in
-                        guard let textField = action.textFields else {
-                            return
-                        }
-                        if textField[0].text == textField[1].text {
-                            note.attachTag(color: .systemGreen, text: "Protected")
-                        }
-                        else {
-                            
-                        }
-                    }))
-                }
-                note.isLocked.toggle()
-                self.fetchedResult.coreDataStack.saveContext()
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+                alert.addAction(cancelAction)
+                alert.addAction(deleteAction)
             }
         }
         
-        var deleteAction: UIAction {
-            return UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), identifier: nil, discoverabilityTitle: nil, attributes: .destructive, state: .off) { action in
-                let alert = UIAlertController(title: "Warning", message: "Are you sure you want to delete the note?", preferredStyle: .actionSheet)
-                 
-                alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
-                    self.fetchedResult.coreDataStack.managedContext.delete(note)
+        var accessLimitAction: UIAction {
+            let title = note.isLocked ? "Remove limit access" : "Limit access"
+            let icon = UIImage(systemName: note.isLocked ? "lock.slash.fill" : "lock.fill")
+            
+            return UIAction(title: title, image: icon, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
+                if note.isLocked {
+                    self.biometricAuthentication { success in
+                        if success {
+                            note.detachTag(for: "Protected")
+                            note.isLocked.toggle()
+                            self.fetchedResult.coreDataStack.saveContext()
+                        }
+                    }
+                }
+                else {
+                    note.attachTag(color: .systemGreen, text: "Protected")
+                    note.isLocked.toggle()
                     self.fetchedResult.coreDataStack.saveContext()
-                    
-                 })
-                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-             }
+                }
+            }
         }
+        
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_: [UIMenuElement]) -> UIMenu? in
-            return UIMenu(title: "", image: nil, identifier: nil, options: .init(), children: [pinnedAction, favoriteAction, lockAction, deleteAction])
+            return UIMenu(title: "", image: nil, identifier: nil, options: .init(), children: [pinningAction, addToFavoriteAction, accessLimitAction, deleteAction])
         }
     }
 }

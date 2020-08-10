@@ -11,7 +11,6 @@ import UIKit
 import CoreData
 
 class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
-    
     /*
     var tableView: UITableView!
     

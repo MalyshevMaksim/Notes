@@ -3,88 +3,104 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0441B3E976E5F55E22731AECFF0DBA88 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A8D4AA4DF9DABA6B3E0870FA4FF211 /* Keychain.swift */; };
-		0C2ABB0ADA3DA582C1D82FDFE190FFAF /* Pods-JustNote-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E4304318C891FF6018777A2FF8B929E4 /* Pods-JustNote-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4AEB48FE18565A59266480250E7C3FEA /* KeychainAccess-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF486576E24017DD9D235328B54E867 /* KeychainAccess-dummy.m */; };
-		6F6870A4A2DEF350D9D03FEA8601D9F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		9EC4DC3F4A764364051BE6DB7FD72161 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		C36E6182163E1FE63A638A603BD1B738 /* Pods-JustNote-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A412BAE3141C4988C83448FC8B5D5A /* Pods-JustNote-dummy.m */; };
-		EEADFC5C1C5EC6E3E20506B8E069931D /* KeychainAccess-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FC0288C9AA4507A83FACB1C4D148A45 /* KeychainAccess-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01DD354FE3CC37DA3BED7F13C833AF64 /* Locksmith-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F71789375A6D01A239551777427345E2 /* Locksmith-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20CA5E175FD0938E47867EA896F2416A /* Pods-JustNote-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A412BAE3141C4988C83448FC8B5D5A /* Pods-JustNote-dummy.m */; };
+		493559149F0DC29EA434B42FF88B80A6 /* LocksmithInternetAuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA8367A62FBC041F1AF06898A9E9EB5 /* LocksmithInternetAuthenticationType.swift */; };
+		552C13812EBA1B85C0ED15B5E40E8A40 /* Locksmith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4A40FDA9A2DB65BD17DE5FAD594B5 /* Locksmith.swift */; };
+		59E278AF17AE36D820BC60915C2405A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0537674118F909E1B2AFD9940729FD /* Foundation.framework */; };
+		5A555C4905D9F1428A6A84361459B2FB /* Locksmith.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F68097402212AF591EC2D09D54D1769 /* Locksmith.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		77573823ABBBABDDF78FE80F6E7FE59C /* LocksmithSecurityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A9B7F6E5F075C437E2DB7908D599F5 /* LocksmithSecurityClass.swift */; };
+		7CF40B9AE8C4D70D6ACC89FDBBC22DF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C6FBEEEFA5DEBF6E6E83512D4F03EE /* Security.framework */; };
+		963798B95A7C5C50C63D8B98727DD275 /* Locksmith-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F20B489EF39E61B13C75D8A33F4454 /* Locksmith-dummy.m */; };
+		A90328AEC4218C3BDE6FFCBE35C4871A /* Dictionary_Initializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C93A182DFC73BEBF8C6386CA889744 /* Dictionary_Initializers.swift */; };
+		ADD17FACE16991C372475E733E123CDC /* Pods-JustNote-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E4304318C891FF6018777A2FF8B929E4 /* Pods-JustNote-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEAB63BB504C70330482D002D2B24BEC /* LocksmithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D721FF20ABB786779E3596076E14948 /* LocksmithError.swift */; };
+		D27E2544063E217DEAEB55655A425E13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0537674118F909E1B2AFD9940729FD /* Foundation.framework */; };
+		E7556BFBFF44011BBAAD3DB117345BA7 /* LocksmithAccessibleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B756ED4ABBC44F9E22CE5FD257A3B6 /* LocksmithAccessibleOption.swift */; };
+		EF8914D08E64541EDE9C73A4E1CCC597 /* LocksmithInternetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A925099E717D5D7D2FD0253674A1A /* LocksmithInternetProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		944637B1CDBE1A1907F835841A32AB86 /* PBXContainerItemProxy */ = {
+		497DC1FACD9F807FCD532CCF9862E484 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 615C831BCE925ED486B225B87E44926D;
-			remoteInfo = KeychainAccess;
+			remoteGlobalIDString = F1A43A0FFC2FFBC81E90917B5E198DB6;
+			remoteInfo = Locksmith;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		02DE23FE5F39A5CD2F84531003A4C9E4 /* Pods-JustNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JustNote.release.xcconfig"; sourceTree = "<group>"; };
 		05A412BAE3141C4988C83448FC8B5D5A /* Pods-JustNote-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JustNote-dummy.m"; sourceTree = "<group>"; };
+		0D721FF20ABB786779E3596076E14948 /* LocksmithError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocksmithError.swift; path = Source/LocksmithError.swift; sourceTree = "<group>"; };
+		183F8BF61F82B06272A7BECE219AAF34 /* Locksmith.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Locksmith.modulemap; sourceTree = "<group>"; };
 		2B59BE609FB5A68470AE8346F6FE2699 /* Pods-JustNote-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JustNote-Info.plist"; sourceTree = "<group>"; };
-		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		37A2CF6FCC8B7F6605502A244D00CBD8 /* KeychainAccess-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "KeychainAccess-Info.plist"; sourceTree = "<group>"; };
-		3AF486576E24017DD9D235328B54E867 /* KeychainAccess-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KeychainAccess-dummy.m"; sourceTree = "<group>"; };
+		3F68097402212AF591EC2D09D54D1769 /* Locksmith.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Locksmith.h; path = Source/Locksmith.h; sourceTree = "<group>"; };
+		40C6FBEEEFA5DEBF6E6E83512D4F03EE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		52C93A182DFC73BEBF8C6386CA889744 /* Dictionary_Initializers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Dictionary_Initializers.swift; path = Source/Dictionary_Initializers.swift; sourceTree = "<group>"; };
+		60A9B7F6E5F075C437E2DB7908D599F5 /* LocksmithSecurityClass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocksmithSecurityClass.swift; path = Source/LocksmithSecurityClass.swift; sourceTree = "<group>"; };
 		629BF011F8356A4BF77520A9FC851C67 /* Pods-JustNote-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JustNote-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7CA8367A62FBC041F1AF06898A9E9EB5 /* LocksmithInternetAuthenticationType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocksmithInternetAuthenticationType.swift; path = Source/LocksmithInternetAuthenticationType.swift; sourceTree = "<group>"; };
 		7DB45B1F9ABEF8CB2A9DC336DE49F671 /* Pods-JustNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JustNote.debug.xcconfig"; sourceTree = "<group>"; };
+		88C4A40FDA9A2DB65BD17DE5FAD594B5 /* Locksmith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Locksmith.swift; path = Source/Locksmith.swift; sourceTree = "<group>"; };
+		88F20B489EF39E61B13C75D8A33F4454 /* Locksmith-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Locksmith-dummy.m"; sourceTree = "<group>"; };
 		8C5E428E5B84B89439A27BF1EA2375A7 /* Pods-JustNote.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JustNote.modulemap"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9FC0288C9AA4507A83FACB1C4D148A45 /* KeychainAccess-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeychainAccess-umbrella.h"; sourceTree = "<group>"; };
+		A0EAD423094C0EAC2DA160FA52B02A37 /* Locksmith.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Locksmith.xcconfig; sourceTree = "<group>"; };
+		A40A925099E717D5D7D2FD0253674A1A /* LocksmithInternetProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocksmithInternetProtocol.swift; path = Source/LocksmithInternetProtocol.swift; sourceTree = "<group>"; };
 		A6A6D5D501F7DC0563165981FADB5BBE /* Pods-JustNote-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JustNote-acknowledgements.plist"; sourceTree = "<group>"; };
 		AC7F32C3568E16D5B9595E06642D59FE /* Pods-JustNote-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JustNote-frameworks.sh"; sourceTree = "<group>"; };
-		BC127FDFA3EA9FE1D102F78FC0781B27 /* KeychainAccess.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = KeychainAccess.modulemap; sourceTree = "<group>"; };
-		C1A8D4AA4DF9DABA6B3E0870FA4FF211 /* Keychain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = Lib/KeychainAccess/Keychain.swift; sourceTree = "<group>"; };
+		B620A995E24E645764FCDE7231CE9015 /* Locksmith.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Locksmith.framework; path = Locksmith.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4B74F1E427D96919CACC52A18D54568 /* Locksmith-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Locksmith-prefix.pch"; sourceTree = "<group>"; };
 		D6DCD131830B3AED8D29CBDE67A59E65 /* Pods_JustNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JustNote.framework; path = "Pods-JustNote.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D749F44C3F5D1046BF42D4E05BF66E72 /* KeychainAccess.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KeychainAccess.xcconfig; sourceTree = "<group>"; };
+		D886B3CC41F05070753C63985ACE0547 /* Locksmith-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Locksmith-Info.plist"; sourceTree = "<group>"; };
+		E1B756ED4ABBC44F9E22CE5FD257A3B6 /* LocksmithAccessibleOption.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocksmithAccessibleOption.swift; path = Source/LocksmithAccessibleOption.swift; sourceTree = "<group>"; };
 		E4304318C891FF6018777A2FF8B929E4 /* Pods-JustNote-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JustNote-umbrella.h"; sourceTree = "<group>"; };
-		E8EE7F078656FABB8F6821D10FF994BB /* KeychainAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KeychainAccess.framework; path = KeychainAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED736E6FF5458CB1205BEC3F263D2B40 /* KeychainAccess-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeychainAccess-prefix.pch"; sourceTree = "<group>"; };
+		EF0537674118F909E1B2AFD9940729FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		F71789375A6D01A239551777427345E2 /* Locksmith-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Locksmith-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7668D0A8468B5894E555ECAA4EC50BC1 /* Frameworks */ = {
+		84FAD6D7CC451A81F4C14767D6E75417 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EC4DC3F4A764364051BE6DB7FD72161 /* Foundation.framework in Frameworks */,
+				D27E2544063E217DEAEB55655A425E13 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		823C4673E92D33621503A796703B5A12 /* Frameworks */ = {
+		A96778E337902A4CE1FC54E8C97AE54A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F6870A4A2DEF350D9D03FEA8601D9F5 /* Foundation.framework in Frameworks */,
+				59E278AF17AE36D820BC60915C2405A0 /* Foundation.framework in Frameworks */,
+				7CF40B9AE8C4D70D6ACC89FDBBC22DF7 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1822CF174BA8C3BC1C6A1BCD70C74D9E /* Pods */ = {
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				21FB2FA785D073B5E18E48DDEE0CE582 /* KeychainAccess */,
+				6B475D44F9DE8B3EB70D1C14FDE147B9 /* iOS */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		21FB2FA785D073B5E18E48DDEE0CE582 /* KeychainAccess */ = {
+		18E658225DC9302DE3ABE0CB5EF8F58A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C1A8D4AA4DF9DABA6B3E0870FA4FF211 /* Keychain.swift */,
-				7E9D0A0E34A8A042026C00542AFBF024 /* Support Files */,
+				B620A995E24E645764FCDE7231CE9015 /* Locksmith.framework */,
+				D6DCD131830B3AED8D29CBDE67A59E65 /* Pods_JustNote.framework */,
 			);
-			name = KeychainAccess;
-			path = KeychainAccess;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		278A2BC6AA36AEFC16CA74D6CE952D81 /* Targets Support Files */ = {
@@ -95,54 +111,63 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		2C89DB51B4D1190400089CA43EDE0838 /* Products */ = {
+		618E8693A3EC2DD6F1D7A3923227DDD8 /* Locksmith */ = {
 			isa = PBXGroup;
 			children = (
-				E8EE7F078656FABB8F6821D10FF994BB /* KeychainAccess.framework */,
-				D6DCD131830B3AED8D29CBDE67A59E65 /* Pods_JustNote.framework */,
+				52C93A182DFC73BEBF8C6386CA889744 /* Dictionary_Initializers.swift */,
+				3F68097402212AF591EC2D09D54D1769 /* Locksmith.h */,
+				88C4A40FDA9A2DB65BD17DE5FAD594B5 /* Locksmith.swift */,
+				E1B756ED4ABBC44F9E22CE5FD257A3B6 /* LocksmithAccessibleOption.swift */,
+				0D721FF20ABB786779E3596076E14948 /* LocksmithError.swift */,
+				7CA8367A62FBC041F1AF06898A9E9EB5 /* LocksmithInternetAuthenticationType.swift */,
+				A40A925099E717D5D7D2FD0253674A1A /* LocksmithInternetProtocol.swift */,
+				60A9B7F6E5F075C437E2DB7908D599F5 /* LocksmithSecurityClass.swift */,
+				86F660C2FD2ECC769899E8B8669B94FA /* Support Files */,
 			);
-			name = Products;
+			name = Locksmith;
+			path = Locksmith;
 			sourceTree = "<group>";
 		};
-		7E9D0A0E34A8A042026C00542AFBF024 /* Support Files */ = {
+		6B475D44F9DE8B3EB70D1C14FDE147B9 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				BC127FDFA3EA9FE1D102F78FC0781B27 /* KeychainAccess.modulemap */,
-				D749F44C3F5D1046BF42D4E05BF66E72 /* KeychainAccess.xcconfig */,
-				3AF486576E24017DD9D235328B54E867 /* KeychainAccess-dummy.m */,
-				37A2CF6FCC8B7F6605502A244D00CBD8 /* KeychainAccess-Info.plist */,
-				ED736E6FF5458CB1205BEC3F263D2B40 /* KeychainAccess-prefix.pch */,
-				9FC0288C9AA4507A83FACB1C4D148A45 /* KeychainAccess-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/KeychainAccess";
-			sourceTree = "<group>";
-		};
-		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+				EF0537674118F909E1B2AFD9940729FD /* Foundation.framework */,
+				40C6FBEEEFA5DEBF6E6E83512D4F03EE /* Security.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		6B557E6FBEA1876DBB87131B1E0277B1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				618E8693A3EC2DD6F1D7A3923227DDD8 /* Locksmith */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		86F660C2FD2ECC769899E8B8669B94FA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				183F8BF61F82B06272A7BECE219AAF34 /* Locksmith.modulemap */,
+				A0EAD423094C0EAC2DA160FA52B02A37 /* Locksmith.xcconfig */,
+				88F20B489EF39E61B13C75D8A33F4454 /* Locksmith-dummy.m */,
+				D886B3CC41F05070753C63985ACE0547 /* Locksmith-Info.plist */,
+				D4B74F1E427D96919CACC52A18D54568 /* Locksmith-prefix.pch */,
+				F71789375A6D01A239551777427345E2 /* Locksmith-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Locksmith";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				1822CF174BA8C3BC1C6A1BCD70C74D9E /* Pods */,
-				2C89DB51B4D1190400089CA43EDE0838 /* Products */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				6B557E6FBEA1876DBB87131B1E0277B1 /* Pods */,
+				18E658225DC9302DE3ABE0CB5EF8F58A /* Products */,
 				278A2BC6AA36AEFC16CA74D6CE952D81 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E08613318CC42EB2C2431431A398B0D5 /* Pods-JustNote */ = {
@@ -165,60 +190,61 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		39CC3E71CEA7805FCA03E3A1CC052EEA /* Headers */ = {
+		B03FDEF070FC757E62DAFB129DFCCBC9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEADFC5C1C5EC6E3E20506B8E069931D /* KeychainAccess-umbrella.h in Headers */,
+				01DD354FE3CC37DA3BED7F13C833AF64 /* Locksmith-umbrella.h in Headers */,
+				5A555C4905D9F1428A6A84361459B2FB /* Locksmith.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3C3B2A06E0C6B4D93A596089D137A12A /* Headers */ = {
+		D28370EEFD50378F4A85E0BDD5155439 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C2ABB0ADA3DA582C1D82FDFE190FFAF /* Pods-JustNote-umbrella.h in Headers */,
+				ADD17FACE16991C372475E733E123CDC /* Pods-JustNote-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		615C831BCE925ED486B225B87E44926D /* KeychainAccess */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4BEE926243448802ACA6F07A75D9C025 /* Build configuration list for PBXNativeTarget "KeychainAccess" */;
-			buildPhases = (
-				39CC3E71CEA7805FCA03E3A1CC052EEA /* Headers */,
-				C4DE4004EE1661FE4BC4E6C40415F599 /* Sources */,
-				7668D0A8468B5894E555ECAA4EC50BC1 /* Frameworks */,
-				AE292B4411627ABE21EB769134C1E8BB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = KeychainAccess;
-			productName = KeychainAccess;
-			productReference = E8EE7F078656FABB8F6821D10FF994BB /* KeychainAccess.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		D0CDCDB80AFF66049CCDF23211C17B34 /* Pods-JustNote */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9BAA988AA8405656051418EA8FA49E06 /* Build configuration list for PBXNativeTarget "Pods-JustNote" */;
+			buildConfigurationList = 00587FDD77F86ACC7A5DFF080AB3C022 /* Build configuration list for PBXNativeTarget "Pods-JustNote" */;
 			buildPhases = (
-				3C3B2A06E0C6B4D93A596089D137A12A /* Headers */,
-				42924A24570ACDA3A8DDDFFC30EBC719 /* Sources */,
-				823C4673E92D33621503A796703B5A12 /* Frameworks */,
-				F407C7173C120A49750823CEFD66747F /* Resources */,
+				D28370EEFD50378F4A85E0BDD5155439 /* Headers */,
+				1290B989E3809EC19348EA2C05ADCD08 /* Sources */,
+				84FAD6D7CC451A81F4C14767D6E75417 /* Frameworks */,
+				1643B4CB6F62DEC946FE54A3EA69AAD8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				644A82102FF6A57D61148308607630BF /* PBXTargetDependency */,
+				FF6F24E8A19AF48B80C20D065E9A63E4 /* PBXTargetDependency */,
 			);
 			name = "Pods-JustNote";
 			productName = "Pods-JustNote";
 			productReference = D6DCD131830B3AED8D29CBDE67A59E65 /* Pods_JustNote.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F1A43A0FFC2FFBC81E90917B5E198DB6 /* Locksmith */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 606324F6CFF0B1F8A5A8852EAF835662 /* Build configuration list for PBXNativeTarget "Locksmith" */;
+			buildPhases = (
+				B03FDEF070FC757E62DAFB129DFCCBC9 /* Headers */,
+				89FC43997D0484FE6600384D68E3EBAD /* Sources */,
+				A96778E337902A4CE1FC54E8C97AE54A /* Frameworks */,
+				89423F4CFC10F965EA392E7995BD766E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Locksmith;
+			productName = Locksmith;
+			productReference = B620A995E24E645764FCDE7231CE9015 /* Locksmith.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -231,7 +257,7 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -239,25 +265,25 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 2C89DB51B4D1190400089CA43EDE0838 /* Products */;
+			productRefGroup = 18E658225DC9302DE3ABE0CB5EF8F58A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				615C831BCE925ED486B225B87E44926D /* KeychainAccess */,
+				F1A43A0FFC2FFBC81E90917B5E198DB6 /* Locksmith */,
 				D0CDCDB80AFF66049CCDF23211C17B34 /* Pods-JustNote */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AE292B4411627ABE21EB769134C1E8BB /* Resources */ = {
+		1643B4CB6F62DEC946FE54A3EA69AAD8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F407C7173C120A49750823CEFD66747F /* Resources */ = {
+		89423F4CFC10F965EA392E7995BD766E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -267,36 +293,80 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		42924A24570ACDA3A8DDDFFC30EBC719 /* Sources */ = {
+		1290B989E3809EC19348EA2C05ADCD08 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C36E6182163E1FE63A638A603BD1B738 /* Pods-JustNote-dummy.m in Sources */,
+				20CA5E175FD0938E47867EA896F2416A /* Pods-JustNote-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C4DE4004EE1661FE4BC4E6C40415F599 /* Sources */ = {
+		89FC43997D0484FE6600384D68E3EBAD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0441B3E976E5F55E22731AECFF0DBA88 /* Keychain.swift in Sources */,
-				4AEB48FE18565A59266480250E7C3FEA /* KeychainAccess-dummy.m in Sources */,
+				A90328AEC4218C3BDE6FFCBE35C4871A /* Dictionary_Initializers.swift in Sources */,
+				963798B95A7C5C50C63D8B98727DD275 /* Locksmith-dummy.m in Sources */,
+				552C13812EBA1B85C0ED15B5E40E8A40 /* Locksmith.swift in Sources */,
+				E7556BFBFF44011BBAAD3DB117345BA7 /* LocksmithAccessibleOption.swift in Sources */,
+				BEAB63BB504C70330482D002D2B24BEC /* LocksmithError.swift in Sources */,
+				493559149F0DC29EA434B42FF88B80A6 /* LocksmithInternetAuthenticationType.swift in Sources */,
+				EF8914D08E64541EDE9C73A4E1CCC597 /* LocksmithInternetProtocol.swift in Sources */,
+				77573823ABBBABDDF78FE80F6E7FE59C /* LocksmithSecurityClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		644A82102FF6A57D61148308607630BF /* PBXTargetDependency */ = {
+		FF6F24E8A19AF48B80C20D065E9A63E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = KeychainAccess;
-			target = 615C831BCE925ED486B225B87E44926D /* KeychainAccess */;
-			targetProxy = 944637B1CDBE1A1907F835841A32AB86 /* PBXContainerItemProxy */;
+			name = Locksmith;
+			target = F1A43A0FFC2FFBC81E90917B5E198DB6 /* Locksmith */;
+			targetProxy = 497DC1FACD9F807FCD532CCF9862E484 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0BE85ED1AE3F0BE4744205B95793E9F7 /* Release */ = {
+		3967446CF2CDFF9EB891C6AAB9104328 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DB45B1F9ABEF8CB2A9DC336DE49F671 /* Pods-JustNote.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JustNote/Pods-JustNote-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JustNote/Pods-JustNote.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		40B3BEF4288C3CDA0F7A62D3E55CCD2A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 02DE23FE5F39A5CD2F84531003A4C9E4 /* Pods-JustNote.release.xcconfig */;
 			buildSettings = {
@@ -335,9 +405,9 @@
 			};
 			name = Release;
 		};
-		45293695F003AF5DCBA69464D33BD875 /* Debug */ = {
+		98A5992A203F9BE53367124F9227CE30 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D749F44C3F5D1046BF42D4E05BF66E72 /* KeychainAccess.xcconfig */;
+			baseConfigurationReference = A0EAD423094C0EAC2DA160FA52B02A37 /* Locksmith.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -348,8 +418,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/KeychainAccess/KeychainAccess-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/KeychainAccess/KeychainAccess-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Locksmith/Locksmith-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Locksmith/Locksmith-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -357,51 +427,13 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/KeychainAccess/KeychainAccess.modulemap";
-				PRODUCT_MODULE_NAME = KeychainAccess;
-				PRODUCT_NAME = KeychainAccess;
+				MODULEMAP_FILE = "Target Support Files/Locksmith/Locksmith.modulemap";
+				PRODUCT_MODULE_NAME = Locksmith;
+				PRODUCT_NAME = Locksmith;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7414A7697C767FAF495DE76C1E266599 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7DB45B1F9ABEF8CB2A9DC336DE49F671 /* Pods-JustNote.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-JustNote/Pods-JustNote-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-JustNote/Pods-JustNote.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -472,6 +504,42 @@
 			};
 			name = Debug;
 		};
+		F566608C64BB73D084012355639AF0C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0EAD423094C0EAC2DA160FA52B02A37 /* Locksmith.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Locksmith/Locksmith-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Locksmith/Locksmith-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Locksmith/Locksmith.modulemap";
+				PRODUCT_MODULE_NAME = Locksmith;
+				PRODUCT_NAME = Locksmith;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		F5F04600F5626DC980F02790D1ED2C19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -532,45 +600,18 @@
 			};
 			name = Release;
 		};
-		FF3EC215E8144B4CBE1F2C8440716AA6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D749F44C3F5D1046BF42D4E05BF66E72 /* KeychainAccess.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/KeychainAccess/KeychainAccess-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/KeychainAccess/KeychainAccess-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/KeychainAccess/KeychainAccess.modulemap";
-				PRODUCT_MODULE_NAME = KeychainAccess;
-				PRODUCT_NAME = KeychainAccess;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		00587FDD77F86ACC7A5DFF080AB3C022 /* Build configuration list for PBXNativeTarget "Pods-JustNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3967446CF2CDFF9EB891C6AAB9104328 /* Debug */,
+				40B3BEF4288C3CDA0F7A62D3E55CCD2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -580,20 +621,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4BEE926243448802ACA6F07A75D9C025 /* Build configuration list for PBXNativeTarget "KeychainAccess" */ = {
+		606324F6CFF0B1F8A5A8852EAF835662 /* Build configuration list for PBXNativeTarget "Locksmith" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				45293695F003AF5DCBA69464D33BD875 /* Debug */,
-				FF3EC215E8144B4CBE1F2C8440716AA6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9BAA988AA8405656051418EA8FA49E06 /* Build configuration list for PBXNativeTarget "Pods-JustNote" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7414A7697C767FAF495DE76C1E266599 /* Debug */,
-				0BE85ED1AE3F0BE4744205B95793E9F7 /* Release */,
+				98A5992A203F9BE53367124F9227CE30 /* Debug */,
+				F566608C64BB73D084012355639AF0C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

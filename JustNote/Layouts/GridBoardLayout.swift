@@ -38,12 +38,13 @@ func setupGridLayout() -> UICollectionViewCompositionalLayout {
 private func makeListSection() -> NSCollectionLayoutSection {
     let section = NSCollectionLayoutSection(group: makeListGroup())
     section.boundarySupplementaryItems = [makeHeader()]
-    section.orthogonalScrollingBehavior = .groupPaging
+    section.orthogonalScrollingBehavior = .paging
+    section.interGroupSpacing = -5
     return section
 }
 
 private func makeListGroup() -> NSCollectionLayoutGroup {
-    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95), heightDimension: .fractionalWidth(0.45))
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.7), heightDimension: .fractionalWidth(0.37))
     let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [makeListItem()])
     return groupLayout
 }
@@ -75,10 +76,6 @@ private func makeGridItem() -> NSCollectionLayoutItem {
     let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
     return itemLayout
 }
-
-
-
-
 
 private func makeHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44))

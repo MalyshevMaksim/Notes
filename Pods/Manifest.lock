@@ -1,16 +1,16 @@
 PODS:
-  - KeychainAccess (4.2.0)
+  - Locksmith (4.0.0)
 
 DEPENDENCIES:
-  - KeychainAccess
+  - Locksmith
 
 SPEC REPOS:
   trunk:
-    - KeychainAccess
+    - Locksmith
 
 SPEC CHECKSUMS:
-  KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
+  Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
 
-PODFILE CHECKSUM: a0e7bdbd34b765dc8c7c2bad08a3e5fd96bd5104
+PODFILE CHECKSUM: fa99a379cdfa54439fc1c091f49a09867b00be9b
 
 COCOAPODS: 1.8.4

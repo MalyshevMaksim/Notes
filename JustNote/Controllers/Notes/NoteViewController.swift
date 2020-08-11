@@ -10,8 +10,10 @@ import UIKit
 import CoreData
 
 class NoteViewController: UITableViewController {
-    var delegate = NoteDelegate()
-    var dataSource = NoteDataSource()
+    var applicationDataDelegate: NoteFetchResultsControllerDelegate!
+    var applicationData: CoreDataController!
+    var dataSource: NoteDataSource!
+    var delegate: NoteDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,15 @@ class NoteViewController: UITableViewController {
     }
     
     private func configureTableView() {
+        applicationData = CoreDataController()
+        dataSource = NoteDataSource(with: applicationData)
+        
+        delegate = NoteDelegate()
+        delegate.viewController = self
+        
+        applicationDataDelegate = NoteFetchResultsControllerDelegate(tableView: tableView, with: applicationData)
+        applicationData.controller.delegate = applicationDataDelegate
+        
         tableView.delegate = delegate
         tableView.dataSource = dataSource
         tableView.backgroundColor = .systemBackground

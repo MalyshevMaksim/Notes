@@ -13,32 +13,37 @@ import LocalAuthentication
 import Dispatch
 
 class NoteDelegate: NSObject, UITableViewDelegate {
-    var fetchedResult = FetchedResultsController()
-    
+    var viewController: NoteViewController!
+
     private func biometricAuthentication(completed: @escaping (_ success: Bool) -> ()) {
         let contxt = LAContext()
-        if contxt.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
-            contxt.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Please authenticate to proceed.") { success, error in
-                completed(success)
+            if contxt.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+                contxt.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Please authenticate to proceed.") { success, error in
+                    completed(success)
             }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let note = fetchedResult.fetchResultController.object(at: indexPath)
+        let note = viewController.applicationData.controller.object(at: indexPath)
         
         if note.isLocked {
             biometricAuthentication { success in
                 if success {
-                    
+                    DispatchQueue.main.async {
+                        self.viewController.navigationController?.pushViewController(UIViewController(), animated: true)
+                    }
                 }
             }
+        }
+        else {
+            viewController.navigationController?.pushViewController(UIViewController(), animated: true)
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionName = fetchedResult.fetchResultController.sections![section].name
+        let sectionName = viewController.applicationData.controller.sections![section].name
         
         switch section {
         case 0:
@@ -53,7 +58,7 @@ class NoteDelegate: NSObject, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let note = fetchedResult.fetchResultController.object(at: indexPath)
+        let note = viewController.applicationData.controller.object(at: indexPath)
         
         var pinningAction: UIAction {
             let title = note.isPinned ? "Unpin" : "pin"
@@ -69,7 +74,7 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                     note.section = "Pinned"
                 }
                 note.isPinned.toggle()
-                self.fetchedResult.coreDataStack.saveContext()
+                self.viewController.applicationData.coreDataStack.saveContext()
             }
         }
         
@@ -85,7 +90,7 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                     note.attachTag(color: .systemOrange, text: "Favorite")
                 }
                 note.isFavorite.toggle()
-                self.fetchedResult.coreDataStack.saveContext()
+                self.viewController.applicationData.coreDataStack.saveContext()
             }
         }
         
@@ -94,12 +99,13 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                 let alert = UIAlertController(title: "Warning", message: "Are you sure you want to delete the note?", preferredStyle: .actionSheet)
                 
                 let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
-                    self.fetchedResult.coreDataStack.managedContext.delete(note)
-                    self.fetchedResult.coreDataStack.saveContext()
+                    self.viewController.applicationData.coreDataStack.managedContext.delete(note)
+                    self.viewController.applicationData.coreDataStack.saveContext()
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
                 alert.addAction(cancelAction)
                 alert.addAction(deleteAction)
+                self.viewController.present(alert, animated: true, completion: nil)
             }
         }
         
@@ -113,14 +119,14 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                         if success {
                             note.detachTag(for: "Protected")
                             note.isLocked.toggle()
-                            self.fetchedResult.coreDataStack.saveContext()
+                            self.viewController.applicationData.coreDataStack.saveContext()
                         }
                     }
                 }
                 else {
                     note.attachTag(color: .systemGreen, text: "Protected")
                     note.isLocked.toggle()
-                    self.fetchedResult.coreDataStack.saveContext()
+                    self.viewController.applicationData.coreDataStack.saveContext()
                 }
             }
         }

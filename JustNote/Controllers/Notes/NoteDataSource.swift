@@ -11,21 +11,25 @@ import UIKit
 import CoreData
 
 class NoteDataSource: NSObject, UITableViewDataSource {
-    var fetchedResult = FetchedResultsController()
+    var applicationData: CoreDataController!
+    
+    init(with applicationData: CoreDataController) {
+        self.applicationData = applicationData
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchedResult.fetchResultController.sections?.count ?? 0
+        return applicationData.controller.sections?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResult.fetchResultController.sections?[section].numberOfObjects ?? 0
+        return applicationData.controller.sections?[section].numberOfObjects ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.reuseIdentifier, for: indexPath) as? NoteCell else {
             fatalError("Error: Unable to dequeue")
         }
-        cell.configure(with: fetchedResult.fetchResultController.object(at: indexPath))
+        cell.configure(with: applicationData.controller.object(at: indexPath))
         return cell
     }
 }

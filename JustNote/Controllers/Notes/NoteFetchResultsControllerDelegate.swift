@@ -1,8 +1,8 @@
 //
-//  FetchedResultsControllerDelegate.swift
+//  NoteFetchResultsControllerDelegate.swift
 //  JustNote
 //
-//  Created by Малышев Максим Алексеевич on 8/8/20.
+//  Created by Малышев Максим Алексеевич on 8/11/20.
 //  Copyright © 2020 Максим. All rights reserved.
 //
 
@@ -10,9 +10,14 @@ import Foundation
 import UIKit
 import CoreData
 
-class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
-    /*
+class NoteFetchResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
     var tableView: UITableView!
+    var applicationData: CoreDataController!
+    
+    init(tableView: UITableView, with applicationData: CoreDataController) {
+        self.tableView = tableView
+        self.applicationData = applicationData
+    }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -45,12 +50,12 @@ class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDele
             tableView.insertRows(at: [newIndexPath!], with: .automatic)
         case .update:
             let cell = tableView.cellForRow(at: indexPath!) as! NoteCell
-            let note = dataSource.fetchResultController.object(at: indexPath!)
+            let note = applicationData.controller.object(at: indexPath!)
             cell.configure(with: note)
         }
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
-    } */
+    }
 }

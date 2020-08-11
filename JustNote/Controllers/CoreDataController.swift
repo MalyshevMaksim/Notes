@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class FetchedResultsController {
+class CoreDataController {
     lazy var coreDataStack: CoreDataStack = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Failed to get data stack")
@@ -18,7 +18,7 @@ class FetchedResultsController {
         return appDelegate.coreDataStack
     }()
     
-    lazy var fetchResultController: NSFetchedResultsController<Note> = {
+    lazy var controller: NSFetchedResultsController<Note> = {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         let pinnedSortDescriptor = NSSortDescriptor(key: #keyPath(Note.isPinned), ascending: false)
         fetchRequest.sortDescriptors = [pinnedSortDescriptor]

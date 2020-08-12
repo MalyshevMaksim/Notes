@@ -11,10 +11,12 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var coreDataStack = CoreDataStack(modelName: "Note")
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let loader = SampleDataLoader(with: SampleBoardLoader())
+        loader.load(path: "SampleBoards", type: "plist")
+        loader.setLoader(loader: SampleNoteLoader())
+        loader.load(path: "SampleNotes", type: "plist")
         
         return true
     }

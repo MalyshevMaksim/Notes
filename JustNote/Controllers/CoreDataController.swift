@@ -11,19 +11,12 @@ import UIKit
 import CoreData
 
 class CoreDataController {
-    lazy var coreDataStack: CoreDataStack = {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Failed to get data stack")
-        }
-        return appDelegate.coreDataStack
-    }()
-    
-    lazy var controller: NSFetchedResultsController<Note> = {
+    lazy var fetchRequestController: NSFetchedResultsController<Note> = {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         let pinnedSortDescriptor = NSSortDescriptor(key: #keyPath(Note.isPinned), ascending: false)
         fetchRequest.sortDescriptors = [pinnedSortDescriptor]
         
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedContext, sectionNameKeyPath: #keyPath(Note.section), cacheName: nil)
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.instance.managedContext, sectionNameKeyPath: #keyPath(Note.section), cacheName: nil)
         performFetch(controller)
         return controller
     }()

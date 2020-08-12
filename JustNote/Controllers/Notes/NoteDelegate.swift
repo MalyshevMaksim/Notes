@@ -26,7 +26,7 @@ class NoteDelegate: NSObject, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let note = viewController.applicationData.controller.object(at: indexPath)
+        let note = viewController.applicationData.fetchRequestController.object(at: indexPath)
         
         if note.isLocked {
             biometricAuthentication { success in
@@ -43,7 +43,7 @@ class NoteDelegate: NSObject, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionName = viewController.applicationData.controller.sections![section].name
+        let sectionName = viewController.applicationData.fetchRequestController.sections![section].name
         
         switch section {
         case 0:
@@ -58,7 +58,7 @@ class NoteDelegate: NSObject, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let note = viewController.applicationData.controller.object(at: indexPath)
+        let note = viewController.applicationData.fetchRequestController.object(at: indexPath)
         
         var pinningAction: UIAction {
             let title = note.isPinned ? "Unpin" : "pin"
@@ -74,7 +74,7 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                     note.section = "Pinned"
                 }
                 note.isPinned.toggle()
-                self.viewController.applicationData.coreDataStack.saveContext()
+                CoreDataStack.instance.saveContext()
             }
         }
         
@@ -90,7 +90,7 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                     note.attachTag(color: .systemOrange, text: "Favorite")
                 }
                 note.isFavorite.toggle()
-                self.viewController.applicationData.coreDataStack.saveContext()
+                CoreDataStack.instance.saveContext()
             }
         }
         
@@ -99,8 +99,8 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                 let alert = UIAlertController(title: "Warning", message: "Are you sure you want to delete the note?", preferredStyle: .actionSheet)
                 
                 let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
-                    self.viewController.applicationData.coreDataStack.managedContext.delete(note)
-                    self.viewController.applicationData.coreDataStack.saveContext()
+                     CoreDataStack.instance.managedContext.delete(note)
+                     CoreDataStack.instance.saveContext()
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
                 alert.addAction(cancelAction)
@@ -119,14 +119,14 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                         if success {
                             note.detachTag(for: "Protected")
                             note.isLocked.toggle()
-                            self.viewController.applicationData.coreDataStack.saveContext()
+                             CoreDataStack.instance.saveContext()
                         }
                     }
                 }
                 else {
                     note.attachTag(color: .systemGreen, text: "Protected")
                     note.isLocked.toggle()
-                    self.viewController.applicationData.coreDataStack.saveContext()
+                    CoreDataStack.instance.saveContext()
                 }
             }
         }

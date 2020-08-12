@@ -10,14 +10,12 @@ import Foundation
 import CoreData
 
 class CoreDataStack {
-    private var modelName: String?
+    static var instance = CoreDataStack()
     
-    init(modelName: String) {
-        self.modelName = modelName
-    }
+    private init() {}
     
     private lazy var persistenContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: modelName!)
+        let container = NSPersistentContainer(name: "Note")
         container.loadPersistentStores { description, error in
             if let error = error {
                 fatalError("Failed to load persistent stores:\(error)")

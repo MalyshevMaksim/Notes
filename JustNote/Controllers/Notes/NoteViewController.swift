@@ -31,7 +31,7 @@ class NoteViewController: UITableViewController {
         delegate.viewController = self
         
         applicationDataDelegate = NoteFetchResultsControllerDelegate(tableView: tableView, with: applicationData)
-        applicationData.controller.delegate = applicationDataDelegate
+        applicationData.fetchRequestController.delegate = applicationDataDelegate
         
         tableView.delegate = delegate
         tableView.dataSource = dataSource

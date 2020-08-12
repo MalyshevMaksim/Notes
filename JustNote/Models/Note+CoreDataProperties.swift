@@ -26,10 +26,7 @@ extension Note {
     @NSManaged public var tags: NSSet?
     
     func attachTag(color: UIColor, text: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Failed to get data stack")
-        }
-        let tag = Tag(context: appDelegate.coreDataStack.managedContext)
+        let tag = Tag(context: CoreDataStack.instance.managedContext)
         tag.color = color
         tag.text = text
         addToTags(tag)

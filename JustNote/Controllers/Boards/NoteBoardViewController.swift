@@ -25,12 +25,6 @@ class NoteBoardViewController: UICollectionViewController {
         
         configureController()
         configureCollectionView()
-        
-        let loader = SampleDataLoader(path: "SampleBoards", type: "plist")
-        loader.load(with: SampleBoardLoader(), to: dataSource.coreDataStack)
-        
-        let loaderm = SampleDataLoader(path: "SampleNotes", type: "plist")
-        loaderm.load(with: SampleNoteLoader(), to: dataSource.coreDataStack)
     }
     
     private func configureController() {

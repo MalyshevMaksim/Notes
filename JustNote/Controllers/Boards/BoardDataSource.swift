@@ -11,19 +11,13 @@ import UIKit
 import CoreData
 
 class BoardDataSource: NSObject, UICollectionViewDataSource {
-    lazy var coreDataStack: CoreDataStack = {
-           guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-               fatalError("Failed to get data stack")
-           }
-           return appDelegate.coreDataStack
-    }()
-       
+   
     lazy var fetchResultController: NSFetchedResultsController<Board> = {
        let fetchRequest: NSFetchRequest<Board> = Board.fetchRequest()
        let sortDescriptor = NSSortDescriptor(key: #keyPath(Board.title), ascending: false)
        fetchRequest.sortDescriptors = [sortDescriptor]
        
-       let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedContext, sectionNameKeyPath: #keyPath(Board.section), cacheName: nil)
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.instance.managedContext, sectionNameKeyPath: #keyPath(Board.section), cacheName: nil)
        performFetch(controller)
        return controller
     }()
@@ -45,7 +39,7 @@ class BoardDataSource: NSObject, UICollectionViewDataSource {
         case 0:
             let request: NSFetchRequest<Note> = Note.fetchRequest()
             request.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(Note.isFavorite), true])
-            let results = try! coreDataStack.managedContext.fetch(request)
+            let results = try! CoreDataStack.instance.managedContext.fetch(request)
             return results.count
         default:
             return fetchResultController.sections![section - 1].numberOfObjects

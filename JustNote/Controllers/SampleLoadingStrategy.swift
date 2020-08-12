@@ -11,7 +11,7 @@ import CoreData
 import UIKit
 
 protocol SampleLoadingStrategy {
-    func load(data: NSArray, to dataStack: CoreDataStack)
+    func load(data: NSArray)
 }
 
 extension SampleLoadingStrategy {
@@ -26,35 +26,35 @@ extension SampleLoadingStrategy {
 }
 
 class SampleBoardLoader: SampleLoadingStrategy {
-    func load(data: NSArray, to dataStack: CoreDataStack) {
+    func load(data: NSArray) {
         guard isFirstAppear(forKey: "Boards") == false else {
             return
         }
         for board in data {
             let boardDictionary = board as! [String : Any]
-            let board = Board(context: dataStack.managedContext)
+            let board = Board(context: CoreDataStack.instance.managedContext)
             board.title = boardDictionary["title"] as? String
             board.iconName = boardDictionary["iconName"] as? String
             board.tintColor = UIColor.color(dict: boardDictionary["tintColor"] as! [String : Any])!
             board.section = boardDictionary["section"] as? String
         }
-        dataStack.saveContext()
+        CoreDataStack.instance.saveContext()
     }
 }
 
 class SampleNoteLoader: SampleLoadingStrategy {
-    func load(data: NSArray, to dataStack: CoreDataStack) {
+    func load(data: NSArray) {
         guard isFirstAppear(forKey: "Notes") == false else {
             return
         }
         
         let request: NSFetchRequest<Board> = Board.fetchRequest()
         request.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(Board.title), "Typed"])
-        let result = try! dataStack.managedContext.fetch(request)
+        let result = try!  CoreDataStack.instance.managedContext.fetch(request)
         
         for note in data {
             let noteDictionary = note as! [String : Any]
-            let note = Note(context: dataStack.managedContext)
+            let note = Note(context:  CoreDataStack.instance.managedContext)
             note.title = noteDictionary["title"] as? String
             note.body = noteDictionary["body"] as? String
             note.date = noteDictionary["date"] as? Date
@@ -75,6 +75,6 @@ class SampleNoteLoader: SampleLoadingStrategy {
             }
             result.first?.addToNotes(note)
         }
-        dataStack.saveContext()
+         CoreDataStack.instance.saveContext()
     }
 }

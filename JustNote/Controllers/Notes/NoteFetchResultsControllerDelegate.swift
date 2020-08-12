@@ -50,7 +50,7 @@ class NoteFetchResultsControllerDelegate: NSObject, NSFetchedResultsControllerDe
             tableView.insertRows(at: [newIndexPath!], with: .automatic)
         case .update:
             let cell = tableView.cellForRow(at: indexPath!) as! NoteCell
-            let note = applicationData.controller.object(at: indexPath!)
+            let note = applicationData.fetchRequestController.object(at: indexPath!)
             cell.configure(with: note)
         }
     }

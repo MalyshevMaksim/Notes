@@ -18,18 +18,18 @@ class NoteDataSource: NSObject, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return applicationData.controller.sections?.count ?? 0
+        return applicationData.fetchRequestController.sections?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return applicationData.controller.sections?[section].numberOfObjects ?? 0
+        return applicationData.fetchRequestController.sections?[section].numberOfObjects ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.reuseIdentifier, for: indexPath) as? NoteCell else {
             fatalError("Error: Unable to dequeue")
         }
-        cell.configure(with: applicationData.controller.object(at: indexPath))
+        cell.configure(with: applicationData.fetchRequestController.object(at: indexPath))
         return cell
     }
 }

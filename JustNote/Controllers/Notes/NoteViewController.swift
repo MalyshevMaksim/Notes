@@ -9,11 +9,15 @@
 import UIKit
 import CoreData
 
-class NoteViewController: UITableViewController {
-    var applicationDataDelegate: NoteFetchResultsControllerDelegate!
-    var applicationData: CoreDataController!
-    var dataSource: NoteDataSource!
-    var delegate: NoteDelegate!
+protocol ViewСontrollerPresenting {
+    func showAlert(alert: UIViewController)
+    func showNextController()
+}
+
+class NoteViewController: UITableViewController, ViewСontrollerPresenting {
+    var fetchResultControllerDelegate: NoteFetchResultsControllerDelegate!
+    var dataSource = NoteDataSource()
+    var delegate = NoteDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,21 +28,17 @@ class NoteViewController: UITableViewController {
     }
     
     private func configureTableView() {
-        applicationData = CoreDataController()
-        dataSource = NoteDataSource(with: applicationData)
-        
-        delegate = NoteDelegate()
-        delegate.viewController = self
-        
-        applicationDataDelegate = NoteFetchResultsControllerDelegate(tableView: tableView, with: applicationData)
-        applicationData.fetchRequestController.delegate = applicationDataDelegate
+        fetchResultControllerDelegate = NoteFetchResultsControllerDelegate(tableView: tableView)
+        CoreDataStack.shared.fetchRequestController.delegate = fetchResultControllerDelegate
         
         tableView.delegate = delegate
+        delegate.parentController = self
         tableView.dataSource = dataSource
         tableView.backgroundColor = .systemBackground
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.reuseIdentifier)
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     private func configureController() {
@@ -61,5 +61,13 @@ class NoteViewController: UITableViewController {
         tableView.setEditing(!tableView.isEditing, animated: true)
         navigationItem.leftBarButtonItem?.style = tableView.isEditing ? .done : .plain
         updateLeftBarButton()
+    }
+    
+    func showAlert(alert: UIViewController) {
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showNextController() {
+        navigationController?.pushViewController(NoteViewController(), animated: true)
     }
 }

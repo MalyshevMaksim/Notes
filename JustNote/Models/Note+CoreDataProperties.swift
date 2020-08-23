@@ -26,7 +26,7 @@ extension Note {
     @NSManaged public var tags: NSSet?
     
     func attachTag(color: UIColor, text: String) {
-        let tag = Tag(context: CoreDataStack.instance.managedContext)
+        let tag = Tag(context: CoreDataStack.shared.managedContext)
         tag.color = color
         tag.text = text
         addToTags(tag)

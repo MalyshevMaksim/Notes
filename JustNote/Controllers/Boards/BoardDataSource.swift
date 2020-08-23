@@ -17,7 +17,7 @@ class BoardDataSource: NSObject, UICollectionViewDataSource {
        let sortDescriptor = NSSortDescriptor(key: #keyPath(Board.title), ascending: false)
        fetchRequest.sortDescriptors = [sortDescriptor]
        
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.instance.managedContext, sectionNameKeyPath: #keyPath(Board.section), cacheName: nil)
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.managedContext, sectionNameKeyPath: #keyPath(Board.section), cacheName: nil)
        performFetch(controller)
        return controller
     }()
@@ -39,7 +39,7 @@ class BoardDataSource: NSObject, UICollectionViewDataSource {
         case 0:
             let request: NSFetchRequest<Note> = Note.fetchRequest()
             request.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(Note.isFavorite), true])
-            let results = try! CoreDataStack.instance.managedContext.fetch(request)
+            let results = try! CoreDataStack.shared.managedContext.fetch(request)
             return results.count
         default:
             return fetchResultController.sections![section - 1].numberOfObjects

@@ -13,7 +13,6 @@
 		B507B3AD24DF336900EDB053 /* NoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507B3AC24DF336900EDB053 /* NoteDataSource.swift */; };
 		B507B3AF24DF388700EDB053 /* NoteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507B3AE24DF388700EDB053 /* NoteDelegate.swift */; };
 		B5210C8D24E04FC700402C91 /* BoardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5210C8C24E04FC700402C91 /* BoardDataSource.swift */; };
-		B5210C8F24E0680300402C91 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5210C8E24E0680300402C91 /* CoreDataController.swift */; };
 		B53E36792497E69D0008DF71 /* BoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E36782497E69D0008DF71 /* BoardDelegate.swift */; };
 		B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3624965BAC002F2865 /* AppDelegate.swift */; };
 		B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3824965BAC002F2865 /* SceneDelegate.swift */; };
@@ -39,6 +38,7 @@
 		B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658B6249C89D500F4C6C3 /* NoteCell.swift */; };
 		B5E658BB249ED5A700F4C6C3 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658BA249ED5A700F4C6C3 /* TagView.swift */; };
 		B5E658BD249F43A300F4C6C3 /* HeaderNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658BC249F43A300F4C6C3 /* HeaderNotes.swift */; };
+		B5EE703A24E5F90500FFC0D6 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE703924E5F90500FFC0D6 /* RoundedImage.swift */; };
 		B5F5E69D24DAF57100735567 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5E69C24DAF57100735567 /* UIStackView.swift */; };
 		B5F5E6B424DB0C7F00735567 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5E6B224DB0C7F00735567 /* Note+CoreDataClass.swift */; };
 		B5F5E6B524DB0C7F00735567 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5E6B324DB0C7F00735567 /* Note+CoreDataProperties.swift */; };
@@ -55,7 +55,6 @@
 		B507B3AC24DF336900EDB053 /* NoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDataSource.swift; sourceTree = "<group>"; };
 		B507B3AE24DF388700EDB053 /* NoteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDelegate.swift; sourceTree = "<group>"; };
 		B5210C8C24E04FC700402C91 /* BoardDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDataSource.swift; sourceTree = "<group>"; };
-		B5210C8E24E0680300402C91 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		B53E36782497E69D0008DF71 /* BoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDelegate.swift; sourceTree = "<group>"; };
 		B5893B3324965BAC002F2865 /* JustNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5893B3624965BAC002F2865 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		B5E658B6249C89D500F4C6C3 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B5E658BA249ED5A700F4C6C3 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		B5E658BC249F43A300F4C6C3 /* HeaderNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderNotes.swift; sourceTree = "<group>"; };
+		B5EE703924E5F90500FFC0D6 /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
 		B5F5E69C24DAF57100735567 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		B5F5E6B224DB0C7F00735567 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B5F5E6B324DB0C7F00735567 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -170,7 +170,6 @@
 		B5893B4E24966E7B002F2865 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5210C8E24E0680300402C91 /* CoreDataController.swift */,
 				B5B70A4724C357BD005512AF /* SampleDataLoader.swift */,
 				B5B70A4924C357E5005512AF /* SampleLoadingStrategy.swift */,
 				B53E36762497CC2B0008DF71 /* Boards */,
@@ -202,6 +201,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		B5D468AA24EF82F5001209EA /* NoteCell */ = {
+			isa = PBXGroup;
+			children = (
+				B5E658B6249C89D500F4C6C3 /* NoteCell.swift */,
+				B5EE703924E5F90500FFC0D6 /* RoundedImage.swift */,
+			);
+			path = NoteCell;
+			sourceTree = "<group>";
+		};
+		B5D468AD24EF84AC001209EA /* BoardCell */ = {
+			isa = PBXGroup;
+			children = (
+				B5A2200D24DE09B5000662E2 /* BoardFavoriteCell.swift */,
+				B5893B5024967249002F2865 /* BoardCollectionCell.swift */,
+			);
+			path = BoardCell;
+			sourceTree = "<group>";
+		};
 		B5E65884249BF1C600F4C6C3 /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,9 +243,8 @@
 		B5E995BA24A3CD63003C6211 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B5E658B6249C89D500F4C6C3 /* NoteCell.swift */,
-				B5A2200D24DE09B5000662E2 /* BoardFavoriteCell.swift */,
-				B5893B5024967249002F2865 /* BoardCollectionCell.swift */,
+				B5D468AA24EF82F5001209EA /* NoteCell */,
+				B5D468AD24EF84AC001209EA /* BoardCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -378,7 +394,6 @@
 				B5E658BB249ED5A700F4C6C3 /* TagView.swift in Sources */,
 				B5C18BC524CE1C55008551C1 /* Tag+CoreDataProperties.swift in Sources */,
 				B5E6588A249BF61900F4C6C3 /* TableBoardLayout.swift in Sources */,
-				B5210C8F24E0680300402C91 /* CoreDataController.swift in Sources */,
 				B5E658BD249F43A300F4C6C3 /* HeaderNotes.swift in Sources */,
 				B5B70A4A24C357E5005512AF /* SampleLoadingStrategy.swift in Sources */,
 				B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */,
@@ -395,6 +410,7 @@
 				B5B70A4824C357BD005512AF /* SampleDataLoader.swift in Sources */,
 				B5F5E69D24DAF57100735567 /* UIStackView.swift in Sources */,
 				B5F5E6B424DB0C7F00735567 /* Note+CoreDataClass.swift in Sources */,
+				B5EE703A24E5F90500FFC0D6 /* RoundedImage.swift in Sources */,
 				B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */,
 				B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */,
 			);

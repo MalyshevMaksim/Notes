@@ -12,11 +12,9 @@ import CoreData
 
 class NoteFetchResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
     var tableView: UITableView!
-    var applicationData: CoreDataController!
     
-    init(tableView: UITableView, with applicationData: CoreDataController) {
+    init(tableView: UITableView) {
         self.tableView = tableView
-        self.applicationData = applicationData
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -28,29 +26,25 @@ class NoteFetchResultsControllerDelegate: NSObject, NSFetchedResultsControllerDe
         
         switch type {
         case .insert:
-            tableView.insertSections(section, with: .automatic)
+            tableView.insertSections(section, with: .fade)
         case .delete:
-            tableView.deleteSections(section, with: .automatic)
-        case .move:
-            print("MOVE!")
-        case .update:
-            print("UPDATE!")
+            tableView.deleteSections(section, with: .fade)
+        default:
+            break
         }
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
         switch type {
         case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.deleteRows(at: [indexPath!], with: .fade)
         case .move:
-            tableView.deleteRows(at: [indexPath!], with: .automatic)
-            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+            tableView.moveRow(at: indexPath!, to: newIndexPath!)
         case .update:
-            let cell = tableView.cellForRow(at: indexPath!) as! NoteCell
-            let note = applicationData.fetchRequestController.object(at: indexPath!)
+            let note = CoreDataStack.shared.fetchRequestController.object(at: indexPath!)
+            let cell = self.tableView.cellForRow(at: indexPath!) as! NoteCell
             cell.configure(with: note)
         }
     }

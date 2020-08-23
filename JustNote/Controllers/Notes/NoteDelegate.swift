@@ -13,7 +13,7 @@ import LocalAuthentication
 import Dispatch
 
 class NoteDelegate: NSObject, UITableViewDelegate {
-    var viewController: NoteViewController!
+    var parentController: ViewСontrollerPresenting?
 
     private func biometricAuthentication(completed: @escaping (_ success: Bool) -> ()) {
         let contxt = LAContext()
@@ -26,24 +26,24 @@ class NoteDelegate: NSObject, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let note = viewController.applicationData.fetchRequestController.object(at: indexPath)
+        let note = CoreDataStack.shared.fetchRequestController.object(at: indexPath)
         
         if note.isLocked {
             biometricAuthentication { success in
                 if success {
                     DispatchQueue.main.async {
-                        self.viewController.navigationController?.pushViewController(UIViewController(), animated: true)
+                        self.parentController?.showNextController()
                     }
                 }
             }
         }
         else {
-            viewController.navigationController?.pushViewController(UIViewController(), animated: true)
+            parentController?.showNextController()
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionName = viewController.applicationData.fetchRequestController.sections![section].name
+        let sectionName = CoreDataStack.shared.fetchRequestController.sections![section].name
         
         switch section {
         case 0:
@@ -58,7 +58,7 @@ class NoteDelegate: NSObject, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let note = viewController.applicationData.fetchRequestController.object(at: indexPath)
+        let note = CoreDataStack.shared.fetchRequestController.object(at: indexPath)
         
         var pinningAction: UIAction {
             let title = note.isPinned ? "Unpin" : "pin"
@@ -66,15 +66,15 @@ class NoteDelegate: NSObject, UITableViewDelegate {
             
             return UIAction(title: title, image: icon, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
                 if note.isPinned {
-                    note.detachTag(for: "Pinned")
                     note.section = "Others"
+                    note.detachTag(for: "Pinned")
                 }
                 else {
-                    note.attachTag(color: .systemBlue, text: "Pinned")
                     note.section = "Pinned"
+                    note.attachTag(color: .systemBlue, text: "Pinned")
                 }
                 note.isPinned.toggle()
-                CoreDataStack.instance.saveContext()
+                CoreDataStack.shared.saveContext()
             }
         }
         
@@ -90,7 +90,7 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                     note.attachTag(color: .systemOrange, text: "Favorite")
                 }
                 note.isFavorite.toggle()
-                CoreDataStack.instance.saveContext()
+                CoreDataStack.shared.saveContext()
             }
         }
         
@@ -99,13 +99,13 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                 let alert = UIAlertController(title: "Warning", message: "Are you sure you want to delete the note?", preferredStyle: .actionSheet)
                 
                 let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
-                     CoreDataStack.instance.managedContext.delete(note)
-                     CoreDataStack.instance.saveContext()
+                     CoreDataStack.shared.managedContext.delete(note)
+                     CoreDataStack.shared.saveContext()
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
                 alert.addAction(cancelAction)
                 alert.addAction(deleteAction)
-                self.viewController.present(alert, animated: true, completion: nil)
+                self.parentController?.showAlert(alert: alert)
             }
         }
         
@@ -119,14 +119,14 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                         if success {
                             note.detachTag(for: "Protected")
                             note.isLocked.toggle()
-                             CoreDataStack.instance.saveContext()
+                             CoreDataStack.shared.saveContext()
                         }
                     }
                 }
                 else {
                     note.attachTag(color: .systemGreen, text: "Protected")
                     note.isLocked.toggle()
-                    CoreDataStack.instance.saveContext()
+                    CoreDataStack.shared.saveContext()
                 }
             }
         }

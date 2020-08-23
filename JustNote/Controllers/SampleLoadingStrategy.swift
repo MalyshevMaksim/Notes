@@ -32,13 +32,13 @@ class SampleBoardLoader: SampleLoadingStrategy {
         }
         for board in data {
             let boardDictionary = board as! [String : Any]
-            let board = Board(context: CoreDataStack.instance.managedContext)
+            let board = Board(context: CoreDataStack.shared.managedContext)
             board.title = boardDictionary["title"] as? String
             board.iconName = boardDictionary["iconName"] as? String
             board.tintColor = UIColor.color(dict: boardDictionary["tintColor"] as! [String : Any])!
             board.section = boardDictionary["section"] as? String
         }
-        CoreDataStack.instance.saveContext()
+        CoreDataStack.shared.saveContext()
     }
 }
 
@@ -50,11 +50,11 @@ class SampleNoteLoader: SampleLoadingStrategy {
         
         let request: NSFetchRequest<Board> = Board.fetchRequest()
         request.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(Board.title), "Typed"])
-        let result = try!  CoreDataStack.instance.managedContext.fetch(request)
+        let result = try!  CoreDataStack.shared.managedContext.fetch(request)
         
         for note in data {
             let noteDictionary = note as! [String : Any]
-            let note = Note(context:  CoreDataStack.instance.managedContext)
+            let note = Note(context:  CoreDataStack.shared.managedContext)
             note.title = noteDictionary["title"] as? String
             note.body = noteDictionary["body"] as? String
             note.date = noteDictionary["date"] as? Date
@@ -75,6 +75,6 @@ class SampleNoteLoader: SampleLoadingStrategy {
             }
             result.first?.addToNotes(note)
         }
-         CoreDataStack.instance.saveContext()
+         CoreDataStack.shared.saveContext()
     }
 }

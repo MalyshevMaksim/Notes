@@ -40,8 +40,8 @@ class HeaderNotes: UIView {
         self.addSubview(imageView)
         
         NSLayoutConstraint.activate([
-            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
             text.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 30),
             text.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             text.centerYAnchor.constraint(equalTo: self.centerYAnchor),

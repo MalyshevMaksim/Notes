@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class CoreDataStack {
-    static var instance = CoreDataStack()
+    static var shared = CoreDataStack()
     
     private init() {}
     
@@ -28,6 +28,24 @@ class CoreDataStack {
         return persistenContainer.viewContext
     }()
     
+    lazy var fetchRequestController: NSFetchedResultsController<Note> = {
+        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
+        let pinnedSortDescriptor = NSSortDescriptor(key: #keyPath(Note.isPinned), ascending: false)
+        fetchRequest.sortDescriptors = [pinnedSortDescriptor]
+        
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.managedContext, sectionNameKeyPath: #keyPath(Note.section), cacheName: nil)
+        performFetch(controller)
+        return controller
+    }()
+    
+    private func performFetch(_ controller: NSFetchedResultsController<Note>) {
+        do {
+            try controller.performFetch()
+        } catch {
+            fatalError("Failed to performFetch: \(error)")
+        }
+    }
+    
     func saveContext() {
         if managedContext.hasChanges {
             do {
@@ -40,3 +58,4 @@ class CoreDataStack {
         }
     }
 }
+

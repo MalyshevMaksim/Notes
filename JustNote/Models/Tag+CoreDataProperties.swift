@@ -11,7 +11,6 @@ import CoreData
 import UIKit
 
 extension Tag {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Tag> {
         return NSFetchRequest<Tag>(entityName: "Tag")
     }

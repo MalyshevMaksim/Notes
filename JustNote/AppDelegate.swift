@@ -13,14 +13,17 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let loader = SampleDataLoader(with: SampleBoardLoader())
-        loader.load(path: "SampleBoards", type: "plist")
-        loader.setLoader(loader: SampleNoteLoader())
-        loader.load(path: "SampleNotes", type: "plist")
-        
+        loadSampleData(strategy: .boardLoader)
+        loadSampleData(strategy: .noteLoader)
         return true
     }
-
+    
+    private func loadSampleData(strategy: SampleLoaderStrategyEnum) {
+        let loader = SampleDataLoader()
+        loader.loaderStrategy = strategy
+        loader.load()
+    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

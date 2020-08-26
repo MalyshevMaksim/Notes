@@ -19,7 +19,7 @@ class NoteCell: UITableViewCell {
         backgroundColor = .systemBackground
     }
     
-    private func configureTagStack(with model: Note) {
+    func configureTagStack(with model: Note) {
         tagStack.removeAllArrangedSubviews()
         
         if let tags = model.tags?.allObjects {
@@ -69,6 +69,17 @@ class NoteCell: UITableViewCell {
         return date
     }()
     
+    private lazy var imageStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 18
+        stackView.addArrangedSubview(RoundedImage())
+        stackView.addArrangedSubview(RoundedImage())
+        stackView.addArrangedSubview(RoundedImage())
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
@@ -83,26 +94,30 @@ class NoteCell: UITableViewCell {
         contentView.addSubview(title)
         contentView.addSubview(body)
         contentView.addSubview(lastModifiedDate)
+        contentView.addSubview(imageStackView)
     }
     
     private func setupCell() {
         setupCellViews()
-        let horizontalInset: CGFloat = 20
+        let horizontalInset: CGFloat = 15
         
         NSLayoutConstraint.activate([
             tagStack.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: contentView.layoutMarginsGuide.topAnchor, multiplier: 0.5),
             tagStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalInset),
             tagStack.heightAnchor.constraint(equalToConstant: 20),
             
-            title.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: tagStack.lastBaselineAnchor, multiplier: 1),
+            title.topAnchor.constraint(equalTo: tagStack.bottomAnchor, constant: 10),
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalInset),
             title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            body.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: title.lastBaselineAnchor, multiplier: 1.2),
+            body.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
             body.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             body.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalInset),
             
-            lastModifiedDate.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: body.lastBaselineAnchor, multiplier: 1.1),
+            imageStackView.topAnchor.constraint(equalTo: body.bottomAnchor, constant: 10),
+            imageStackView.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+            
+            lastModifiedDate.topAnchor.constraint(equalTo: imageStackView.bottomAnchor, constant: 40),
             lastModifiedDate.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             lastModifiedDate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalInset),
             

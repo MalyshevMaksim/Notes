@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B500A8B324F31AB800347177 /* DetailNoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500A8B224F31AB800347177 /* DetailNoteController.swift */; };
 		B5022EA524C4A8C4008A9B8D /* SampleNotes.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5022EA424C4A8C4008A9B8D /* SampleNotes.plist */; };
 		B5022EA824C4B937008A9B8D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5022EA724C4B937008A9B8D /* UIColor.swift */; };
 		B5024CBB24E23CF700859B5C /* NoteFetchResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5024CBA24E23CF700859B5C /* NoteFetchResultsControllerDelegate.swift */; };
@@ -49,6 +50,7 @@
 		0442A30BE583F31C3733049C /* Pods-JustNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustNote.release.xcconfig"; path = "Target Support Files/Pods-JustNote/Pods-JustNote.release.xcconfig"; sourceTree = "<group>"; };
 		0D27CA523F25CBA6481DCA73 /* Pods-JustNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustNote.debug.xcconfig"; path = "Target Support Files/Pods-JustNote/Pods-JustNote.debug.xcconfig"; sourceTree = "<group>"; };
 		8EC96E3FAFE73ED42400FB22 /* Pods_JustNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B500A8B224F31AB800347177 /* DetailNoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNoteController.swift; sourceTree = "<group>"; };
 		B5022EA424C4A8C4008A9B8D /* SampleNotes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SampleNotes.plist; sourceTree = "<group>"; };
 		B5022EA724C4B937008A9B8D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		B5024CBA24E23CF700859B5C /* NoteFetchResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFetchResultsControllerDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				B5024CBA24E23CF700859B5C /* NoteFetchResultsControllerDelegate.swift */,
 				B507B3AC24DF336900EDB053 /* NoteDataSource.swift */,
 				B5E658B1249C875500F4C6C3 /* NoteViewController.swift */,
+				B500A8B224F31AB800347177 /* DetailNoteController.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				B5B70A4C24C3CF1E005512AF /* CoreDataStack.swift in Sources */,
 				B5E65886249BF1F100F4C6C3 /* GridBoardLayout.swift in Sources */,
 				B5E658B2249C875500F4C6C3 /* NoteViewController.swift in Sources */,
+				B500A8B324F31AB800347177 /* DetailNoteController.swift in Sources */,
 				B5A2201624DED191000662E2 /* Board+CoreDataProperties.swift in Sources */,
 				B5210C8D24E04FC700402C91 /* BoardDataSource.swift in Sources */,
 				B5B70A4824C357BD005512AF /* SampleDataLoader.swift in Sources */,

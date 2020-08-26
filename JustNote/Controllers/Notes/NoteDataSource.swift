@@ -20,11 +20,9 @@ class NoteDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard var cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.reuseIdentifier, for: indexPath) as? NoteCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.reuseIdentifier, for: indexPath) as? NoteCell else {
             fatalError("Error: Unable to dequeue")
         }
-        
-        cell = NoteCell()
         cell.configure(with: CoreDataStack.shared.fetchRequestController.object(at: indexPath))
         return cell
     }

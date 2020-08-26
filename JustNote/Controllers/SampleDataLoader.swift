@@ -9,22 +9,42 @@
 import Foundation
 import CoreData
 
+enum SampleLoaderStrategyEnum {
+    case noteLoader
+    case boardLoader
+    
+    var loader: SampleLoadingStrategy {
+        switch self {
+            case .noteLoader: return SampleNoteLoader()
+            case .boardLoader: return SampleBoardLoader()
+        }
+    }
+    
+    var path: String {
+        switch self {
+            case .noteLoader: return "SampleNotes"
+            case .boardLoader: return "SampleBoards"
+        }
+    }
+}
+
 class SampleDataLoader {
-    private var loader: SampleLoadingStrategy
+    private var loader: SampleLoadingStrategy!
+    private var path: String!
     
-    init(with loader: SampleLoadingStrategy) {
-        self.loader = loader
+    var loaderStrategy: SampleLoaderStrategyEnum! {
+        didSet {
+            loader = loaderStrategy.loader
+            path = loaderStrategy.path
+        }
     }
-    
-    func setLoader(loader: SampleLoadingStrategy) {
-        self.loader = loader
-    }
-    
-    func load(path: String, type: String) {
-        guard let filePath = Bundle.main.path(forResource: path, ofType: type),
+
+    func load() {
+        guard let filePath = Bundle.main.path(forResource: path, ofType: "plist"),
               let loadedData = NSArray(contentsOfFile: filePath) else {
             fatalError("Failed to load data: file not found!")
         }
-        loader.load(data: loadedData)
+        // Сonvert the data received from the plist into specific types in accordance with the chosen strategy
+        loader.convertData(loadedData)
     }
 }

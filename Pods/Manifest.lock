@@ -1,16 +1,20 @@
 PODS:
   - Locksmith (4.0.0)
+  - RichEditorView (5.0.0)
 
 DEPENDENCIES:
   - Locksmith
+  - RichEditorView
 
 SPEC REPOS:
   trunk:
     - Locksmith
+    - RichEditorView
 
 SPEC CHECKSUMS:
   Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
+  RichEditorView: 1bbb07b87ca2d479ac29a6877014b38b8df233ef
 
-PODFILE CHECKSUM: fa99a379cdfa54439fc1c091f49a09867b00be9b
+PODFILE CHECKSUM: 58b6f4bab7c765ee5a33b12b2c81636385ef56c7
 
 COCOAPODS: 1.8.4

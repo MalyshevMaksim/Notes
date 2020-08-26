@@ -25,20 +25,32 @@ extension Note {
     @NSManaged public var board: Board?
     @NSManaged public var tags: NSSet?
     
-    func attachTag(color: UIColor, text: String) {
+    func configureTags() {
+        if isLocked == true {
+            attachTag(type: .protected)
+        }
+        if isPinned == true {
+            attachTag(type: .pinned)
+            section = "Pinned"
+        }
+        if isFavorite == true {
+            attachTag(type: .favorited)
+        }
+    }
+    
+    func attachTag(type: TagEnum) {
         let tag = Tag(context: CoreDataStack.shared.managedContext)
-        tag.color = color
-        tag.text = text
+        tag.type = type
         addToTags(tag)
     }
     
-    func detachTag(for key: String) {
+    func detachTag(type: TagEnum) {
         guard let tags = tags else {
             return
         }
         for tag in tags {
             let currentTag = tag as! Tag
-            if currentTag.text == key {
+            if currentTag.text == type.rawValue {
                 removeFromTags(currentTag)
             }
         }

@@ -32,19 +32,18 @@ class NoteDelegate: NSObject, UITableViewDelegate {
             biometricAuthentication { success in
                 if success {
                     DispatchQueue.main.async {
-                        self.parentController?.showNextController()
+                        self.parentController?.showNextController(with: note)
                     }
                 }
             }
         }
         else {
-            parentController?.showNextController()
+            parentController?.showNextController(with: note)
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionName = CoreDataStack.shared.fetchRequestController.sections![section].name
-        
         switch section {
         case 0:
             return HeaderNotes(title: sectionName, icon: "pin.fill", frame: CGRect())
@@ -61,17 +60,17 @@ class NoteDelegate: NSObject, UITableViewDelegate {
         let note = CoreDataStack.shared.fetchRequestController.object(at: indexPath)
         
         var pinningAction: UIAction {
-            let title = note.isPinned ? "Unpin" : "pin"
+            let title = note.isPinned ? "Unpin" : "Pin"
             let icon = UIImage(systemName: note.isPinned ? "pin.slash.fill" : "pin.fill")
             
             return UIAction(title: title, image: icon, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
                 if note.isPinned {
                     note.section = "Others"
-                    note.detachTag(for: "Pinned")
+                    note.detachTag(type: .pinned)
                 }
                 else {
                     note.section = "Pinned"
-                    note.attachTag(color: .systemBlue, text: "Pinned")
+                    note.attachTag(type: .pinned)
                 }
                 note.isPinned.toggle()
                 CoreDataStack.shared.saveContext()
@@ -84,10 +83,10 @@ class NoteDelegate: NSObject, UITableViewDelegate {
             
             return UIAction(title: title, image: icon, identifier: nil, discoverabilityTitle: nil, attributes: .init(), state: .off) { action in
                 if note.isFavorite {
-                    note.detachTag(for: "Favorite")
+                    note.detachTag(type: .favorited)
                 }
                 else {
-                    note.attachTag(color: .systemOrange, text: "Favorite")
+                    note.attachTag(type: .favorited)
                 }
                 note.isFavorite.toggle()
                 CoreDataStack.shared.saveContext()
@@ -117,14 +116,14 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                 if note.isLocked {
                     self.biometricAuthentication { success in
                         if success {
-                            note.detachTag(for: "Protected")
+                            note.detachTag(type: .protected)
                             note.isLocked.toggle()
                              CoreDataStack.shared.saveContext()
                         }
                     }
                 }
                 else {
-                    note.attachTag(color: .systemGreen, text: "Protected")
+                    note.attachTag(type: .protected)
                     note.isLocked.toggle()
                     CoreDataStack.shared.saveContext()
                 }

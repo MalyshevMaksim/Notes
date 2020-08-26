@@ -21,35 +21,38 @@ class NoteFetchResultsControllerDelegate: NSObject, NSFetchedResultsControllerDe
         tableView.beginUpdates()
     }
     
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+         tableView.endUpdates()
+    }
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        let section = IndexSet(integer: sectionIndex)
-        
         switch type {
-        case .insert:
-            tableView.insertSections(section, with: .fade)
-        case .delete:
-            tableView.deleteSections(section, with: .fade)
-        default:
-            break
+            case .insert:
+                tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+            case .delete:
+                tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+            default:
+                break
         }
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        case .update:
-            let note = CoreDataStack.shared.fetchRequestController.object(at: indexPath!)
-            let cell = self.tableView.cellForRow(at: indexPath!) as! NoteCell
-            cell.configure(with: note)
+            case .insert:
+                tableView.insertRows(at: [newIndexPath!], with: .fade)
+            case .delete:
+                tableView.deleteRows(at: [indexPath!], with: .fade)
+            case .update:
+                let cell = tableView.cellForRow(at: indexPath!) as! NoteCell
+                let note = CoreDataStack.shared.fetchRequestController.object(at: indexPath!)
+                cell.configureTagStack(with: note)
+            case .move:
+                tableView.moveRow(at: indexPath!, to: newIndexPath!)
+                let cell = tableView.cellForRow(at: indexPath!) as! NoteCell
+                let note = CoreDataStack.shared.fetchRequestController.object(at: newIndexPath!)
+                cell.configureTagStack(with: note)
+            default:
+                break
         }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
     }
 }

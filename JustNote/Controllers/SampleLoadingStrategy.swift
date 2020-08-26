@@ -11,12 +11,12 @@ import CoreData
 import UIKit
 
 protocol SampleLoadingStrategy {
-    func load(data: NSArray)
+    func convertData(_ data: NSArray)
 }
 
 extension SampleLoadingStrategy {
     // Sample data should only be loaded at the first show
-    func isFirstAppear(forKey key: String) -> Bool {
+    func isFirstAppear(for key: String) -> Bool {
         if !UserDefaults.standard.bool(forKey: key) {
             UserDefaults.standard.set(true, forKey: key)
             return false
@@ -26,8 +26,8 @@ extension SampleLoadingStrategy {
 }
 
 class SampleBoardLoader: SampleLoadingStrategy {
-    func load(data: NSArray) {
-        guard isFirstAppear(forKey: "Boards") == false else {
+    func convertData(_ data: NSArray) {
+        guard isFirstAppear(for: "Boards") == false else {
             return
         }
         for board in data {
@@ -43,18 +43,14 @@ class SampleBoardLoader: SampleLoadingStrategy {
 }
 
 class SampleNoteLoader: SampleLoadingStrategy {
-    func load(data: NSArray) {
-        guard isFirstAppear(forKey: "Notes") == false else {
+    func convertData(_ data: NSArray) {
+        guard isFirstAppear(for: "Notes") == false else {
             return
         }
         
-        let request: NSFetchRequest<Board> = Board.fetchRequest()
-        request.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(Board.title), "Typed"])
-        let result = try!  CoreDataStack.shared.managedContext.fetch(request)
-        
         for note in data {
             let noteDictionary = note as! [String : Any]
-            let note = Note(context:  CoreDataStack.shared.managedContext)
+            let note = Note(context: CoreDataStack.shared.managedContext)
             note.title = noteDictionary["title"] as? String
             note.body = noteDictionary["body"] as? String
             note.date = noteDictionary["date"] as? Date
@@ -63,18 +59,16 @@ class SampleNoteLoader: SampleLoadingStrategy {
             note.isFavorite = noteDictionary["isFavorite"] as! Bool
             note.section = "Others"
             
-            if note.isLocked == true {
-                note.attachTag(color: .systemGreen, text: "Protected")
-            }
-            if note.isPinned == true {
-                note.attachTag(color: .systemBlue, text: "Pinned")
-                note.section = "Pinned"
-            }
-            if note.isFavorite == true {
-                note.attachTag(color: .systemOrange, text: "Favorite")
-            }
-            result.first?.addToNotes(note)
+            note.configureTags()
+            addNoteToContext(note)
         }
-         CoreDataStack.shared.saveContext()
+        CoreDataStack.shared.saveContext()
+    }
+    
+    private func addNoteToContext(_ note: Note) {
+        let request: NSFetchRequest<Board> = Board.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(Board.title), "Typed"])
+        let result = try! CoreDataStack.shared.managedContext.fetch(request)
+        result.first?.addToNotes(note)
     }
 }

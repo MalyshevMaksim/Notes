@@ -1,5 +1,5 @@
 //
-//  Note+CoreDataClass.swift
+//  Image+CoreDataClass.swift
 //  
 //
 //  Created by Малышев Максим Алексеевич on 8/26/20.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Note)
-public class Note: NSManagedObject {
+@objc(Image)
+public class Image: NSManagedObject {
 
 }

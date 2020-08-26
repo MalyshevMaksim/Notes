@@ -7,38 +7,60 @@
 //
 
 import UIKit
-import RichEditorView
 
-class DetailNoteController: UIViewController {
+class DetailNoteController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var note: Note!
-    var titleTextField: UITextView!
     var bodyTextField: UITextView!
+    var attachedImages: [UIImage]!
+    var imagePicker = UIImagePickerController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        titleTextField = UITextView(frame: CGRect(x: 15, y: 100, width: 320, height: 100))
-        titleTextField.text = "\(note.title!)"
-        titleTextField.font = UIFont.systemFont(ofSize: 32, weight: .bold)
-        
         bodyTextField = UITextView(frame: CGRect(x: 15, y: 100, width: 320, height: 100))
-        bodyTextField.text = "\(note.body!)"
-        bodyTextField.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        bodyTextField.textAlignment = .justified
+        bodyTextField.font = UIFont.systemFont(ofSize: 32, weight: .bold)
         
+        let fullString = NSMutableAttributedString(string: "Start of text")
+        let image1Attachment = NSTextAttachment()
+        image1Attachment.image = UIImage(named: "eminem")
+        let image1String = NSAttributedString(attachment: image1Attachment)
+        fullString.append(image1String)
+        fullString.append(NSAttributedString(string: "End of text"))
+        
+        bodyTextField.attributedText = fullString
         setup()
+        configureController()
+    }
+    
+    private func configureController() {
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(addImage))
+    }
+    
+    @objc private func addImage() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[.originalImage] as? UIImage {
+            let image = Image(context: CoreDataStack.shared.managedContext)
+            image.image = pickedImage
+            note.addToImages(image)
+            CoreDataStack.shared.saveContext()
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     private func setup() {
-        view.addSubview(titleTextField)
         view.addSubview(bodyTextField)
         
         NSLayoutConstraint.activate([
-            titleTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            titleTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            titleTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            
-            //bodyTextField.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 10)
+            bodyTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            bodyTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            bodyTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
         ])
     }
 }

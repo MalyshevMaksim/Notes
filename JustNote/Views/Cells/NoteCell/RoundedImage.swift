@@ -9,8 +9,12 @@
 import UIKit
 
 class RoundedImage: UIView {
+    func configure(with model: Image) {
+        imageView.image = model.image
+    }
+    
     private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "eminem"))
+        let imageView = UIImageView()
         imageView.layer.cornerRadius = 18
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false

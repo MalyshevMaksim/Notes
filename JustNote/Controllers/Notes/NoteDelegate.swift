@@ -116,9 +116,8 @@ class NoteDelegate: NSObject, UITableViewDelegate {
                 if note.isLocked {
                     self.biometricAuthentication { success in
                         if success {
-                            note.detachTag(type: .protected)
+                            note.detachTag(type:  .protected)
                             note.isLocked.toggle()
-                             CoreDataStack.shared.saveContext()
                         }
                     }
                 }

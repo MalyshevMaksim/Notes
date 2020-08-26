@@ -30,6 +30,7 @@ class SampleBoardLoader: SampleLoadingStrategy {
         guard isFirstAppear(for: "Boards") == false else {
             return
         }
+        
         for board in data {
             let boardDictionary = board as! [String : Any]
             let board = Board(context: CoreDataStack.shared.managedContext)
@@ -58,7 +59,7 @@ class SampleNoteLoader: SampleLoadingStrategy {
             note.isPinned = noteDictionary["isPinned"] as! Bool
             note.isFavorite = noteDictionary["isFavorite"] as! Bool
             note.section = "Others"
-            
+    
             note.configureTags()
             addNoteToContext(note)
         }

@@ -10,9 +10,12 @@ import UIKit
 
 class NoteCell: UITableViewCell {
     static var reuseIdentifier = "NoteCell"
+    var tagStackHeightConstraint: NSLayoutConstraint!
+    var tagStackTopAnchorConstraint: NSLayoutConstraint!
     
     func configure(with model: Note) {
         configureTagStack(with: model)
+        configureImageStack(with: model)
         title.text = model.title
         body.text = model.body
         lastModifiedDate.text = "last changed: \(dateFormatter.string(from: model.date!))"
@@ -28,6 +31,36 @@ class NoteCell: UITableViewCell {
                 tagView.configure(with: tag as! Tag)
                 tagStack.addArrangedSubview(tagView)
             }
+        }
+        
+        if tagStack.arrangedSubviews.count == 0 {
+            tagStack.isHidden = true
+            tagStackTopAnchorConstraint.constant = 0
+            tagStackHeightConstraint.constant = 0
+        }
+        else {
+            tagStack.isHidden = false
+            tagStackTopAnchorConstraint.constant = 10
+            tagStackHeightConstraint.constant = 20
+        }
+    }
+    
+    func configureImageStack(with model: Note) {
+        imageStack.removeAllArrangedSubviews()
+        
+        if let images = model.images?.allObjects {
+            for image in images {
+                let roundedImage = RoundedImage()
+                roundedImage.configure(with: image as! Image)
+                imageStack.addArrangedSubview(roundedImage)
+            }
+        }
+        
+        if imageStack.arrangedSubviews.count == 0 {
+            lastModifiedDate.topAnchor.constraint(equalTo: body.bottomAnchor, constant: 10).isActive = true
+        }
+        else {
+            lastModifiedDate.topAnchor.constraint(equalTo: imageStack.bottomAnchor, constant: 10).isActive = true
         }
     }
     
@@ -69,13 +102,10 @@ class NoteCell: UITableViewCell {
         return date
     }()
     
-    private lazy var imageStackView: UIStackView = {
+    private lazy var imageStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 18
-        stackView.addArrangedSubview(RoundedImage())
-        stackView.addArrangedSubview(RoundedImage())
-        stackView.addArrangedSubview(RoundedImage())
+        stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -94,17 +124,21 @@ class NoteCell: UITableViewCell {
         contentView.addSubview(title)
         contentView.addSubview(body)
         contentView.addSubview(lastModifiedDate)
-        contentView.addSubview(imageStackView)
+        contentView.addSubview(imageStack)
     }
     
     private func setupCell() {
-        setupCellViews()
         let horizontalInset: CGFloat = 15
+        setupCellViews()
+        
+        tagStackHeightConstraint = tagStack.heightAnchor.constraint(equalToConstant: 0)
+        tagStackHeightConstraint.isActive = true
+        
+        tagStackTopAnchorConstraint = tagStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0)
+        tagStackTopAnchorConstraint.isActive = true
         
         NSLayoutConstraint.activate([
-            tagStack.firstBaselineAnchor.constraint(equalToSystemSpacingBelow: contentView.layoutMarginsGuide.topAnchor, multiplier: 0.5),
             tagStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalInset),
-            tagStack.heightAnchor.constraint(equalToConstant: 20),
             
             title.topAnchor.constraint(equalTo: tagStack.bottomAnchor, constant: 10),
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalInset),
@@ -114,10 +148,10 @@ class NoteCell: UITableViewCell {
             body.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             body.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalInset),
             
-            imageStackView.topAnchor.constraint(equalTo: body.bottomAnchor, constant: 10),
-            imageStackView.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+            imageStack.topAnchor.constraint(equalTo: body.bottomAnchor, constant: 10),
+            imageStack.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+            imageStack.heightAnchor.constraint(equalToConstant: 35),
             
-            lastModifiedDate.topAnchor.constraint(equalTo: imageStackView.bottomAnchor, constant: 40),
             lastModifiedDate.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             lastModifiedDate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalInset),
             

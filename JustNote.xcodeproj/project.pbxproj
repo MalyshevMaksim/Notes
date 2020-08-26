@@ -14,6 +14,10 @@
 		B507B3AD24DF336900EDB053 /* NoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507B3AC24DF336900EDB053 /* NoteDataSource.swift */; };
 		B507B3AF24DF388700EDB053 /* NoteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507B3AE24DF388700EDB053 /* NoteDelegate.swift */; };
 		B5210C8D24E04FC700402C91 /* BoardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5210C8C24E04FC700402C91 /* BoardDataSource.swift */; };
+		B53303BA24F61C8100327277 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53303B824F61C8000327277 /* Image+CoreDataProperties.swift */; };
+		B53303BB24F61C8100327277 /* Image+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53303B924F61C8100327277 /* Image+CoreDataClass.swift */; };
+		B53303BE24F61CEB00327277 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53303BC24F61CEB00327277 /* Note+CoreDataClass.swift */; };
+		B53303BF24F61CEB00327277 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53303BD24F61CEB00327277 /* Note+CoreDataProperties.swift */; };
 		B53E36792497E69D0008DF71 /* BoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E36782497E69D0008DF71 /* BoardDelegate.swift */; };
 		B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3624965BAC002F2865 /* AppDelegate.swift */; };
 		B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3824965BAC002F2865 /* SceneDelegate.swift */; };
@@ -41,8 +45,6 @@
 		B5E658BD249F43A300F4C6C3 /* HeaderNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E658BC249F43A300F4C6C3 /* HeaderNotes.swift */; };
 		B5EE703A24E5F90500FFC0D6 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE703924E5F90500FFC0D6 /* RoundedImage.swift */; };
 		B5F5E69D24DAF57100735567 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5E69C24DAF57100735567 /* UIStackView.swift */; };
-		B5F5E6B424DB0C7F00735567 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5E6B224DB0C7F00735567 /* Note+CoreDataClass.swift */; };
-		B5F5E6B524DB0C7F00735567 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5E6B324DB0C7F00735567 /* Note+CoreDataProperties.swift */; };
 		DC2BA6ECA315040260BA2DBF /* Pods_JustNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC96E3FAFE73ED42400FB22 /* Pods_JustNote.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,10 @@
 		B507B3AC24DF336900EDB053 /* NoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDataSource.swift; sourceTree = "<group>"; };
 		B507B3AE24DF388700EDB053 /* NoteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDelegate.swift; sourceTree = "<group>"; };
 		B5210C8C24E04FC700402C91 /* BoardDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDataSource.swift; sourceTree = "<group>"; };
+		B53303B824F61C8000327277 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Image+CoreDataProperties.swift"; path = "/Users/maksim/Desktop/Notes/JustNote/Models/Image+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		B53303B924F61C8100327277 /* Image+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Image+CoreDataClass.swift"; path = "/Users/maksim/Desktop/Notes/JustNote/Models/Image+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		B53303BC24F61CEB00327277 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "/Users/maksim/Desktop/Notes/JustNote/Models/Note+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		B53303BD24F61CEB00327277 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "/Users/maksim/Desktop/Notes/JustNote/Models/Note+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		B53E36782497E69D0008DF71 /* BoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDelegate.swift; sourceTree = "<group>"; };
 		B5893B3324965BAC002F2865 /* JustNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5893B3624965BAC002F2865 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,8 +92,6 @@
 		B5E658BC249F43A300F4C6C3 /* HeaderNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderNotes.swift; sourceTree = "<group>"; };
 		B5EE703924E5F90500FFC0D6 /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
 		B5F5E69C24DAF57100735567 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
-		B5F5E6B224DB0C7F00735567 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B5F5E6B324DB0C7F00735567 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +189,6 @@
 			children = (
 				B5E995BB24A3D4F2003C6211 /* Headers */,
 				B5E995BA24A3CD63003C6211 /* Cells */,
-				B5E658BA249ED5A700F4C6C3 /* TagView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,12 +196,14 @@
 		B5893B542496B5B0002F2865 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B5A2201324DED190000662E2 /* Board+CoreDataClass.swift */,
-				B5A2201424DED191000662E2 /* Board+CoreDataProperties.swift */,
+				B53303BC24F61CEB00327277 /* Note+CoreDataClass.swift */,
+				B53303BD24F61CEB00327277 /* Note+CoreDataProperties.swift */,
 				B5C18BC024CE1C54008551C1 /* Tag+CoreDataClass.swift */,
 				B5C18BBF24CE1C54008551C1 /* Tag+CoreDataProperties.swift */,
-				B5F5E6B224DB0C7F00735567 /* Note+CoreDataClass.swift */,
-				B5F5E6B324DB0C7F00735567 /* Note+CoreDataProperties.swift */,
+				B53303B924F61C8100327277 /* Image+CoreDataClass.swift */,
+				B53303B824F61C8000327277 /* Image+CoreDataProperties.swift */,
+				B5A2201324DED190000662E2 /* Board+CoreDataClass.swift */,
+				B5A2201424DED191000662E2 /* Board+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				B5E658B6249C89D500F4C6C3 /* NoteCell.swift */,
+				B5E658BA249ED5A700F4C6C3 /* TagView.swift */,
 				B5EE703924E5F90500FFC0D6 /* RoundedImage.swift */,
 			);
 			path = NoteCell;
@@ -234,11 +240,11 @@
 			isa = PBXGroup;
 			children = (
 				B5022EA424C4A8C4008A9B8D /* SampleNotes.plist */,
-				B507B3AE24DF388700EDB053 /* NoteDelegate.swift */,
-				B5024CBA24E23CF700859B5C /* NoteFetchResultsControllerDelegate.swift */,
-				B507B3AC24DF336900EDB053 /* NoteDataSource.swift */,
 				B5E658B1249C875500F4C6C3 /* NoteViewController.swift */,
 				B500A8B224F31AB800347177 /* DetailNoteController.swift */,
+				B507B3AC24DF336900EDB053 /* NoteDataSource.swift */,
+				B507B3AE24DF388700EDB053 /* NoteDelegate.swift */,
+				B5024CBA24E23CF700859B5C /* NoteFetchResultsControllerDelegate.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -390,7 +396,6 @@
 				B5022EA824C4B937008A9B8D /* UIColor.swift in Sources */,
 				B53E36792497E69D0008DF71 /* BoardDelegate.swift in Sources */,
 				B5E65888249BF24000F4C6C3 /* HeaderGridLayout.swift in Sources */,
-				B5F5E6B524DB0C7F00735567 /* Note+CoreDataProperties.swift in Sources */,
 				B5893B5124967249002F2865 /* BoardCollectionCell.swift in Sources */,
 				B507B3AD24DF336900EDB053 /* NoteDataSource.swift in Sources */,
 				B5A2200E24DE09B5000662E2 /* BoardFavoriteCell.swift in Sources */,
@@ -398,8 +403,10 @@
 				B5C18BC524CE1C55008551C1 /* Tag+CoreDataProperties.swift in Sources */,
 				B5E6588A249BF61900F4C6C3 /* TableBoardLayout.swift in Sources */,
 				B5E658BD249F43A300F4C6C3 /* HeaderNotes.swift in Sources */,
+				B53303BF24F61CEB00327277 /* Note+CoreDataProperties.swift in Sources */,
 				B5B70A4A24C357E5005512AF /* SampleLoadingStrategy.swift in Sources */,
 				B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */,
+				B53303BE24F61CEB00327277 /* Note+CoreDataClass.swift in Sources */,
 				B507B3AF24DF388700EDB053 /* NoteDelegate.swift in Sources */,
 				B5024CBB24E23CF700859B5C /* NoteFetchResultsControllerDelegate.swift in Sources */,
 				B5D3341524C2059F00E1AB30 /* Note.xcdatamodeld in Sources */,
@@ -409,11 +416,12 @@
 				B5E65886249BF1F100F4C6C3 /* GridBoardLayout.swift in Sources */,
 				B5E658B2249C875500F4C6C3 /* NoteViewController.swift in Sources */,
 				B500A8B324F31AB800347177 /* DetailNoteController.swift in Sources */,
+				B53303BA24F61C8100327277 /* Image+CoreDataProperties.swift in Sources */,
 				B5A2201624DED191000662E2 /* Board+CoreDataProperties.swift in Sources */,
 				B5210C8D24E04FC700402C91 /* BoardDataSource.swift in Sources */,
 				B5B70A4824C357BD005512AF /* SampleDataLoader.swift in Sources */,
+				B53303BB24F61C8100327277 /* Image+CoreDataClass.swift in Sources */,
 				B5F5E69D24DAF57100735567 /* UIStackView.swift in Sources */,
-				B5F5E6B424DB0C7F00735567 /* Note+CoreDataClass.swift in Sources */,
 				B5EE703A24E5F90500FFC0D6 /* RoundedImage.swift in Sources */,
 				B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */,
 				B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */,

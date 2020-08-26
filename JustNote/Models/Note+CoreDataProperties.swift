@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Note {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Note> {
@@ -26,7 +25,37 @@ extension Note {
     @NSManaged public var board: Board?
     @NSManaged public var tags: NSSet?
     @NSManaged public var images: NSSet?
-
+    
+    func configureTags() {
+        if isPinned == true {
+            attachTag(type: .pinned)
+            section = "Pinned"
+        }
+        if isFavorite == true {
+            attachTag(type: .favorited)
+        }
+        if isLocked == true {
+            attachTag(type: .protected)
+        }
+    }
+    
+    func attachTag(type: TagEnum) {
+        let tag = Tag(context: CoreDataStack.shared.managedContext)
+        tag.type = type
+        addToTags(tag)
+    }
+    
+    func detachTag(type: TagEnum) {
+        guard let tags = tags else {
+            return
+        }
+        for tag in tags {
+            let currentTag = tag as! Tag
+            if currentTag.text == type.text {
+                removeFromTags(currentTag)
+            }
+        }
+    }
 }
 
 // MARK: Generated accessors for tags

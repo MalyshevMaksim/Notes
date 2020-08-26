@@ -8,15 +8,13 @@
 
 import Foundation
 import CoreData
-
+import UIKit
 
 extension Image {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Image> {
         return NSFetchRequest<Image>(entityName: "Image")
     }
 
-    @NSManaged public var image: NSObject?
+    @NSManaged public var image: UIImage?
     @NSManaged public var note: Note?
-
 }

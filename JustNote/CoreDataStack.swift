@@ -28,17 +28,35 @@ class CoreDataStack {
         return persistenContainer.viewContext
     }()
     
-    lazy var fetchRequestController: NSFetchedResultsController<Note> = {
-        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        let pinnedSortDescriptor = NSSortDescriptor(key: #keyPath(Note.isPinned), ascending: false)
+    lazy var fetchRequestController: NSFetchedResultsController<TextNote> = {
+        let fetchRequest: NSFetchRequest<TextNote> = TextNote.fetchRequest()
+        let pinnedSortDescriptor = NSSortDescriptor(key: #keyPath(TextNote.isPinned), ascending: false)
         fetchRequest.sortDescriptors = [pinnedSortDescriptor]
         
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.managedContext, sectionNameKeyPath: #keyPath(Note.section), cacheName: nil)
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.managedContext, sectionNameKeyPath: #keyPath(TextNote.section), cacheName: nil)
         performFetch(controller)
         return controller
     }()
     
-    private func performFetch(_ controller: NSFetchedResultsController<Note>) {
+    lazy var fetchRequestController2: NSFetchedResultsController<PasswordNote> = {
+        let fetchRequest: NSFetchRequest<PasswordNote> = PasswordNote.fetchRequest()
+        let pinnedSortDescriptor = NSSortDescriptor(key: #keyPath(PasswordNote.isPinned), ascending: false)
+        fetchRequest.sortDescriptors = [pinnedSortDescriptor]
+        
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.managedContext, sectionNameKeyPath: #keyPath(PasswordNote.section), cacheName: nil)
+        performFetch2(controller)
+        return controller
+    }()
+    
+    private func performFetch(_ controller: NSFetchedResultsController<TextNote>) {
+        do {
+            try controller.performFetch()
+        } catch {
+            fatalError("Failed to performFetch: \(error)")
+        }
+    }
+    
+    private func performFetch2(_ controller: NSFetchedResultsController<PasswordNote>) {
         do {
             try controller.performFetch()
         } catch {

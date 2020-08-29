@@ -11,7 +11,7 @@ import CoreData
 
 protocol ViewСontrollerPresenting {
     func showAlert(alert: UIViewController)
-    func showNextController(with note: Note)
+    func showNextController(with note: TextNote)
 }
 
 class NoteViewController: UITableViewController, ViewСontrollerPresenting {
@@ -67,7 +67,7 @@ class NoteViewController: UITableViewController, ViewСontrollerPresenting {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func showNextController(with note: Note) {
+    func showNextController(with note: TextNote) {
         let detailController = DetailNoteController()
         detailController.note = note
         navigationController?.pushViewController(detailController, animated: true)

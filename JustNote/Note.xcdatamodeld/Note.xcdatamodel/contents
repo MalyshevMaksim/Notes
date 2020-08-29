@@ -10,29 +10,37 @@
     </entity>
     <entity name="Image" representedClassName="Image" syncable="YES">
         <attribute name="image" optional="YES" attributeType="Transformable"/>
-        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="images" inverseEntity="Note"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextNote" inverseName="images" inverseEntity="TextNote"/>
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES">
-        <attribute name="body" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isLocked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isPinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="section" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Board" inverseName="notes" inverseEntity="Board"/>
-        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="note" inverseEntity="Image"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="notes" inverseEntity="Tag"/>
+    </entity>
+    <entity name="PasswordNote" representedClassName="PasswordNote" parentEntity="Note" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="Transformable"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="color" optional="YES" attributeType="Transformable"/>
         <attribute name="text" optional="YES" attributeType="String"/>
-        <relationship name="notes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="tags" inverseEntity="Note"/>
+        <relationship name="notes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextNote" inverseName="tags" inverseEntity="TextNote"/>
+    </entity>
+    <entity name="TextNote" representedClassName="TextNote" parentEntity="Note" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isLocked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="note" inverseEntity="Image"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="notes" inverseEntity="Tag"/>
     </entity>
     <elements>
-        <element name="Board" positionX="-322.5448608398437" positionY="-212.4406433105469" width="128" height="133"/>
-        <element name="Note" positionX="-627.973388671875" positionY="-185.6955261230468" width="128" height="193"/>
-        <element name="Tag" positionX="-322.9366455078125" positionY="-62.02865600585938" width="128" height="88"/>
-        <element name="Image" positionX="-863.7445678710938" positionY="-80.66558837890625" width="128" height="73"/>
+        <element name="Board" positionX="-661.607177734375" positionY="-192.5310363769531" width="128" height="133"/>
+        <element name="Image" positionX="-861.6766357421875" positionY="233.7992553710938" width="128" height="73"/>
+        <element name="Note" positionX="-668.237548828125" positionY="20.80944824218759" width="128" height="118"/>
+        <element name="Tag" positionX="-474.3577880859375" positionY="233.4027709960938" width="128" height="88"/>
+        <element name="TextNote" positionX="-664.811767578125" positionY="203.5599060058594" width="128" height="118"/>
+        <element name="PasswordNote" positionX="-859.6329956054688" positionY="44.45693969726562" width="128" height="73"/>
     </elements>
 </model>

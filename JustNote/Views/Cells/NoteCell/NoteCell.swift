@@ -13,7 +13,7 @@ class NoteCell: UITableViewCell {
     var tagStackHeightConstraint: NSLayoutConstraint!
     var tagStackTopAnchorConstraint: NSLayoutConstraint!
     
-    func configure(with model: Note) {
+    func configure(with model: TextNote) {
         configureTagStack(with: model)
         configureImageStack(with: model)
         title.text = model.title
@@ -22,7 +22,7 @@ class NoteCell: UITableViewCell {
         backgroundColor = .systemBackground
     }
     
-    func configureTagStack(with model: Note) {
+    func configureTagStack(with model: TextNote) {
         tagStack.removeAllArrangedSubviews()
         
         if let tags = model.tags?.allObjects {
@@ -45,7 +45,7 @@ class NoteCell: UITableViewCell {
         }
     }
     
-    func configureImageStack(with model: Note) {
+    func configureImageStack(with model: TextNote) {
         imageStack.removeAllArrangedSubviews()
         
         if let images = model.images?.allObjects {

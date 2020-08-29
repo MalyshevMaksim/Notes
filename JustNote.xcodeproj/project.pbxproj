@@ -14,11 +14,23 @@
 		B507B3AD24DF336900EDB053 /* NoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507B3AC24DF336900EDB053 /* NoteDataSource.swift */; };
 		B507B3AF24DF388700EDB053 /* NoteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507B3AE24DF388700EDB053 /* NoteDelegate.swift */; };
 		B5210C8D24E04FC700402C91 /* BoardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5210C8C24E04FC700402C91 /* BoardDataSource.swift */; };
-		B53303BA24F61C8100327277 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53303B824F61C8000327277 /* Image+CoreDataProperties.swift */; };
-		B53303BB24F61C8100327277 /* Image+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53303B924F61C8100327277 /* Image+CoreDataClass.swift */; };
-		B53303BE24F61CEB00327277 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53303BC24F61CEB00327277 /* Note+CoreDataClass.swift */; };
-		B53303BF24F61CEB00327277 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53303BD24F61CEB00327277 /* Note+CoreDataProperties.swift */; };
 		B53E36792497E69D0008DF71 /* BoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E36782497E69D0008DF71 /* BoardDelegate.swift */; };
+		B5473A4324F8E7A400C46EA2 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5473A3924F8E7A200C46EA2 /* Image+CoreDataProperties.swift */; };
+		B5473A4424F8E7A400C46EA2 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5473A3A24F8E7A200C46EA2 /* Note+CoreDataProperties.swift */; };
+		B5473A4524F8E7A400C46EA2 /* TextNote+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5473A3B24F8E7A200C46EA2 /* TextNote+CoreDataProperties.swift */; };
+		B5473A4624F8E7A400C46EA2 /* Board+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5473A3C24F8E7A300C46EA2 /* Board+CoreDataProperties.swift */; };
+		B5473A4724F8E7A400C46EA2 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5473A3D24F8E7A300C46EA2 /* Note+CoreDataClass.swift */; };
+		B5473A4824F8E7A400C46EA2 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5473A3E24F8E7A300C46EA2 /* Tag+CoreDataProperties.swift */; };
+		B5473A4924F8E7A400C46EA2 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5473A3F24F8E7A300C46EA2 /* Tag+CoreDataClass.swift */; };
+		B5473A4A24F8E7A400C46EA2 /* Image+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5473A4024F8E7A300C46EA2 /* Image+CoreDataClass.swift */; };
+		B5473A4B24F8E7A400C46EA2 /* Board+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5473A4124F8E7A300C46EA2 /* Board+CoreDataClass.swift */; };
+		B5473A4C24F8E7A400C46EA2 /* TextNote+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5473A4224F8E7A300C46EA2 /* TextNote+CoreDataClass.swift */; };
+		B5697CE024F8826C0031B57A /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5697CDF24F8826C0031B57A /* PasswordViewController.swift */; };
+		B5697CE224F885D50031B57A /* PasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5697CE124F885D50031B57A /* PasswordCell.swift */; };
+		B5697CE524F89BC20031B57A /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5697CE424F89BC20031B57A /* ModalViewController.swift */; };
+		B56A8D4D24F9B10B00B5F2BD /* PasswordNote+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A8D4B24F9B10B00B5F2BD /* PasswordNote+CoreDataClass.swift */; };
+		B56A8D4E24F9B10B00B5F2BD /* PasswordNote+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A8D4C24F9B10B00B5F2BD /* PasswordNote+CoreDataProperties.swift */; };
+		B56A8D5024F9D75600B5F2BD /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A8D4F24F9D75600B5F2BD /* Fetcher.swift */; };
 		B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3624965BAC002F2865 /* AppDelegate.swift */; };
 		B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3824965BAC002F2865 /* SceneDelegate.swift */; };
 		B5893B3B24965BAC002F2865 /* NoteBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B3A24965BAC002F2865 /* NoteBoardViewController.swift */; };
@@ -27,13 +39,9 @@
 		B5893B4324965BAD002F2865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5893B4124965BAD002F2865 /* LaunchScreen.storyboard */; };
 		B5893B5124967249002F2865 /* BoardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5893B5024967249002F2865 /* BoardCollectionCell.swift */; };
 		B5A2200E24DE09B5000662E2 /* BoardFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2200D24DE09B5000662E2 /* BoardFavoriteCell.swift */; };
-		B5A2201524DED191000662E2 /* Board+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2201324DED190000662E2 /* Board+CoreDataClass.swift */; };
-		B5A2201624DED191000662E2 /* Board+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2201424DED191000662E2 /* Board+CoreDataProperties.swift */; };
 		B5B70A4824C357BD005512AF /* SampleDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B70A4724C357BD005512AF /* SampleDataLoader.swift */; };
 		B5B70A4A24C357E5005512AF /* SampleLoadingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B70A4924C357E5005512AF /* SampleLoadingStrategy.swift */; };
 		B5B70A4C24C3CF1E005512AF /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B70A4B24C3CF1E005512AF /* CoreDataStack.swift */; };
-		B5C18BC524CE1C55008551C1 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C18BBF24CE1C54008551C1 /* Tag+CoreDataProperties.swift */; };
-		B5C18BC624CE1C55008551C1 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C18BC024CE1C54008551C1 /* Tag+CoreDataClass.swift */; };
 		B5D3341524C2059F00E1AB30 /* Note.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5D3341324C2059F00E1AB30 /* Note.xcdatamodeld */; };
 		B5D3342324C20A4200E1AB30 /* SampleBoards.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5D3342224C20A4200E1AB30 /* SampleBoards.plist */; };
 		B5E65886249BF1F100F4C6C3 /* GridBoardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E65885249BF1F100F4C6C3 /* GridBoardLayout.swift */; };
@@ -59,11 +67,23 @@
 		B507B3AC24DF336900EDB053 /* NoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDataSource.swift; sourceTree = "<group>"; };
 		B507B3AE24DF388700EDB053 /* NoteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDelegate.swift; sourceTree = "<group>"; };
 		B5210C8C24E04FC700402C91 /* BoardDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDataSource.swift; sourceTree = "<group>"; };
-		B53303B824F61C8000327277 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Image+CoreDataProperties.swift"; path = "/Users/maksim/Desktop/Notes/JustNote/Models/Image+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		B53303B924F61C8100327277 /* Image+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Image+CoreDataClass.swift"; path = "/Users/maksim/Desktop/Notes/JustNote/Models/Image+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		B53303BC24F61CEB00327277 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "/Users/maksim/Desktop/Notes/JustNote/Models/Note+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		B53303BD24F61CEB00327277 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "/Users/maksim/Desktop/Notes/JustNote/Models/Note+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		B53E36782497E69D0008DF71 /* BoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDelegate.swift; sourceTree = "<group>"; };
+		B5473A3924F8E7A200C46EA2 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B5473A3A24F8E7A200C46EA2 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B5473A3B24F8E7A200C46EA2 /* TextNote+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextNote+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B5473A3C24F8E7A300C46EA2 /* Board+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B5473A3D24F8E7A300C46EA2 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B5473A3E24F8E7A300C46EA2 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B5473A3F24F8E7A300C46EA2 /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B5473A4024F8E7A300C46EA2 /* Image+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B5473A4124F8E7A300C46EA2 /* Board+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B5473A4224F8E7A300C46EA2 /* TextNote+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextNote+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B5697CDF24F8826C0031B57A /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		B5697CE124F885D50031B57A /* PasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCell.swift; sourceTree = "<group>"; };
+		B5697CE424F89BC20031B57A /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		B56A8D4B24F9B10B00B5F2BD /* PasswordNote+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PasswordNote+CoreDataClass.swift"; path = "/Users/maksim/Desktop/Notes/JustNote/Models/PasswordNote+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		B56A8D4C24F9B10B00B5F2BD /* PasswordNote+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PasswordNote+CoreDataProperties.swift"; path = "/Users/maksim/Desktop/Notes/JustNote/Models/PasswordNote+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		B56A8D4F24F9D75600B5F2BD /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		B5893B3324965BAC002F2865 /* JustNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5893B3624965BAC002F2865 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5893B3824965BAC002F2865 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,13 +94,9 @@
 		B5893B4424965BAD002F2865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5893B5024967249002F2865 /* BoardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCollectionCell.swift; sourceTree = "<group>"; };
 		B5A2200D24DE09B5000662E2 /* BoardFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardFavoriteCell.swift; sourceTree = "<group>"; };
-		B5A2201324DED190000662E2 /* Board+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B5A2201424DED191000662E2 /* Board+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Board+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B5B70A4724C357BD005512AF /* SampleDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDataLoader.swift; sourceTree = "<group>"; };
 		B5B70A4924C357E5005512AF /* SampleLoadingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLoadingStrategy.swift; sourceTree = "<group>"; };
 		B5B70A4B24C3CF1E005512AF /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		B5C18BBF24CE1C54008551C1 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B5C18BC024CE1C54008551C1 /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B5D3341424C2059F00E1AB30 /* Note.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Note.xcdatamodel; sourceTree = "<group>"; };
 		B5D3342224C20A4200E1AB30 /* SampleBoards.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SampleBoards.plist; sourceTree = "<group>"; };
 		B5E65885249BF1F100F4C6C3 /* GridBoardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBoardLayout.swift; sourceTree = "<group>"; };
@@ -133,6 +149,16 @@
 				B53E36782497E69D0008DF71 /* BoardDelegate.swift */,
 			);
 			path = Boards;
+			sourceTree = "<group>";
+		};
+		B5697CE324F89A860031B57A /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				B5697CDF24F8826C0031B57A /* PasswordViewController.swift */,
+				B5697CE424F89BC20031B57A /* ModalViewController.swift */,
+				B56A8D4F24F9D75600B5F2BD /* Fetcher.swift */,
+			);
+			path = Password;
 			sourceTree = "<group>";
 		};
 		B5893B2A24965BAC002F2865 = {
@@ -196,14 +222,18 @@
 		B5893B542496B5B0002F2865 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B53303BC24F61CEB00327277 /* Note+CoreDataClass.swift */,
-				B53303BD24F61CEB00327277 /* Note+CoreDataProperties.swift */,
-				B5C18BC024CE1C54008551C1 /* Tag+CoreDataClass.swift */,
-				B5C18BBF24CE1C54008551C1 /* Tag+CoreDataProperties.swift */,
-				B53303B924F61C8100327277 /* Image+CoreDataClass.swift */,
-				B53303B824F61C8000327277 /* Image+CoreDataProperties.swift */,
-				B5A2201324DED190000662E2 /* Board+CoreDataClass.swift */,
-				B5A2201424DED191000662E2 /* Board+CoreDataProperties.swift */,
+				B56A8D4B24F9B10B00B5F2BD /* PasswordNote+CoreDataClass.swift */,
+				B56A8D4C24F9B10B00B5F2BD /* PasswordNote+CoreDataProperties.swift */,
+				B5473A4124F8E7A300C46EA2 /* Board+CoreDataClass.swift */,
+				B5473A3C24F8E7A300C46EA2 /* Board+CoreDataProperties.swift */,
+				B5473A3D24F8E7A300C46EA2 /* Note+CoreDataClass.swift */,
+				B5473A3A24F8E7A200C46EA2 /* Note+CoreDataProperties.swift */,
+				B5473A4224F8E7A300C46EA2 /* TextNote+CoreDataClass.swift */,
+				B5473A3B24F8E7A200C46EA2 /* TextNote+CoreDataProperties.swift */,
+				B5473A3F24F8E7A300C46EA2 /* Tag+CoreDataClass.swift */,
+				B5473A3E24F8E7A300C46EA2 /* Tag+CoreDataProperties.swift */,
+				B5473A4024F8E7A300C46EA2 /* Image+CoreDataClass.swift */,
+				B5473A3924F8E7A200C46EA2 /* Image+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -212,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				B5E658B6249C89D500F4C6C3 /* NoteCell.swift */,
+				B5697CE124F885D50031B57A /* PasswordCell.swift */,
 				B5E658BA249ED5A700F4C6C3 /* TagView.swift */,
 				B5EE703924E5F90500FFC0D6 /* RoundedImage.swift */,
 			);
@@ -245,6 +276,7 @@
 				B507B3AC24DF336900EDB053 /* NoteDataSource.swift */,
 				B507B3AE24DF388700EDB053 /* NoteDelegate.swift */,
 				B5024CBA24E23CF700859B5C /* NoteFetchResultsControllerDelegate.swift */,
+				B5697CE324F89A860031B57A /* Password */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -392,39 +424,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A2201524DED191000662E2 /* Board+CoreDataClass.swift in Sources */,
 				B5022EA824C4B937008A9B8D /* UIColor.swift in Sources */,
+				B5473A4B24F8E7A400C46EA2 /* Board+CoreDataClass.swift in Sources */,
 				B53E36792497E69D0008DF71 /* BoardDelegate.swift in Sources */,
 				B5E65888249BF24000F4C6C3 /* HeaderGridLayout.swift in Sources */,
 				B5893B5124967249002F2865 /* BoardCollectionCell.swift in Sources */,
+				B5697CE024F8826C0031B57A /* PasswordViewController.swift in Sources */,
 				B507B3AD24DF336900EDB053 /* NoteDataSource.swift in Sources */,
 				B5A2200E24DE09B5000662E2 /* BoardFavoriteCell.swift in Sources */,
+				B56A8D4D24F9B10B00B5F2BD /* PasswordNote+CoreDataClass.swift in Sources */,
 				B5E658BB249ED5A700F4C6C3 /* TagView.swift in Sources */,
-				B5C18BC524CE1C55008551C1 /* Tag+CoreDataProperties.swift in Sources */,
 				B5E6588A249BF61900F4C6C3 /* TableBoardLayout.swift in Sources */,
 				B5E658BD249F43A300F4C6C3 /* HeaderNotes.swift in Sources */,
-				B53303BF24F61CEB00327277 /* Note+CoreDataProperties.swift in Sources */,
 				B5B70A4A24C357E5005512AF /* SampleLoadingStrategy.swift in Sources */,
 				B5E658B7249C89D500F4C6C3 /* NoteCell.swift in Sources */,
-				B53303BE24F61CEB00327277 /* Note+CoreDataClass.swift in Sources */,
+				B5697CE524F89BC20031B57A /* ModalViewController.swift in Sources */,
 				B507B3AF24DF388700EDB053 /* NoteDelegate.swift in Sources */,
 				B5024CBB24E23CF700859B5C /* NoteFetchResultsControllerDelegate.swift in Sources */,
+				B56A8D5024F9D75600B5F2BD /* Fetcher.swift in Sources */,
+				B5473A4C24F8E7A400C46EA2 /* TextNote+CoreDataClass.swift in Sources */,
 				B5D3341524C2059F00E1AB30 /* Note.xcdatamodeld in Sources */,
 				B5893B3B24965BAC002F2865 /* NoteBoardViewController.swift in Sources */,
-				B5C18BC624CE1C55008551C1 /* Tag+CoreDataClass.swift in Sources */,
+				B56A8D4E24F9B10B00B5F2BD /* PasswordNote+CoreDataProperties.swift in Sources */,
+				B5473A4524F8E7A400C46EA2 /* TextNote+CoreDataProperties.swift in Sources */,
+				B5473A4824F8E7A400C46EA2 /* Tag+CoreDataProperties.swift in Sources */,
 				B5B70A4C24C3CF1E005512AF /* CoreDataStack.swift in Sources */,
+				B5473A4924F8E7A400C46EA2 /* Tag+CoreDataClass.swift in Sources */,
 				B5E65886249BF1F100F4C6C3 /* GridBoardLayout.swift in Sources */,
 				B5E658B2249C875500F4C6C3 /* NoteViewController.swift in Sources */,
 				B500A8B324F31AB800347177 /* DetailNoteController.swift in Sources */,
-				B53303BA24F61C8100327277 /* Image+CoreDataProperties.swift in Sources */,
-				B5A2201624DED191000662E2 /* Board+CoreDataProperties.swift in Sources */,
 				B5210C8D24E04FC700402C91 /* BoardDataSource.swift in Sources */,
 				B5B70A4824C357BD005512AF /* SampleDataLoader.swift in Sources */,
-				B53303BB24F61C8100327277 /* Image+CoreDataClass.swift in Sources */,
+				B5473A4724F8E7A400C46EA2 /* Note+CoreDataClass.swift in Sources */,
+				B5473A4A24F8E7A400C46EA2 /* Image+CoreDataClass.swift in Sources */,
+				B5697CE224F885D50031B57A /* PasswordCell.swift in Sources */,
 				B5F5E69D24DAF57100735567 /* UIStackView.swift in Sources */,
+				B5473A4324F8E7A400C46EA2 /* Image+CoreDataProperties.swift in Sources */,
 				B5EE703A24E5F90500FFC0D6 /* RoundedImage.swift in Sources */,
+				B5473A4624F8E7A400C46EA2 /* Board+CoreDataProperties.swift in Sources */,
 				B5893B3724965BAC002F2865 /* AppDelegate.swift in Sources */,
 				B5893B3924965BAC002F2865 /* SceneDelegate.swift in Sources */,
+				B5473A4424F8E7A400C46EA2 /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,8 +37,8 @@ class BoardDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            let request: NSFetchRequest<Note> = Note.fetchRequest()
-            request.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(Note.isFavorite), true])
+            let request: NSFetchRequest<TextNote> = TextNote.fetchRequest()
+            request.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(TextNote.isFavorite), true])
             let results = try! CoreDataStack.shared.managedContext.fetch(request)
             return results.count
         default:

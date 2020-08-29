@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailNoteController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var note: Note!
+    var note: TextNote!
     var bodyTextField: UITextView!
     var attachedImages: [UIImage]!
     var imagePicker = UIImagePickerController()

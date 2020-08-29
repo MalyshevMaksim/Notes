@@ -51,7 +51,7 @@ class SampleNoteLoader: SampleLoadingStrategy {
         
         for note in data {
             let noteDictionary = note as! [String : Any]
-            let note = Note(context: CoreDataStack.shared.managedContext)
+            let note = TextNote(context: CoreDataStack.shared.managedContext)
             note.title = noteDictionary["title"] as? String
             note.body = noteDictionary["body"] as? String
             note.date = noteDictionary["date"] as? Date

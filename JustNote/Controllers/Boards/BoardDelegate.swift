@@ -22,10 +22,19 @@ class BoardDelegate: NSObject, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var indexPath = indexPath
         indexPath.section = indexPath.section - 1
+        
         let board = fetchResultController.object(at: indexPath)
-        let noteViewController = NoteViewController()
-        noteViewController.title = board.title
-        parentNavigationController.pushViewController(noteViewController, animated: true)
+        let viewController: UIViewController
+        
+        switch board.title {
+        case "Typed":
+            viewController = NoteViewController()
+        default:
+            viewController = PasswordViewController(style: .insetGrouped)
+        }
+        
+        viewController.title = board.title
+        parentNavigationController.pushViewController(viewController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {

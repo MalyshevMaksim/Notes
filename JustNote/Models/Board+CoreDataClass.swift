@@ -2,7 +2,7 @@
 //  Board+CoreDataClass.swift
 //  
 //
-//  Created by Малышев Максим Алексеевич on 8/8/20.
+//  Created by Малышев Максим Алексеевич on 8/28/20.
 //
 //
 

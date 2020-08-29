@@ -23,15 +23,7 @@ class NoteBoardViewController: UICollectionViewController {
         title = "Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        configureController()
         configureCollectionView()
-    }
-    
-    private func configureController() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
-        navigationItem.searchController = UISearchController()
-        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func configureCollectionView() {

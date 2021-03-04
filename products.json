@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "category": "Пицца",
+    "name": "Баварские колбаски",
+    "description": "Баварски колбаски,ветчина, пикантная пепперони, острая чоризо, моцарелла, томатный соус",
+    "imageUrl": "https://clipart-best.com/img/pizza/pizza-clip-art-5.png",
+    "startPrice": 295,
+ },
+  {
+    "id": 1,
+    "category": "Пицца",
+    "name": "Баварские колбаски",
+    "description": "Баварски колбаски,ветчина, пикантная пепперони, острая чоризо, моцарелла, томатный соус",
+    "imageUrl": "https://clipart-best.com/img/pizza/pizza-clip-art-5.png",
+    "startPrice": 295,
+ },
+  {
+    "id": 1,
+    "category": "Пицца",
+    "name": "Баварские колбаски",
+    "description": "Баварски колбаски,ветчина, пикантная пепперони, острая чоризо, моцарелла, томатный соус",
+    "imageUrl": "https://clipart-best.com/img/pizza/pizza-clip-art-5.png",
+    "startPrice": 295,
+ },
+  {
+    "id": 1,
+    "category": "Пицца",
+    "name": "Баварские колбаски",
+    "description": "Баварски колбаски,ветчина, пикантная пепперони, острая чоризо, моцарелла, томатный соус",
+    "imageUrl": "https://clipart-best.com/img/pizza/pizza-clip-art-5.png",
+    "startPrice": 295,
+ },
+  {
+    "id": 1,
+    "category": "Пицца",
+    "name": "Баварские колбаски",
+    "description": "Баварски колбаски,ветчина, пикантная пепперони, острая чоризо, моцарелла, томатный соус",
+    "imageUrl": "https://clipart-best.com/img/pizza/pizza-clip-art-5.png",
+    "startPrice": 295,
+ },
+  {
+    "id": 7,
+    "category": "Комбо",
+    "name": "Комбо за 999 ₽",
+    "description": "3 пиццы 30 см на тонком тесте по суперцене. Выбор пицц ограничен",
+    "imageUrl": "https://www.hamburgerstand.com/wp-content/uploads/2015/03/Meals-Combos-thumbnail.png",
+    "startPrice": 999
+  },
+  {
+    "id": 7,
+    "category": "Комбо",
+    "name": "Комбо за 999 ₽",
+    "description": "3 пиццы 30 см на тонком тесте по суперцене. Выбор пицц ограничен",
+    "imageUrl": "https://www.hamburgerstand.com/wp-content/uploads/2015/03/Meals-Combos-thumbnail.png",
+    "startPrice": 999
+  },
+  {
+    "id": 7,
+    "category": "Комбо",
+    "name": "Комбо за 999 ₽",
+    "description": "3 пиццы 30 см на тонком тесте по суперцене. Выбор пицц ограничен",
+    "imageUrl": "https://www.hamburgerstand.com/wp-content/uploads/2015/03/Meals-Combos-thumbnail.png",
+    "startPrice": 999
+  },
+  {
+    "id": 7,
+    "category": "Комбо",
+    "name": "Комбо за 999 ₽",
+    "description": "3 пиццы 30 см на тонком тесте по суперцене. Выбор пицц ограничен",
+    "imageUrl": "https://www.hamburgerstand.com/wp-content/uploads/2015/03/Meals-Combos-thumbnail.png",
+    "startPrice": 999
+  },
+  {
+    "id": 7,
+    "category": "Комбо",
+    "name": "Комбо за 999 ₽",
+    "description": "3 пиццы 30 см на тонком тесте по суперцене. Выбор пицц ограничен",
+    "imageUrl": "https://www.hamburgerstand.com/wp-content/uploads/2015/03/Meals-Combos-thumbnail.png",
+    "startPrice": 999
+  },
+  {
+    "id": 11,
+    "category": "Десерты",
+    "name": "Пончик Тройной шоколад",
+    "description": "Нежный пончик с шоколадной начинкой, глазурью и посыпкой",
+    "imageUrl": "https://i.pinimg.com/originals/e6/3c/3f/e63c3fc484e15778f40e01036c948124.png",
+    "startPrice": 89
+  },
+  {
+    "id": 11,
+    "category": "Десерты",
+    "name": "Пончик Тройной шоколад",
+    "description": "Нежный пончик с шоколадной начинкой, глазурью и посыпкой",
+    "imageUrl": "https://i.pinimg.com/originals/e6/3c/3f/e63c3fc484e15778f40e01036c948124.png",
+    "startPrice": 89
+  },
+  {
+    "id": 11,
+    "category": "Десерты",
+    "name": "Пончик Тройной шоколад",
+    "description": "Нежный пончик с шоколадной начинкой, глазурью и посыпкой",
+    "imageUrl": "https://i.pinimg.com/originals/e6/3c/3f/e63c3fc484e15778f40e01036c948124.png",
+    "startPrice": 89
+  },
+  {
+    "id": 11,
+    "category": "Десерты",
+    "name": "Пончик Тройной шоколад",
+    "description": "Нежный пончик с шоколадной начинкой, глазурью и посыпкой",
+    "imageUrl": "https://i.pinimg.com/originals/e6/3c/3f/e63c3fc484e15778f40e01036c948124.png",
+    "startPrice": 89
+  },
+  {
+    "id": 11,
+    "category": "Десерты",
+    "name": "Пончик Тройной шоколад",
+    "description": "Нежный пончик с шоколадной начинкой, глазурью и посыпкой",
+    "imageUrl": "https://i.pinimg.com/originals/e6/3c/3f/e63c3fc484e15778f40e01036c948124.png",
+    "startPrice": 89
+  },
+  {
+    "id": 11,
+    "category": "Напитки",
+    "name": "Coca-Cola",
+    "description": "0,5 л",
+    "imageUrl": "https://pizzafiero.ru/wp-content/uploads/2018/02/Coca-Cola-PNG-Clipart.png",
+    "startPrice": 95
+  },
+  {
+    "id": 11,
+    "category": "Напитки",
+    "name": "Coca-Cola",
+    "description": "0,5 л",
+    "imageUrl": "https://pizzafiero.ru/wp-content/uploads/2018/02/Coca-Cola-PNG-Clipart.png",
+    "startPrice": 95
+  },
+  {
+    "id": 11,
+    "category": "Напитки",
+    "name": "Coca-Cola",
+    "description": "0,5 л",
+    "imageUrl": "https://pizzafiero.ru/wp-content/uploads/2018/02/Coca-Cola-PNG-Clipart.png",
+    "startPrice": 95
+  },
+  {
+    "id": 11,
+    "category": "Напитки",
+    "name": "Coca-Cola",
+    "description": "0,5 л",
+    "imageUrl": "https://pizzafiero.ru/wp-content/uploads/2018/02/Coca-Cola-PNG-Clipart.png",
+    "startPrice": 95
+  },
+  {
+    "id": 11,
+    "category": "Напитки",
+    "name": "Coca-Cola",
+    "description": "0,5 л",
+    "imageUrl": "https://pizzafiero.ru/wp-content/uploads/2018/02/Coca-Cola-PNG-Clipart.png",
+    "startPrice": 95
+  }
+]
